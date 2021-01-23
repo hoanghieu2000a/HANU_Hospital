@@ -1,0 +1,118 @@
+<mxfile host="app.diagrams.net" modified="2021-01-23T14:39:31.445Z" agent="5.0 (X11)" etag="XiZECF7EdY_oJIRgCPO2" version="14.2.7" type="github" pages="2">
+  <diagram id="A-tYAIB530SBXRurAQad" name="Page-1">
+    <mxGraphModel dx="1527" dy="804" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-1" value="Patient" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="300" y="120" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-3" value="Receptionist" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="300" y="270" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-5" value="Doctor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="395" y="120" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-6" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="395" y="270" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-7" value="Patient" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="600" y="160" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-11" value="Đăng ký hồ sơ bệnh nhân" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="720" y="10" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="ahKejyC_iPMMIFxbM1Mf-14" target="ahKejyC_iPMMIFxbM1Mf-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ahKejyC_iPMMIFxbM1Mf-14" target="ahKejyC_iPMMIFxbM1Mf-16" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1140" y="400" />
+              <mxPoint x="1140" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ahKejyC_iPMMIFxbM1Mf-14" target="ahKejyC_iPMMIFxbM1Mf-19" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1185" y="300" />
+              <mxPoint x="1005" y="300" />
+              <mxPoint x="1005" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-14" value="Receptionist" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="1170" y="370" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-15" value="&lt;div&gt;Quản lý lịch khám&lt;/div&gt;&lt;div&gt;cá nhân&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="720" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-16" value="&lt;div&gt;Quản lý hồ sơ bệnh án&lt;/div&gt;&lt;div&gt;(không xóa)&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="970" y="540" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="ahKejyC_iPMMIFxbM1Mf-17" target="ahKejyC_iPMMIFxbM1Mf-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="ahKejyC_iPMMIFxbM1Mf-17" target="ahKejyC_iPMMIFxbM1Mf-16" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1140" y="510" />
+              <mxPoint x="1140" y="555" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ahKejyC_iPMMIFxbM1Mf-17" target="ahKejyC_iPMMIFxbM1Mf-19" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1230" y="510" />
+              <mxPoint x="1230" y="300" />
+              <mxPoint x="1005" y="300" />
+              <mxPoint x="1005" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-17" value="Doctor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="1170" y="480" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-19" value="Chat" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="720" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="ahKejyC_iPMMIFxbM1Mf-20" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="615.3529411764707" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-20" value="In - Patient" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="600" y="520" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-23" value="Xem dịch vụ khám bệnh" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="720" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-24" value="&lt;div&gt;Đánh giá dịch vụ&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="720" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-25" value="Authentication" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="970" y="400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-26" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="670" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ahKejyC_iPMMIFxbM1Mf-37" value="Quản lý account" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="970" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WfC_r9BY3nQdNHbR18cH-1" value="Đăng kí dịch vụ nội trú" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="500" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="U6ghahdbD5VD86krsalE" name="Page-2">
+    <mxGraphModel dx="567" dy="804" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="vGY8A6kRukeh3KISiAAY-0" />
+        <mxCell id="vGY8A6kRukeh3KISiAAY-1" parent="vGY8A6kRukeh3KISiAAY-0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
