@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-02-07T15:21:57.482Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 Edg/88.0.705.63" etag="9E8EuwKGdKJ_zoYoKpa-" version="14.2.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-07T15:24:31.383Z" agent="5.0 (Windows)" etag="SMR7DyOb-OdPEV0SXVPE" version="14.2.9" type="github">
   <diagram id="XGmTM283f2upPylEM_hm" name="Page-1">
-    <mxGraphModel dx="2389" dy="1081" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2333" dy="781" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -237,8 +237,11 @@
         <mxCell id="I_VAa2MuaLFRDVZnbhv6-86" value="Không database bỏ qua" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="775" y="1830" width="85" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="mijpiBY--RYvPaBXDb3O-1" value="&lt;b&gt;&lt;font color=&quot;#00cccc&quot;&gt;Đào Thành&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="mijpiBY--RYvPaBXDb3O-1" value="&lt;b&gt;&lt;font color=&quot;#00cccc&quot;&gt;Đào Thành&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-90" y="1030" width="65" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="KwIfmnC8kuaTNsX9p0gN-2" value="&lt;font style=&quot;font-size: 18px&quot; color=&quot;#006600&quot;&gt;Trung Hiếu&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1103" y="150" width="40" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
