@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-02-09T13:55:29.270Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Safari/605.1.15" etag="alwNt4BOUoMMRq6JQ8sq" version="14.3.0" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-14T14:40:12.042Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="py0tV3gFO8ZU4m8Wafl_" version="14.4.3" type="github">
   <diagram id="XGmTM283f2upPylEM_hm" name="Page-1">
-    <mxGraphModel dx="1958" dy="732" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1502" dy="568" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -19,7 +19,7 @@
         <mxCell id="I_VAa2MuaLFRDVZnbhv6-73" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="150" y="10" width="490" height="750" as="geometry" />
         </mxCell>
-        <mxCell id="I_VAa2MuaLFRDVZnbhv6-1" value="Tạo form đăng nhập / đăng ký" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="I_VAa2MuaLFRDVZnbhv6-1" value="Tạo form đăng nhập / đăng ký" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="320" y="60" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I_VAa2MuaLFRDVZnbhv6-2" value="Xem dịch vụ khám" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
