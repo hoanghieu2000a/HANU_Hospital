@@ -1,6 +1,5 @@
 package se2.hanu_hospital.controller.patient;
 
-
 import org.springframework.web.bind.annotation.RestController;
 
 import se2.hanu_hospital.error.patient.PatientNotFoundException;

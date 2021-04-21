@@ -11,3 +11,4 @@ public class PatientDetailsNotFoundException extends RuntimeException {
         super("Could not find this patient: " + id);
       }
 }
+  
