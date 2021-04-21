@@ -1,4 +1,6 @@
 # HANU_Hospital ver 0.1.1
+Open Swagger UI with link when run backend: http://localhost:8085/swagger-ui.html
+
 A project of Software Engineering 2 course: 
 * A healthcare management system that:
   - Patient management: This module is used to control patient flow. It can be
