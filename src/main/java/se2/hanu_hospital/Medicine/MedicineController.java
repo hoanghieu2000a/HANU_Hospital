@@ -5,6 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(path = {"/api/medicine"})
@@ -20,29 +23,18 @@ public class MedicineController {
     public ResponseEntity<?> getMedicines (){
         try {
             return new ResponseEntity<>(medicineService.getMedicine(), HttpStatus.OK);
+
         } catch(Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PostMapping(path = "/add")
-    public ResponseEntity<?> addNewMedicine(@RequestBody Medicine medicine){
+    @PostMapping(path = "/save")
+    public ResponseEntity<?> saveMedicine(@RequestBody Medicine medicine){
         try {
-            medicineService.addNewMedicine(medicine);
+            medicineService.saveMedicine(medicine);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch(Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @PutMapping(path = "/update/{id}")
-    public ResponseEntity<?> updateMedicine(@PathVariable("id") Long id,
-                                           @RequestBody Medicine medicine
-    ){
-        try{
-            medicineService.updateMedicine(id, medicine);
-            return new ResponseEntity<>(null, HttpStatus.OK);
-        }catch(Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -74,4 +66,14 @@ public class MedicineController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping(path = "/getById/{id}")
+    public ResponseEntity<?> getMedicineById (@PathVariable("id") Long id){
+        try{
+            return new ResponseEntity<>(medicineService.getMedicineById(id), HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

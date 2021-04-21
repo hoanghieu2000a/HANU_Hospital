@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Medicine")
+@Table(name = "medicine")
 public class Medicine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class Medicine {
 
     @Column(nullable = false, updatable = false, insertable = false,
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime importDate;
+    private LocalDate importDate;
     private LocalDate expireDate;
 
     @Column(precision = 8, scale = 2)
@@ -26,7 +26,7 @@ public class Medicine {
     @Column(precision = 8, scale = 2)
     private Double importPrice;
 
-    public Medicine(String name, LocalDateTime importDate, LocalDate expireDate, Double sellPrice, Double importPrice) {
+    public Medicine(String name, LocalDate importDate, LocalDate expireDate, Double sellPrice, Double importPrice) {
         this.name = name;
         this.importDate = importDate;
         this.expireDate = expireDate;
@@ -53,11 +53,11 @@ public class Medicine {
         this.name = name;
     }
 
-    public LocalDateTime getImportDate() {
+    public LocalDate getImportDate() {
         return importDate;
     }
 
-    public void setImportDate(LocalDateTime importDate) {
+    public void setImportDate(LocalDate importDate) {
         this.importDate = importDate;
     }
 

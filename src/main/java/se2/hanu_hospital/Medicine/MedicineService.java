@@ -2,9 +2,7 @@ package se2.hanu_hospital.Medicine;
 
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,13 +13,7 @@ public class MedicineService {
         this.medicineRepository = medicineRepository;
     }
 
-    public void addNewMedicine(Medicine medicine) {
-        medicineRepository.save(medicine);
-    }
-
-    @Transactional
-    public void updateMedicine(Long id, Medicine medicine) {
-        medicine.setId(id);
+    public void saveMedicine(Medicine medicine) {
         medicineRepository.save(medicine);
     }
 
@@ -48,5 +40,11 @@ public class MedicineService {
         if (today.isBefore(expiredDate)){
             return false;
         } return true;
+    }
+
+    public Medicine getMedicineById(Long id) {
+        Medicine medicine = medicineRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
+        return medicine;
     }
 }
