@@ -22,7 +22,6 @@ import se2.hanu_hospital.authentication.payload.JwtAuthenticationResponse;
 import se2.hanu_hospital.authentication.payload.LoginRequest;
 import se2.hanu_hospital.authentication.payload.SignUpRequest;
 import se2.hanu_hospital.authentication.security.JwtTokenProvider;
-import sqa.hanu_minimart.model.Cart;
 
 
 import javax.validation.Valid;
