@@ -29,10 +29,10 @@ public class MedicineController {
         }
     }
 
-    @PostMapping(path = "/save")
-    public ResponseEntity<?> saveMedicine(@RequestBody Medicine medicine){
+    @PostMapping(path = "/add")
+    public ResponseEntity<?> addMedicine(@RequestBody Medicine medicine){
         try {
-            medicineService.saveMedicine(medicine);
+            medicineService.addMedicine(medicine);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch(Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -72,6 +72,16 @@ public class MedicineController {
         try{
             return new ResponseEntity<>(medicineService.getMedicineById(id), HttpStatus.OK);
         }catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping(path = "/update")
+    public ResponseEntity<?> updateMedicine(@RequestBody Medicine medicine){
+        try {
+            medicineService.updateMedicine(medicine);
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        } catch(Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

@@ -15,9 +15,10 @@ public class Medicine {
     @Column(length = 50)
     private String name;
 
-    @Column(nullable = false, updatable = false, insertable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDate importDate;
+//    @Column(nullable = false, updatable = false, insertable = false,
+//            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+//    private LocalDate importDate;
+
     private LocalDate expireDate;
 
     @Column(precision = 8, scale = 2)
@@ -26,16 +27,31 @@ public class Medicine {
     @Column(precision = 8, scale = 2)
     private Double importPrice;
 
-    public Medicine(String name, LocalDate importDate, LocalDate expireDate, Double sellPrice, Double importPrice) {
+    @Column(columnDefinition = "INT(4) UNSIGNED")
+    private int quantity;
+
+
+    public Medicine(Long id, String name, LocalDate expireDate, Double sellPrice, Double importPrice, int quantity) {
+        this.id = id;
         this.name = name;
-        this.importDate = importDate;
         this.expireDate = expireDate;
         this.sellPrice = sellPrice;
         this.importPrice = importPrice;
+        this.quantity = 0;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public Medicine() {
     }
+
+
 
     public Long getId() {
         return id;
@@ -53,13 +69,6 @@ public class Medicine {
         this.name = name;
     }
 
-    public LocalDate getImportDate() {
-        return importDate;
-    }
-
-    public void setImportDate(LocalDate importDate) {
-        this.importDate = importDate;
-    }
 
     public LocalDate getExpireDate() {
         return expireDate;
@@ -85,16 +94,6 @@ public class Medicine {
         this.importPrice = importPrice;
     }
 
-    @Override
-    public String toString() {
-        return "Medicine{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", importDate=" + importDate +
-                ", expireDate=" + expireDate +
-                ", sellPrice=" + sellPrice +
-                ", importPrice=" + importPrice +
-                '}';
-    }
+
 }
 
