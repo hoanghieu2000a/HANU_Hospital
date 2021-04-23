@@ -1,4 +1,4 @@
-package se2.hanu_hospital.domain.patient.entity;
+package se2.hanu_hospital.patient.entity;
 
 
 import com.nimbusds.openid.connect.sdk.claims.Gender;
@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import se2.hanu_hospital.base.TimeStamps;
+import se2.hanu_hospital.util.TimeStamps;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

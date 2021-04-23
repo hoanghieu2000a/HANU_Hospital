@@ -1,4 +1,4 @@
-package se2.hanu_hospital.base;
+package se2.hanu_hospital.util;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

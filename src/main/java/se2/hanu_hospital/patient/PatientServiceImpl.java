@@ -1,4 +1,4 @@
-package se2.hanu_hospital.domain.patient;
+package se2.hanu_hospital.patient;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;

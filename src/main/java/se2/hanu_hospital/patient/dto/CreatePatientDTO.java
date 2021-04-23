@@ -1,6 +1,6 @@
-package se2.hanu_hospital.domain.patient.dto;
+package se2.hanu_hospital.patient.dto;
 
-import se2.hanu.hospital.base.TimeStamps;
+import se2.hanu_hospital.util.TimeStamps;
 
 public class CreatePatientDTO implements TimeStamps {
 

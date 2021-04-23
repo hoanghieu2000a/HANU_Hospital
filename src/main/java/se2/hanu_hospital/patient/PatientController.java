@@ -1,4 +1,4 @@
-package se2.hanu_hospital.domain.patient;
+package se2.hanu_hospital.patient;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;

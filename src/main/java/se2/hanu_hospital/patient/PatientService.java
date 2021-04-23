@@ -1,11 +1,11 @@
-package se2.hanu_hospital.domain.patient;
+package se2.hanu_hospital.patient;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import se2.hanu.hospital.base.CRUDService;
-import se2.hanu.hospital.domain.patient.dto.CreatePatientDTO;
-import se2.hanu.hospital.domain.patient.dto.UpdatePatientDTO;
-import se2.hanu.hospital.domain.patient.entity.Patient;
+import se2.hanu_hospital.patient.dto.CreatePatientDTO;
+import se2.hanu_hospital.patient.dto.UpdatePatientDTO;
+import se2.hanu_hospital.patient.entity.Patient;
+import se2.hanu_hospital.util.CRUDService;
 
 import java.util.List;
 
