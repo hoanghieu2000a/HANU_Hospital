@@ -1,5 +1,0 @@
-Lập trình spring boot + react cho prototype:
-https://developer.okta.com/blog/2018/07/19/simple-crud-react-and-spring-boot
-
-Link hướng dẫn học setup làm cơ bản:
-https://openplanning.net/11267/huong-dan-lap-trinh-spring-boot-cho-nguoi-moi-bat-dau
