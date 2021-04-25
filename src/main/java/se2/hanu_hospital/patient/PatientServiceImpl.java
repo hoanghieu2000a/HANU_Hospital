@@ -1,12 +1,13 @@
 package se2.hanu_hospital.patient;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import se2.hanu.hospital.domain.patient.dto.CreatePatientDTO;
-import se2.hanu.hospital.domain.patient.dto.UpdatePatientDTO;
-import se2.hanu.hospital.domain.patient.entity.Patient;
+import se2.hanu_hospital.patient.dto.CreatePatientDTO;
+import se2.hanu_hospital.patient.dto.UpdatePatientDTO;
+import se2.hanu_hospital.patient.entity.Patient;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -18,6 +19,7 @@ public class PatientServiceImpl implements PatientService {
     private final PatientRepository patientRepository;
     private final ModelMapper modelMapper;
 
+    @Autowired
     public PatientServiceImpl(PatientRepository patientRepository, ModelMapper modelMapper) {
         this.patientRepository = patientRepository;
         this.modelMapper = modelMapper;
