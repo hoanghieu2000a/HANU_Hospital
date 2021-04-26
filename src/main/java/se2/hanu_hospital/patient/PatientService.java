@@ -10,7 +10,7 @@ import se2.hanu_hospital.util.CRUDService;
 import java.util.List;
 
 public interface PatientService extends CRUDService<Patient, Long, CreatePatientDTO, UpdatePatientDTO> {
-    boolean isCodeUnique(String code);
+    boolean isPhoneNumberUnique(String patientPhoneNumber);
     Page<Patient> findAllByKeyword(String keyword, Pageable pageable);
     List<Patient> findByKeyword(String keyword);
 }

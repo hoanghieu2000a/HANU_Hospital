@@ -69,27 +69,15 @@ public class PatientController {
         patientService.deleteById(id);
     }
 
-    @Operation(summary = "Check if a Patient's code has not been added before in the system.")
+    @Operation(summary = "Check if a Patient's phone number has not been added before in the system.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "400", description = "Something went wrong"),
             @ApiResponse(responseCode = "403", description = "Access denied"),
             @ApiResponse(responseCode = "404", description = "The username is not valid"),
             @ApiResponse(responseCode = "500", description = "Expired or invalid JWT token") })
-    @GetMapping(value = "/patients/checkUniqueness/code/{code}")
-    public boolean isPhoneNumberUnique(@PathVariable String code) {
-        return patientService.isCodeUnique(code);
+    @GetMapping(value = "/patients/checkUniqueness/phoneNumber/{phoneNumber}")
+    public boolean isPhoneNumberUnique(@PathVariable String phoneNumber) {
+        return patientService.isPhoneNumberUnique(phoneNumber);
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

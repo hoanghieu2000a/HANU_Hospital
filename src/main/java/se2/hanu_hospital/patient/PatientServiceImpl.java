@@ -67,8 +67,8 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public boolean isCodeUnique(String code) {
-        return patientRepository.existsByCode(code);
+    public boolean isPhoneNumberUnique(String phoneNumber) {
+        return patientRepository.existsByPhoneNumber(phoneNumber);
     }
 
     @Override

@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import net.minidev.json.annotate.JsonIgnore;
-import se2.hanu_hospital.util.TimeStamps;
 
 import java.time.LocalDateTime;
 

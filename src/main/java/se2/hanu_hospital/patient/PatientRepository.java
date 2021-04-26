@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
-    boolean existsByCode(String code);
+    boolean existsByPhoneNumber(String patientPhoneNumber);
 
     Page<Patient> findAllByNameLike(String partialName, Pageable pageable);
 
