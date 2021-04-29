@@ -1,4 +1,4 @@
-package se2.hanu_hospital.patient.entity;
+package se2.hanu_hospital.domain.patient.entity;
 
 
 import com.nimbusds.openid.connect.sdk.claims.Gender;

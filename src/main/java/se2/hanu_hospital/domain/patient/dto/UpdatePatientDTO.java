@@ -1,23 +1,22 @@
-package se2.hanu_hospital.patient.dto;
+package se2.hanu_hospital.domain.patient.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import net.minidev.json.annotate.JsonIgnore;
-import se2.hanu_hospital.util.TimeStamps;
 
 import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(toBuilder = true)
-public class CreatePatientDTO implements TimeStamps {
+@SuperBuilder(toBuilder = true)
+public class UpdatePatientDTO {
     private Long patientId;
     private String name;
     @JsonIgnore
-    private LocalDateTime createdAt;
-    @JsonIgnore
-    private LocalDateTime updatedAt;
+    @Builder.Default
+    private LocalDateTime updatedAt = LocalDateTime.now();
 }
