@@ -25,10 +25,10 @@ public class PrescriptionService {
             if( prescriptionValidate(prescription)) {
                 prescriptionRepository.save(prescription);
 
-                List<Prescription> prescriptionList = prescriptionRepository.findAll();
+                List<Prescription> prescriptionList = prescriptionRepository.findAllByNameContaining(medicine.getName());
 
                 updateMedicineQuantity(medicine, prescriptionList);
-            } else {
+                } else {
                 throw new Exception("Invalid input");
             }
             }
@@ -41,11 +41,18 @@ public class PrescriptionService {
         return prescriptionRepository.findAll();
     }
 
-    public void delete (Long id){
+    public void delete (Long id) throws IOException {
         if(!prescriptionRepository.existsById(id)){
-            throw new IllegalStateException("Prescription does not Exist");
+            throw new IllegalStateException ("Prescription does not Exist");
         }
+        Prescription prescription = getById(id);
+        String name = prescription.getName();
+
         prescriptionRepository.deleteById(id);
+
+        List<Prescription> prescriptionList = prescriptionRepository.findAllByNameContaining(name);
+        Medicine medicine = medicineService.getMedicineByName(name);
+        updateMedicineQuantity(medicine, prescriptionList);
     }
 
     public void update (Prescription prescription){
@@ -68,16 +75,23 @@ public class PrescriptionService {
         if( prescription.getName().length() <=0 ||
             prescription.getDosage()<= 0||
             prescription.getCostPerDose() <= 0||
-            prescription.getRecordId()<= 0||
-            prescription.getTotal()<= 0){
+            prescription.getRecordId()<= 0
+            ){
             return false;
         } return true;
     }
 
     private void updateMedicineQuantity(Medicine medicine, List<Prescription> prescriptionList) throws IOException {
-        for (Prescription prescription: prescriptionList){
-            medicine.setQuantity(medicine.getQuantity()+prescription.getDosage());
+        int currQty = 0;
+        if (prescriptionList.size() == 0) {
+            medicine.setQuantity(0);
+            medicineService.updateMedicine(medicine);
+        } else {
+            for (Prescription prescription : prescriptionList) {
+                currQty += prescription.getDosage();
+            }
+            medicine.setQuantity(currQty);
+            medicineService.updateMedicine(medicine);
         }
-        medicineService.updateMedicine(medicine);
     }
 }

@@ -32,7 +32,7 @@ public class Prescription {
     @Column(precision = 8, scale = 2)
     private Double total;
 
-    public Prescription(Long id, Long recordId, String name, LocalDate startDate, LocalDate endDate, int dosage, Double costPerDose) {
+    public Prescription(Long id, Long recordId, String name, LocalDate startDate, LocalDate endDate, int dosage, Double costPerDose, Double total) {
         this.id = id;
         this.recordId = recordId;
         this.name = name;
@@ -41,7 +41,7 @@ public class Prescription {
         this.endDate = endDate;
         this.dosage = dosage;
         this.costPerDose = costPerDose;
-        this.total = costPerDose * dosage;
+        this.total = this.total;
     }
 
     public Prescription() {
