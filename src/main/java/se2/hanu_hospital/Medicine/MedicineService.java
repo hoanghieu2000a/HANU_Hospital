@@ -55,6 +55,13 @@ public class MedicineService {
         return medicine;
     }
 
+    public Medicine getMedicineByName (String name){
+        Medicine medicine = medicineRepository.findByNameContaining(name);
+        if (!medicineRepository.existsById(medicine.getId())) {
+            throw new IllegalStateException("Order does not exist");
+        } return medicine;
+    }
+
     private boolean medicineValidation (Medicine medicine) {
         if (medicine.getName().length() <= 0 ||
                 medicine.getSellPrice() <= 0 ||
@@ -73,5 +80,11 @@ public class MedicineService {
             throw new IllegalStateException("Order does not exist");
         }
         medicineRepository.save(medicine);
+    }
+
+    public boolean isExisted(Medicine  medicine){
+        if(medicineRepository.existsById(medicine.getId())){
+        return true;
+        } return false;
     }
 }

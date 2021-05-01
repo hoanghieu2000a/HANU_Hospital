@@ -18,8 +18,8 @@ public class Prescription {
     @Column(length = 50)
     private String name;
 
-    @Column(columnDefinition = "INT(4) UNSIGNED")
-    private int quantity;
+//    @Column(columnDefinition = "INT(4) UNSIGNED")
+//    private int quantity;
 
     private LocalDate startDate;
     private LocalDate endDate;
@@ -32,16 +32,16 @@ public class Prescription {
     @Column(precision = 8, scale = 2)
     private Double total;
 
-    public Prescription(Long id, Long recordId, String name, int quantity, LocalDate startDate, LocalDate endDate, int dosage, Double costPerDose, Double total) {
+    public Prescription(Long id, Long recordId, String name, LocalDate startDate, LocalDate endDate, int dosage, Double costPerDose) {
         this.id = id;
         this.recordId = recordId;
         this.name = name;
-        this.quantity = quantity;
+//        this.quantity = quantity;
         this.startDate = startDate;
         this.endDate = endDate;
         this.dosage = dosage;
         this.costPerDose = costPerDose;
-        this.total = total;
+        this.total = costPerDose * dosage;
     }
 
     public Prescription() {
@@ -53,7 +53,6 @@ public class Prescription {
                 "id=" + id +
                 ", recordId=" + recordId +
                 ", name='" + name + '\'' +
-                ", quantity=" + quantity +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", dosage=" + dosage +
@@ -86,13 +85,13 @@ public class Prescription {
         this.name = name;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+//    public int getQuantity() {
+//        return quantity;
+//    }
+//
+//    public void setQuantity(int quantity) {
+//        this.quantity = quantity;
+//    }
 
     public LocalDate getStartDate() {
         return startDate;
