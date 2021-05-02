@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 public class UpdateFacilityDTO {
-    private Long id;
+    private Long facilityId;
     private String code;
     @JsonIgnore
-    private LocalDateTime  updatedAt = LocalDateTime.now();
+    private LocalDateTime updatedAt = LocalDateTime.now();
     
 }
