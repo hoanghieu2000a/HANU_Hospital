@@ -16,8 +16,8 @@ import java.util.List;
 @Service
 public class PatientServiceImpl implements PatientService {
 
-    private final PatientRepository patientRepository;
-    private final ModelMapper modelMapper;
+    private PatientRepository patientRepository;
+    private ModelMapper modelMapper;
 
     @Autowired
     public PatientServiceImpl(PatientRepository patientRepository, ModelMapper modelMapper) {

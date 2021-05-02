@@ -1,5 +1,7 @@
 package se2.hanu_hospital.domain.facility;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import se2.hanu_hospital.domain.facility.entity.Facility;
