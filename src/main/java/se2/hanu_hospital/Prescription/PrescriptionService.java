@@ -24,10 +24,7 @@ public class PrescriptionService {
         if(medicineService.isExisted(medicine)){
             if( prescriptionValidate(prescription)) {
                 prescriptionRepository.save(prescription);
-
-                List<Prescription> prescriptionList = prescriptionRepository.findAllByNameContaining(medicine.getName());
-
-                updateMedicineQuantity(medicine, prescriptionList);
+                updateMedicineQuantity(medicine.getName());
                 } else {
                 throw new Exception("Invalid input");
             }
@@ -50,12 +47,10 @@ public class PrescriptionService {
 
         prescriptionRepository.deleteById(id);
 
-        List<Prescription> prescriptionList = prescriptionRepository.findAllByNameContaining(name);
-        Medicine medicine = medicineService.getMedicineByName(name);
-        updateMedicineQuantity(medicine, prescriptionList);
+        updateMedicineQuantity(name);
     }
 
-    public void update (Prescription prescription){
+    public void update (Prescription prescription) throws IOException {
         if(!prescriptionValidate(prescription)) {
             throw new IllegalStateException("Invalid input");
         }
@@ -63,6 +58,10 @@ public class PrescriptionService {
             throw new IllegalStateException("Prescription does not Exist");
         }
         prescriptionRepository.save(prescription);
+
+        String name = prescription.getName();
+
+        updateMedicineQuantity(name);
     }
 
     public Prescription getById(Long id){
@@ -81,7 +80,10 @@ public class PrescriptionService {
         } return true;
     }
 
-    private void updateMedicineQuantity(Medicine medicine, List<Prescription> prescriptionList) throws IOException {
+    private void updateMedicineQuantity(String medicineName) throws IOException {
+        List<Prescription> prescriptionList = prescriptionRepository.findAllByNameContaining(medicineName);
+        Medicine medicine = medicineService.getMedicineByName(medicineName);
+
         int currQty = 0;
         if (prescriptionList.size() == 0) {
             medicine.setQuantity(0);
