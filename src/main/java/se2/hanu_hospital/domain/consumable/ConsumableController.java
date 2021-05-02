@@ -26,7 +26,7 @@ import se2.hanu_hospital.domain.consumable.dto.UpdateConsumableDTO;
 import se2.hanu_hospital.domain.consumable.entity.Consumable;
 
 @RestController
-@Tag(name = "Consumable Item Controller", description = "Consumable Item API")
+@Tag(name = "Consumable Items Controller", description = "Consumable Items API")
 public class ConsumableController {
     private final ConsumableService consumableService;
 
@@ -104,15 +104,8 @@ public class ConsumableController {
         @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
         @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
         @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
-})
+    })
     public void deleteByID(@PathVariable Long id) {
         consumableService.deleteById(id);
     }
-
-
-
-
-
-    
-
 }

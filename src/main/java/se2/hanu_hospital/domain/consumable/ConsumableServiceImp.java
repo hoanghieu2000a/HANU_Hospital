@@ -17,8 +17,8 @@ import se2.hanu_hospital.domain.consumable.entity.Consumable;
 @Service
 public class ConsumableServiceImp  implements ConsumableService{
 
-    private final ConsumableRepository consumableRepository;
-    private final ModelMapper modelMapper;
+    private ConsumableRepository consumableRepository;
+    private ModelMapper modelMapper;
 
     @Autowired
     public ConsumableServiceImp(ConsumableRepository consumableRepository, ModelMapper modelMapper){

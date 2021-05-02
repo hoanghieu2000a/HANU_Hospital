@@ -18,6 +18,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
+@Builder(toBuilder = true)
 public class Consumable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

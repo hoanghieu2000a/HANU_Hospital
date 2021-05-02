@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
+@Builder(toBuilder = true)
 public class Facility {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
