@@ -12,7 +12,7 @@ import se2.hanu_hospital.account.repository.UserRepository;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/account")
+@RequestMapping("/account")
 public class AccountController {
 
     @Autowired
