@@ -27,12 +27,12 @@ public class Prescription {
     @Column(columnDefinition = "INT(4) UNSIGNED")
     private int dosage;
 
-    @Column(precision = 8, scale = 2)
-    private Double costPerDose;
-    @Column(precision = 8, scale = 2)
-    private Double total;
+//    @Column(precision = 8, scale = 2)
+//    private Double costPerDose;
+//    @Column(precision = 8, scale = 2)
+//    private Double total;
 
-    public Prescription(Long id, Long recordId, String name, LocalDate startDate, LocalDate endDate, int dosage, Double costPerDose, Double total) {
+    public Prescription(Long id, Long recordId, String name, LocalDate startDate, LocalDate endDate, int dosage) {
         this.id = id;
         this.recordId = recordId;
         this.name = name;
@@ -40,8 +40,8 @@ public class Prescription {
         this.startDate = startDate;
         this.endDate = endDate;
         this.dosage = dosage;
-        this.costPerDose = costPerDose;
-        this.total = this.total;
+//        this.costPerDose = costPerDose;
+//        this.total = this.total;
     }
 
     public Prescription() {
@@ -56,8 +56,6 @@ public class Prescription {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", dosage=" + dosage +
-                ", costPerDose=" + costPerDose +
-                ", total=" + total +
                 '}';
     }
 
@@ -117,19 +115,19 @@ public class Prescription {
         this.dosage = dosage;
     }
 
-    public Double getCostPerDose() {
-        return costPerDose;
-    }
-
-    public void setCostPerDose(Double costPerDose) {
-        this.costPerDose = costPerDose;
-    }
-
-    public Double getTotal() {
-        return total;
-    }
-
-    public void setTotal(Double total) {
-        this.total = total;
-    }
+//    public Double getCostPerDose() {
+//        return costPerDose;
+//    }
+//
+//    public void setCostPerDose(Double costPerDose) {
+//        this.costPerDose = costPerDose;
+//    }
+//
+//    public Double getTotal() {
+//        return total;
+//    }
+//
+//    public void setTotal(Double total) {
+//        this.total = total;
+//    }
 }

@@ -23,6 +23,8 @@ public class PrescriptionService {
         try{
         if(medicineService.isExisted(medicine)){
             if( prescriptionValidate(prescription)) {
+
+
                 prescriptionRepository.save(prescription);
                 updateMedicineQuantity(medicine.getName());
                 } else {
@@ -66,14 +68,13 @@ public class PrescriptionService {
 
     public Prescription getById(Long id){
         Prescription prescription = prescriptionRepository.findById(id)
-                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
+                .orElseThrow(() -> new IllegalStateException("Prescription does not exist!"));
         return prescription;
     }
 
     private boolean prescriptionValidate(Prescription prescription){
         if( prescription.getName().length() <=0 ||
             prescription.getDosage()<= 0||
-            prescription.getCostPerDose() <= 0||
             prescription.getRecordId()<= 0
             ){
             return false;
@@ -95,5 +96,11 @@ public class PrescriptionService {
             medicine.setQuantity(currQty);
             medicineService.updateMedicine(medicine);
         }
+    }
+
+    public int getQuantity(Long id){
+        Prescription prescription = prescriptionRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Prescription does not exist!"));
+        return prescription.getDosage();
     }
 }

@@ -35,7 +35,7 @@ public class PrescriptionController {
         }
     }
 
-    @PutMapping(path = "/update/{id}")
+    @PutMapping(path = "/update")
     public ResponseEntity<?> update(@RequestBody Prescription prescription) {
         try {
             prescriptionService.update( prescription);

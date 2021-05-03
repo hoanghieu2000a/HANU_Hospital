@@ -87,4 +87,10 @@ public class MedicineService {
         return true;
         } return false;
     }
+
+    public Double getSellPrice(Long id){
+        Medicine medicine = medicineRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
+        return medicine.getSellPrice();
+    }
 }
