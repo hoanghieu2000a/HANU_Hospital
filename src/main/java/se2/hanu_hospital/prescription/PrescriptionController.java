@@ -1,4 +1,4 @@
-package se2.hanu_hospital.Prescription;
+package se2.hanu_hospital.prescription;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

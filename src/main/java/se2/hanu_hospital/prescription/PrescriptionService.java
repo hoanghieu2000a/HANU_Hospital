@@ -1,9 +1,8 @@
-package se2.hanu_hospital.Prescription;
+package se2.hanu_hospital.prescription;
 
 import org.springframework.stereotype.Service;
-import se2.hanu_hospital.Medicine.Medicine;
-import se2.hanu_hospital.Medicine.MedicineRepository;
-import se2.hanu_hospital.Medicine.MedicineService;
+import se2.hanu_hospital.medicine.Medicine;
+import se2.hanu_hospital.medicine.MedicineService;
 
 import java.io.IOException;
 import java.util.List;
@@ -86,7 +85,7 @@ public class PrescriptionService {
         } return true;
     }
 
-    private void updateMedicineQuantity(String medicineName) throws IOException {
+    public void updateMedicineQuantity(String medicineName) throws IOException {
         List<Prescription> prescriptionList = prescriptionRepository.findAllByNameContaining(medicineName);
         Medicine medicine = medicineService.getMedicineByName(medicineName);
 
@@ -100,6 +99,17 @@ public class PrescriptionService {
             }
             medicine.setQuantity(currQty);
             medicineService.updateMedicine(medicine);
+        }
+    }
+
+    public void deleteAllPresByRecordId(Long recordId) throws IOException {
+        List<Prescription> prescriptionList = getAllByRecordId(recordId);
+        if(prescriptionList.size()!=0){
+            for (Prescription prescription : prescriptionList) {
+                Long presId = prescription.getId();
+
+                delete(presId);
+            }
         }
     }
 

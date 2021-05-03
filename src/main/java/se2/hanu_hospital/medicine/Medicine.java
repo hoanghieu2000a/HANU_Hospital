@@ -1,8 +1,7 @@
-package se2.hanu_hospital.Medicine;
+package se2.hanu_hospital.medicine;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "medicine")

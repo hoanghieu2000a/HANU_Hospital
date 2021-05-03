@@ -1,4 +1,4 @@
-package se2.hanu_hospital.Medicine;
+package se2.hanu_hospital.medicine;
 
 import org.springframework.stereotype.Service;
 
