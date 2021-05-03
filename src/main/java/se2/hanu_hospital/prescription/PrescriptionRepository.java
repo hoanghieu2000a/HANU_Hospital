@@ -8,6 +8,4 @@ public interface PrescriptionRepository extends JpaRepository<Prescription, Long
     List<Prescription> findAllByNameContaining(String name);
 
     List<Prescription> findPrescriptionByRecordId(Long recordId);
-
-
 }

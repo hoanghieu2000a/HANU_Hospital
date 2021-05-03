@@ -1,6 +1,5 @@
 package se2.hanu_hospital.record;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se2.hanu_hospital.prescription.PrescriptionService;

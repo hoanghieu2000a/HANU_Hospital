@@ -82,7 +82,4 @@ public class MedicineController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-
-
 }

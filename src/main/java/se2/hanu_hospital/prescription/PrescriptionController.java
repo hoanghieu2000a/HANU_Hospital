@@ -55,7 +55,7 @@ public class PrescriptionController {
         }
     }
 
-    @GetMapping(path = "/getAllByRecordId/{recordId}")
+ @GetMapping(path = "/getAllByRecordId/{recordId}")
     public ResponseEntity<?> getAllByRecordId(@PathVariable Long recordId){
         try {
             return new ResponseEntity<>(prescriptionService.getAllByRecordId(recordId), HttpStatus.OK);
