@@ -38,7 +38,7 @@ public class ReceptionistController {
         }
     }
 
-    @GetMapping(path = "/delete/{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         try {
             receptionistService.deleteById(id);
@@ -48,7 +48,7 @@ public class ReceptionistController {
         }
     }
 
-    @GetMapping(path = "/add")
+    @PostMapping(path = "/add")
     public ResponseEntity<?> add(@RequestBody Receptionist receptionist) {
         try {
             receptionistService.addReceptionist(receptionist);
@@ -58,7 +58,7 @@ public class ReceptionistController {
         }
     }
 
-    @GetMapping(path = "/update/{id}")
+    @PutMapping(path = "/update/{id}")
     public ResponseEntity<?> updateReceptionistById(@PathVariable Long id, @RequestBody ReceptionistDTO receptionistDTO) {
         try {
             receptionistService.updateById(id, receptionistDTO);
@@ -68,7 +68,7 @@ public class ReceptionistController {
         }
     }
 
-    @GetMapping(path = "/assignDoctor")
+    @PutMapping(path = "/assignDoctor/{id}")
     public ResponseEntity<?> assignDoctor(@PathVariable Long id) {
         try {
             receptionistService.assignDoctor(id);

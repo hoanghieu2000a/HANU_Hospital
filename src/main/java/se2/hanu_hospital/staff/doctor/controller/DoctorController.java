@@ -41,7 +41,7 @@ public class DoctorController {
         }
     }
 
-    @GetMapping(path = "/delete/{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         try {
             doctorService.deleteById(id);
@@ -51,7 +51,7 @@ public class DoctorController {
         }
     }
 
-    @GetMapping(path = "/add")
+    @PostMapping(path = "/add")
     public ResponseEntity<?> add(@RequestBody Doctor doctor) {
         try {
             doctorService.addDoctor(doctor);
@@ -61,7 +61,7 @@ public class DoctorController {
         }
     }
 
-    @GetMapping(path = "/update/{id}")
+    @PutMapping(path = "/update/{id}")
     public ResponseEntity<?> updateDoctorById(@PathVariable Long id, @RequestBody DoctorDTO doctorDTO) {
         try {
             doctorService.updateById(id, doctorDTO);
@@ -71,7 +71,7 @@ public class DoctorController {
         }
     }
 
-    @GetMapping(path = "/prescribe")
+    @PostMapping(path = "/prescribe")
     public ResponseEntity<?> prescribe(@RequestBody Prescription prescription) {
         try {
             doctorService.prescribeMedicine(prescription);
@@ -81,7 +81,7 @@ public class DoctorController {
         }
     }
 
-    @GetMapping(path = "/prescibe/update")
+    @PutMapping(path = "/prescibe/update")
     public ResponseEntity<?> updatePrescription(@RequestBody Prescription prescription) {
         try {
             doctorService.updatePrescription(prescription);
@@ -91,7 +91,7 @@ public class DoctorController {
         }
     }
 
-    @GetMapping(path = "/prescibe/delete/{id}")
+    @DeleteMapping(path = "/prescibe/delete/{id}")
     public ResponseEntity<?> deletePrescription(@PathVariable Long id) {
         try {
             doctorService.deletePrescription(id);
