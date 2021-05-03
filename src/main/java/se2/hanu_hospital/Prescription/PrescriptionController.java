@@ -55,10 +55,10 @@ public class PrescriptionController {
         }
     }
 
-    @GetMapping(path = "/getById/{id}")
-    public ResponseEntity<?> getByid(@PathVariable Long id){
+    @GetMapping(path = "/getAllByRecordId/{recordId}")
+    public ResponseEntity<?> getAllByRecordId(@PathVariable Long recordId){
         try {
-            return new ResponseEntity<>(prescriptionService.getById(id), HttpStatus.OK);
+            return new ResponseEntity<>(prescriptionService.getAllByRecordId(recordId), HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
         }

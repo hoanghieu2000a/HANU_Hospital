@@ -72,6 +72,11 @@ public class PrescriptionService {
         return prescription;
     }
 
+    public List<Prescription> getAllByRecordId(Long recordId){
+        List<Prescription> prescriptionList = prescriptionRepository.findPrescriptionByRecordId(recordId);
+        return prescriptionList;
+    }
+
     private boolean prescriptionValidate(Prescription prescription){
         if( prescription.getName().length() <=0 ||
             prescription.getDosage()<= 0||
