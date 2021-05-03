@@ -1,13 +1,8 @@
 package se2.hanu_hospital.record;
 
 
-import se2.hanu_hospital.medicine.RecordStatus;
-import se2.hanu_hospital.prescription.Prescription;
-
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "record")
