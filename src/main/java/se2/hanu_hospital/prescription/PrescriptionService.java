@@ -71,6 +71,11 @@ public class PrescriptionService {
         return prescription;
     }
 
+    public List<Prescription> getAllByRecordId(Long recordId){
+        List<Prescription> prescriptionList = prescriptionRepository.findPrescriptionByRecordId(recordId);
+        return prescriptionList;
+    }
+
     private boolean prescriptionValidate(Prescription prescription){
         if( prescription.getName().length() <=0 ||
             prescription.getDosage()<= 0||
@@ -80,7 +85,7 @@ public class PrescriptionService {
         } return true;
     }
 
-    private void updateMedicineQuantity(String medicineName) throws IOException {
+    public void updateMedicineQuantity(String medicineName) throws IOException {
         List<Prescription> prescriptionList = prescriptionRepository.findAllByNameContaining(medicineName);
         Medicine medicine = medicineService.getMedicineByName(medicineName);
 
@@ -94,6 +99,17 @@ public class PrescriptionService {
             }
             medicine.setQuantity(currQty);
             medicineService.updateMedicine(medicine);
+        }
+    }
+
+    public void deleteAllPresByRecordId(Long recordId) throws IOException {
+        List<Prescription> prescriptionList = getAllByRecordId(recordId);
+        if(prescriptionList.size()!=0){
+            for (Prescription prescription : prescriptionList) {
+                Long presId = prescription.getId();
+
+                delete(presId);
+            }
         }
     }
 
