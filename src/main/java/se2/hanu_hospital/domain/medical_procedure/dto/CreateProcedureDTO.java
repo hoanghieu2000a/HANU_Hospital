@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Data
@@ -14,8 +16,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 public class CreateProcedureDTO {
-    private Long procedureId;
-    private String patientName;
+    
+    @NotNull
+    private String medicalProcedureCode;
+
+
+
     @JsonIgnore
     private LocalDateTime createdAt;
     @JsonIgnore

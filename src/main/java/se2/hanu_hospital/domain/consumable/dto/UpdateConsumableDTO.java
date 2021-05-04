@@ -1,6 +1,9 @@
 package se2.hanu_hospital.domain.consumable.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,10 +18,20 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
 public class UpdateConsumableDTO {
-    private Long consumableId;
+    
+    @NotNull
     private String name;
+    @NotNull
     private int quantity;
-
+    @NotNull
+    private int priceBought;
+    @NotNull
+    private int priceSell;
+    @NotNull
+    private LocalDate importedDate;
+    @NotNull
+    private Long medicalProcedureId;
+    
     @JsonIgnore
     @Builder.Default
     private LocalDateTime updatedAt = LocalDateTime.now();

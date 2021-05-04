@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
@@ -23,11 +24,18 @@ public class Consumable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotNull
     private String name;
+    @NotNull
     private int quantity;
+    @NotNull
     private int priceBought;
+    @NotNull
     private int priceSell;
+    @NotNull
     private LocalDate importedDate;
+    
     private LocalDate expirationDate;
 
     @ManyToOne

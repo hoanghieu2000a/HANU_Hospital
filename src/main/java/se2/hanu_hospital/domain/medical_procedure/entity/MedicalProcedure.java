@@ -1,5 +1,7 @@
 package se2.hanu_hospital.domain.medical_procedure.entity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,6 +36,9 @@ public class MedicalProcedure {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
+    private String medicalProcedureCode;
+
     @OneToMany(mappedBy = "medicalProcedure", cascade = CascadeType.ALL)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
@@ -45,6 +52,13 @@ public class MedicalProcedure {
     @OneToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
+
+    @PastOrPresent
+    private LocalDateTime createdAt;
+
+    @PastOrPresent
+    private LocalDateTime updatedAt;
+    
 
 
 

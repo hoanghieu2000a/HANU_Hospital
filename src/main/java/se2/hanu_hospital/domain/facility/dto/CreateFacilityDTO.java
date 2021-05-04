@@ -2,6 +2,8 @@ package se2.hanu_hospital.domain.facility.dto;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -14,8 +16,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 public class CreateFacilityDTO {
-    private Long facilityId;
+    @NotNull
     private String code;
+    @NotNull
+    private Boolean status;
+    @NotNull
+    private int price;
+
+    private Long medicalProcedureId;
+    
     @JsonIgnore
     private LocalDateTime createdAt;
     @JsonIgnore
