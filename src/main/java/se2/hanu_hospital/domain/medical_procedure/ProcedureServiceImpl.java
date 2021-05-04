@@ -56,7 +56,7 @@ public class ProcedureServiceImpl implements ProcedureService{
     }
 
     @Override
-    public MedicalProcedure findByPatientName(String patientName) {
+    public List<MedicalProcedure> findByPatientName(String patientName) {
         return procedureRepository.findByPatientName(patientName);
     }
 
