@@ -50,8 +50,6 @@ public class Medicine {
     public Medicine() {
     }
 
-
-
     public Long getId() {
         return id;
     }
@@ -68,7 +66,6 @@ public class Medicine {
         this.name = name;
     }
 
-
     public LocalDate getExpireDate() {
         return expireDate;
     }
@@ -81,9 +78,7 @@ public class Medicine {
         return sellPrice;
     }
 
-    public void setSellPrice(Double sellPrice) {
-        this.sellPrice = sellPrice;
-    }
+    public void setSellPrice(Double sellPrice) { this.sellPrice = sellPrice; }
 
     public Double getImportPrice() {
         return importPrice;
@@ -92,7 +87,5 @@ public class Medicine {
     public void setImportPrice(Double importPrice) {
         this.importPrice = importPrice;
     }
-
-
 }
 

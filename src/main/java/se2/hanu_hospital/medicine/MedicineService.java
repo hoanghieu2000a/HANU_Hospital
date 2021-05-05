@@ -15,7 +15,7 @@ public class MedicineService {
     }
 
     public void addMedicine(Medicine medicine) throws IOException {
-        if (medicineValidation(medicine) == false){
+        if (!medicineValidation(medicine) || isDuplicated(medicine.getName())){
             throw new IOException("Invalid input!");
         }
         medicineRepository.save(medicine);
@@ -63,13 +63,22 @@ public class MedicineService {
     }
 
     private boolean medicineValidation (Medicine medicine) {
-        if (medicine.getName().length() <= 0 ||
+        if (    medicine.getName().length() <= 0 ||
                 medicine.getSellPrice() <= 0 ||
                 medicine.getImportPrice() <=0 ||
                 medicine.getQuantity() < 0 ||
                 LocalDate.now().isAfter(medicine.getExpireDate())) {
             return false;
         } return true;
+    }
+
+    private boolean isDuplicated(String name){
+        List<Medicine> medicineList = medicineRepository.findAll();
+        for(Medicine medicine: medicineList){
+            if(medicine.getName().equals(name)){
+                return true;
+            }
+        } return false;
     }
 
     public void updateMedicine(Medicine medicine) throws IOException {

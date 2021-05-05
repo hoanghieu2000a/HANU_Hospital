@@ -53,6 +53,16 @@ public class RecordService {
         recordRepository.save(record);
     }
 
+    public void changeStatus(Long id){
+        Record record = recordRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Record does not exist!"));
+        if(record.getStatus()==RecordStatus.CONFIRM){
+            record.setStatus(RecordStatus.DISCHARGED);
+            recordRepository.save(record);
+        }
+    }
+
+
     public Record getRecordById(Long id){
         return recordRepository.findById(id).orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
     }
