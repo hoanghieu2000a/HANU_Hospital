@@ -1,13 +1,8 @@
 package se2.hanu_hospital.record;
 
 
-import se2.hanu_hospital.medicine.RecordStatus;
-import se2.hanu_hospital.prescription.Prescription;
-
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "record")
@@ -21,6 +16,8 @@ public class Record {
 
     @Lob
     private String description = "This record does not have description";
+    @Lob
+    private String diagnosis = "This record does not have diagnosis yet";
 
     private RecordStatus status;
 
@@ -35,16 +32,25 @@ public class Record {
 //    @OneToMany(mappedBy = "record")
 //    private Set<Prescription> prescriptionMedicine = new HashSet<>();
 
-    public Record(Long id, LocalDate date, String description, RecordStatus status, Long patientId, Long doctorId) {
+
+    public Record(Long id, LocalDate date, String description, String diagnosis, RecordStatus status, Long patientId, Long doctorId) {
         this.id = id;
         this.date = date;
         this.description = description;
+        this.diagnosis =diagnosis;
         this.status = status;
         this.patientId = patientId;
         this.doctorId = doctorId;
     }
 
     public Record() {
+    }
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
     }
 
     public Long getId() {

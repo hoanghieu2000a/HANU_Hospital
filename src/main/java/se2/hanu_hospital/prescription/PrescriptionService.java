@@ -19,20 +19,11 @@ public class PrescriptionService {
 
     public void add(Prescription prescription) throws Exception {
         Medicine medicine = medicineService.getMedicineByName(prescription.getName());
-        try{
-        if(medicineService.isExisted(medicine)){
-            if( prescriptionValidate(prescription)) {
-
-
-                prescriptionRepository.save(prescription);
-                updateMedicineQuantity(medicine.getName());
-                } else {
-                throw new Exception("Invalid input");
-            }
-            }
-        } catch (Exception e){
-            throw new IllegalStateException("Medicine does not exist");
+        if(!medicineService.isExisted(medicine) || !prescriptionValidate(prescription)){
+            throw new IllegalStateException("error");
         }
+        prescriptionRepository.save(prescription);
+        updateMedicineQuantity(medicine.getName());
     }
 
     public List<Prescription> getAll(){
