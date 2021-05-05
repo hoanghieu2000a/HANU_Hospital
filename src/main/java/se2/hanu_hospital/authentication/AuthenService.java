@@ -22,7 +22,6 @@ import se2.hanu_hospital.authentication.payload.JwtAuthenticationResponse;
 import se2.hanu_hospital.authentication.payload.LoginRequest;
 import se2.hanu_hospital.authentication.payload.SignUpRequest;
 import se2.hanu_hospital.authentication.security.JwtTokenProvider;
-import sqa.hanu_minimart.model.Cart;
 
 
 import javax.validation.Valid;
@@ -87,9 +86,9 @@ public class AuthenService{
 
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
 
-        Optional<Role> userRole = roleRepository.findByName(RoleName.ROLE_CUSTOMER);
+        Role userRole = roleRepository.findByName(RoleName.ROLE_NURSE);
 
-        user.setRoles(Collections.singleton(userRole.get()));
+        user.setRoles(Collections.singleton(userRole));
 
         User result = userRepository.save(user);
 

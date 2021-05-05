@@ -88,7 +88,7 @@ public class AccountService {
         user.setAddress(request.getAddress());
 
 
-        Optional<Role> role = roleRepository.findByName(RoleName.valueOf(request.getRole()));
+        Role role = roleRepository.findByName(RoleName.valueOf(request.getRole()));
 
 
         Set<Role> roles = user.getRoles();
@@ -96,7 +96,7 @@ public class AccountService {
         Role lastRole = roles.stream().findFirst().get();
 
         roles.remove(lastRole);
-        roles.add(role.get());
+        roles.add(role);
 
         return userRepository.save(user);
     }
