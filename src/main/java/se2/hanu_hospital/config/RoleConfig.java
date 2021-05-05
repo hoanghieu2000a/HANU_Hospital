@@ -28,8 +28,9 @@ public class RoleConfig {
             list.add(r2);
             list.add(r3);
             list.add(r4);
-            if (!roleRepository.findByName(RoleName.ROLE_ADMIN).getName().toString().equals(RoleName.ROLE_ADMIN.toString())){
-                roleRepository.saveAll(list);
+            if (roleRepository.findByName(RoleName.ROLE_ADMIN) != null){
+                if ( !roleRepository.findByName(RoleName.ROLE_ADMIN).getName().toString().equals(RoleName.ROLE_ADMIN.toString()))
+                    roleRepository.saveAll(list);
             }
         };
     }
