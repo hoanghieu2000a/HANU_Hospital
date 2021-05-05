@@ -3,14 +3,8 @@ package se2.hanu_hospital.domain.consumable.entity;
 import lombok.*;
 import se2.hanu_hospital.domain.medical_procedure.entity.MedicalProcedure;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
 import java.time.LocalDate;
 
 @Entity
@@ -42,5 +36,5 @@ public class Consumable {
     @JoinColumn(name = "medical_procedure_id")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    private MedicalProcedure medicalProcedure; 
+    private MedicalProcedure medicalProcedure;
 }

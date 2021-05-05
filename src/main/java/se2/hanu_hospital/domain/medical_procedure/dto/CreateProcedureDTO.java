@@ -1,15 +1,13 @@
 package se2.hanu_hospital.domain.medical_procedure.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor

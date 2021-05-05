@@ -1,29 +1,17 @@
 package se2.hanu_hospital.domain.medical_procedure.entity;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import se2.hanu_hospital.domain.consumable.entity.Consumable;
 import se2.hanu_hospital.domain.facility.entity.Facility;
 import se2.hanu_hospital.domain.patient.entity.Patient;
+
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import java.time.LocalDateTime;
+import java.util.List;
+
 
 @Data
 @Entity

@@ -1,11 +1,17 @@
 package se2.hanu_hospital.domain.medical_procedure.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import lombok.Builder;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder(toBuilder = true)
 public class UpdateProcedureDTO {
     private Long procedureId;
     private String patientName;

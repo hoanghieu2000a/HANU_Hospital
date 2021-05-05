@@ -1,18 +1,17 @@
 package se2.hanu_hospital.domain.facility;
 
-import java.util.List;
-
-import javax.persistence.EntityNotFoundException;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import se2.hanu_hospital.domain.facility.dto.CreateFacilityDTO;
 import se2.hanu_hospital.domain.facility.dto.UpdateFacilityDTO;
 import se2.hanu_hospital.domain.facility.entity.Facility;
+
+import javax.persistence.EntityNotFoundException;
+import java.util.List;
+
 
 @Service
 public class FacilityServiceImp implements FacilityService{

@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import se2.hanu_hospital.domain.patient.entity.Patient;
+//import vn.daoanhthanh.hanu_hospital_my_part.domain.patient.entity.Patient;
 
 import java.util.List;
 

@@ -1,12 +1,12 @@
 package se2.hanu_hospital.domain.patient.dto;
 
-import com.nimbusds.openid.connect.sdk.claims.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import net.minidev.json.annotate.JsonIgnore;
+import se2.hanu_hospital.util.Gender;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
