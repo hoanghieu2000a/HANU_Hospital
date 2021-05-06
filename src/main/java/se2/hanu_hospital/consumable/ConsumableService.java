@@ -9,8 +9,8 @@ import se2.hanu_hospital.util.CRUDService;
 
 import java.util.List;
 
-// import org.springframework.data.domain.Page;
-// import org.springframework.data.domain.Pageable;
+// import org.springframework.data.Page;
+// import org.springframework.data.Pageable;
 
 
 public interface ConsumableService extends CRUDService<Consumable, Long, CreateConsumableDTO, UpdateConsumableDTO> {

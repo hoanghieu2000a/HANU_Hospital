@@ -23,7 +23,7 @@ public class ProcedureServiceImpl implements ProcedureService{
         this.procedureRepository = procedureRepository;
         this.modelMapper = modelMapper;
     }
-
+    
     @Override
     public MedicalProcedure create(CreateProcedureDTO createProcedureDTO) {
         MedicalProcedure pro = modelMapper.map(createProcedureDTO, MedicalProcedure.class);
@@ -39,7 +39,7 @@ public class ProcedureServiceImpl implements ProcedureService{
 
     @Override
     public void deleteById(Long id) {
-        procedureRepository.deleteById(id);
+        procedureRepository.deleteById(id);     
     }
 
     @Override

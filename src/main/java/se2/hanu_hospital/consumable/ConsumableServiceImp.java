@@ -43,7 +43,7 @@ public class ConsumableServiceImp  implements ConsumableService{
 
     @Override
     public void deleteById(Long id) {
-        consumableRepository.deleteById(id);
+        consumableRepository.deleteById(id);        
     }
 
     @Override
@@ -63,14 +63,7 @@ public class ConsumableServiceImp  implements ConsumableService{
 
     @Override
     public List<Consumable> findAllByName(String consumableName) {
-
+        
         return consumableRepository.findByName(consumableName);
-    }
-
-
-
-
-
-
-
+    }  
 }

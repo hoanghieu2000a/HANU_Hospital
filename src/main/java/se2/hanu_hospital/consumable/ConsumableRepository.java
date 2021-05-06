@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ConsumableRepository extends JpaRepository<Consumable, Long> {
     // @Query("SELECT * FROM consumable WHERE name = {?} ")
-    public List<Consumable> findByName(String consumableName);
+    public List<Consumable> findByName(String consumableName);  
 }
 
 

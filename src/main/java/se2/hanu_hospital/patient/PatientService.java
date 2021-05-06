@@ -6,9 +6,9 @@ import se2.hanu_hospital.patient.dto.CreatePatientDTO;
 import se2.hanu_hospital.patient.dto.UpdatePatientDTO;
 import se2.hanu_hospital.patient.entity.Patient;
 import se2.hanu_hospital.util.CRUDService;
-//import vn.daoanhthanh.hanu_hospital_my_part.domain.patient.dto.CreatePatientDTO;
-//import vn.daoanhthanh.hanu_hospital_my_part.domain.patient.dto.UpdatePatientDTO;
-//import vn.daoanhthanh.hanu_hospital_my_part.domain.patient.entity.Patient;
+//import vn.daoanhthanh.hanu_hospital_my_part.patient.dto.CreatePatientDTO;
+//import vn.daoanhthanh.hanu_hospital_my_part.patient.dto.UpdatePatientDTO;
+//import vn.daoanhthanh.hanu_hospital_my_part.patient.entity.Patient;
 //import vn.daoanhthanh.hanu_hospital_my_part.util.CRUDService;
 
 import java.util.List;

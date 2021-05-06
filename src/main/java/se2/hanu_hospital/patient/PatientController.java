@@ -69,9 +69,9 @@ public class PatientController {
     @Operation(summary = "Delete a patient by ID")
     @DeleteMapping(value = "/patients/{id}")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-            @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-            @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
+        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
+        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
+        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
     })
     public void deleteByID(@PathVariable Long id) {
         patientService.deleteById(id);

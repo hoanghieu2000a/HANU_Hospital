@@ -46,7 +46,7 @@ public class MedicalProcedure {
 
     @PastOrPresent
     private LocalDateTime updatedAt;
-
+    
 
 
 

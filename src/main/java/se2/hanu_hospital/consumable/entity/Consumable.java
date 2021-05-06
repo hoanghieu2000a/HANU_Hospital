@@ -29,7 +29,7 @@ public class Consumable {
     private int priceSell;
     @NotNull
     private LocalDate importedDate;
-
+    
     private LocalDate expirationDate;
 
     @ManyToOne

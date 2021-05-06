@@ -31,10 +31,10 @@ public class FacilityController {
     @PostMapping("/add_facility")
     @Operation(summary = "Create a new facility")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-            @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-            @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
-    })
+        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
+        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
+        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
+    }) 
     public Facility create(@Valid @RequestBody CreateFacilityDTO createFacilityDTO){
         return facilityService.create(createFacilityDTO);
     }
@@ -42,35 +42,35 @@ public class FacilityController {
     @Operation(summary = "Find facility facility by keyword")
     @GetMapping("/facilities")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-            @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-            @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
+        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
+        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
+        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
     })
     public ResponseEntity<List<Facility>> findAll(@RequestParam(required = false) String code){
         try {
             List<Facility> facilities = new ArrayList<Facility>();
-
+      
             if (code == null)
-                facilityService.findAll().forEach(facilities::add);
+              facilityService.findAll().forEach(facilities::add);
             else
-                facilityService.findByCode(code).forEach(facilities::add);
-
+              facilityService.findByCode(code).forEach(facilities::add);
+      
             if (facilities.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+              return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-
+      
             return new ResponseEntity<>(facilities, HttpStatus.OK);
-        } catch (Exception e) {
+          } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+          }
+    } 
 
     @Operation(summary = "Find facility by id")
     @GetMapping("/facility/{id}")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-            @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-            @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
+        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
+        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
+        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
     })
     public ResponseEntity<Facility> findById(@PathVariable("id") Long id){
         Facility facilityData = facilityService.getById(id);
@@ -94,16 +94,11 @@ public class FacilityController {
     @Operation(summary = "Delete a facility by ID")
     @DeleteMapping(value = "/facility/{id}")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-            @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-            @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
+        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
+        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
+        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
     })
     public void deleteByID(@PathVariable Long id) {
         facilityService.deleteById(id);
     }
-
-
-
-
-
 }

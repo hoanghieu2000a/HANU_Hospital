@@ -40,7 +40,7 @@ public class FacilityServiceImp implements FacilityService{
 
     @Override
     public void deleteById(Long id) {
-        facilityRepository.deleteById(id);
+        facilityRepository.deleteById(id);        
     }
 
     @Override
@@ -63,5 +63,5 @@ public class FacilityServiceImp implements FacilityService{
     public List<Facility> findByCode(String code) {
         return facilityRepository.findByCode(code);
     }
-
+    
 }
