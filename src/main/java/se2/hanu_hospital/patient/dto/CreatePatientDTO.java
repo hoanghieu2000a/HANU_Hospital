@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
-public class CreatePatientDTO implements TimeStamps {
+public class CreatePatientDTO {
     private Long patientId;
     private String name;
     @JsonIgnore

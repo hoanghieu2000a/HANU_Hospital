@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
-public class Patient implements TimeStamps {
+public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -53,4 +53,5 @@ public class Patient implements TimeStamps {
 
     @PastOrPresent
     private LocalDateTime updatedAt;
+
 }
