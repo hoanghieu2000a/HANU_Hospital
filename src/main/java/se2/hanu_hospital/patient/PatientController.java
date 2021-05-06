@@ -1,26 +1,20 @@
 package se2.hanu_hospital.patient;
 
-import java.util.List;
-
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import se2.hanu_hospital.patient.dto.CreatePatientDTO;
 import se2.hanu_hospital.patient.dto.UpdatePatientDTO;
 import se2.hanu_hospital.patient.entity.Patient;
+//import vn.daoanhthanh.hanu_hospital_my_part.patient.dto.CreatePatientDTO;
+//import vn.daoanhthanh.hanu_hospital_my_part.patient.dto.UpdatePatientDTO;
+//import vn.daoanhthanh.hanu_hospital_my_part.patient.entity.Patient;
+
+import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -75,9 +69,9 @@ public class PatientController {
     @Operation(summary = "Delete a patient by ID")
     @DeleteMapping(value = "/patients/{id}")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
+            @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
+            @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
+            @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
     })
     public void deleteByID(@PathVariable Long id) {
         patientService.deleteById(id);

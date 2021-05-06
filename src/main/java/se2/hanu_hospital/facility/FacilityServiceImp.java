@@ -1,18 +1,17 @@
 package se2.hanu_hospital.facility;
 
-import java.util.List;
-
-import javax.persistence.EntityNotFoundException;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import se2.hanu_hospital.facility.dto.CreateFacilityDTO;
 import se2.hanu_hospital.facility.dto.UpdateFacilityDTO;
 import se2.hanu_hospital.facility.entity.Facility;
+
+import javax.persistence.EntityNotFoundException;
+import java.util.List;
+
 
 @Service
 public class FacilityServiceImp implements FacilityService{
@@ -41,7 +40,7 @@ public class FacilityServiceImp implements FacilityService{
 
     @Override
     public void deleteById(Long id) {
-        facilityRepository.deleteById(id);        
+        facilityRepository.deleteById(id);
     }
 
     @Override
@@ -64,5 +63,5 @@ public class FacilityServiceImp implements FacilityService{
     public List<Facility> findByCode(String code) {
         return facilityRepository.findByCode(code);
     }
-    
+
 }
