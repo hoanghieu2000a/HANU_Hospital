@@ -58,11 +58,18 @@ public class DepartmentService {
         departmentRepository.deleteById(id);
     }
 
-    public void addStaffToDepartment(Long id, Staff staff) {
+    public void addStaffToDepartment(Long id, Long staffId) {
         Department department = departmentRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
 
+        Staff staff = staffService.getStaffById(staffId);
         staff.setDepartment(department);
-        staffService.updateStaffDepartment(staff.getId(), staff);
+        staffService.updateStaffDepartment(staffId, staff);
+    }
+
+    public void removeStaffFromDepartment(Long staffId) {
+        Staff staff = staffService.getStaffById(staffId);
+        staff.setDepartment(null);
+        staffService.updateStaffDepartment(staffId, staff);
     }
 }

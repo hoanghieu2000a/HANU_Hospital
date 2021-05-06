@@ -60,9 +60,19 @@ public class DepartmentController {
     }
 
     @PutMapping(path = "/addStaff/{id}")
-    public ResponseEntity<?> addStaffToDepartment(@PathVariable Long id, @RequestBody Staff staff){
+    public ResponseEntity<?> addStaffToDepartment(@PathVariable Long id, @RequestParam Long staffId){
         try {
-            departmentService.addStaffToDepartment(id, staff);
+            departmentService.addStaffToDepartment(id, staffId);
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        } catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping(path = "/removeStaff")
+    public ResponseEntity<?> removeStaffFromDepartment(@RequestParam Long staffId){
+        try {
+            departmentService.removeStaffFromDepartment(staffId);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch(Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -78,8 +88,4 @@ public class DepartmentController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-
-
-
 }
