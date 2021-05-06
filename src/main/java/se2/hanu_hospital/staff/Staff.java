@@ -1,19 +1,35 @@
 package se2.hanu_hospital.staff;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import se2.hanu_hospital.department.Department;
+
 import javax.persistence.*;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Staff {
-
     private String name;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
     private String phone;
     private String email;
     private Integer age;
+    @ManyToOne
+    @JoinColumn(name = "department")
+    @JsonIgnore
+    private Department department;
 
     public Staff() {
+    }
+
+    public Staff(String name, Long id, String phone, String email, Integer age, Department department) {
+        this.name = name;
+        this.id = id;
+        this.phone = phone;
+        this.email = email;
+        this.age = age;
+        this.department = department;
     }
 
     public Staff(String name, Long id, String phone, String email, Integer age) {
@@ -69,6 +85,14 @@ public class Staff {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     @Override
