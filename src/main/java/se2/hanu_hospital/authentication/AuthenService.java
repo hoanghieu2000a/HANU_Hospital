@@ -86,9 +86,9 @@ public class AuthenService{
 
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
 
-        Optional<Role> userRole = roleRepository.findByName(RoleName.ROLE_CUSTOMER);
+        Role userRole = roleRepository.findByName(RoleName.ROLE_NURSE);
 
-        user.setRoles(Collections.singleton(userRole.get()));
+        user.setRoles(Collections.singleton(userRole));
 
         User result = userRepository.save(user);
 

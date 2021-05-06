@@ -101,9 +101,4 @@ public class FacilityController {
     public void deleteByID(@PathVariable Long id) {
         facilityService.deleteById(id);
     }
-
-
-
-    
-    
 }

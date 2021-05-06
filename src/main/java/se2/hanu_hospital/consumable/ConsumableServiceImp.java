@@ -65,12 +65,5 @@ public class ConsumableServiceImp  implements ConsumableService{
     public List<Consumable> findAllByName(String consumableName) {
         
         return consumableRepository.findByName(consumableName);
-    }
-
-
-
-
-
-
-    
+    }  
 }
