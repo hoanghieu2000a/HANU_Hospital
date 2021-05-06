@@ -20,10 +20,19 @@ public class Department {
     @OneToMany(mappedBy = "department")
     private Set<Staff> staff = new HashSet<>();
 
+    public Department(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Department(Long id, String name, Set<Staff> staff) {
         this.id = id;
         this.name = name;
         this.staff = staff;
+    }
+
+    public Department() {
+
     }
 
     public Long getId() {

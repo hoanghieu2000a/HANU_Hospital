@@ -9,15 +9,12 @@ import javax.persistence.*;
 public class Doctor extends Staff {
     @Column(length = 255)
     private String speciality;
-    @Column(length = 255)
-    private String department;
     @Column(columnDefinition="BOOLEAN DEFAULT false")
     private boolean available;
 
-    public Doctor(String name, Long id, String phone, String email, Integer age, String speciality, String department, boolean available) {
+    public Doctor(String name, Long id, String phone, String email, Integer age, String speciality, boolean available) {
         super(name, id, phone, email, age);
         this.speciality = speciality;
-        this.department = department;
         this.available = available;
     }
 
@@ -31,14 +28,6 @@ public class Doctor extends Staff {
 
     public void setSpeciality(String speciality) {
         this.speciality = speciality;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
     }
 
     public boolean isAvailable() {
