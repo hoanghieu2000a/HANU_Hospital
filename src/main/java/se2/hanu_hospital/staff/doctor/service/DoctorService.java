@@ -1,8 +1,8 @@
 package se2.hanu_hospital.staff.doctor.service;
 
 import org.springframework.stereotype.Service;
-import se2.hanu_hospital.Prescription.Prescription;
-import se2.hanu_hospital.Prescription.PrescriptionService;
+import se2.hanu_hospital.prescription.Prescription;
+import se2.hanu_hospital.prescription.PrescriptionService;
 import se2.hanu_hospital.staff.doctor.doctorMapper.DoctorDTO;
 import se2.hanu_hospital.staff.doctor.doctorMapper.DoctorMapper;
 import se2.hanu_hospital.staff.doctor.model.Doctor;

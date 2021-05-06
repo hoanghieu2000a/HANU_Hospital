@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se2.hanu_hospital.Prescription.Prescription;
+import se2.hanu_hospital.prescription.Prescription;
 import se2.hanu_hospital.staff.doctor.doctorMapper.DoctorDTO;
 import se2.hanu_hospital.staff.doctor.model.Doctor;
 import se2.hanu_hospital.staff.doctor.service.DoctorService;
