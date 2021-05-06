@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import se2.hanu_hospital.util.Gender;
-import se2.hanu_hospital.util.TimeStamps;
 
 
 import javax.validation.constraints.NotNull;
@@ -19,7 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
-public class CreatePatientDTO implements TimeStamps {
+public class CreatePatientDTO{
     @NotNull
     @Size(max = 100)
     private String name;
@@ -35,11 +34,5 @@ public class CreatePatientDTO implements TimeStamps {
 
     @NotNull
     private String address;
-
-    @JsonIgnore
-    private LocalDateTime createdAt;
-    @JsonIgnore
-    private LocalDateTime updatedAt;
-
 
 }
