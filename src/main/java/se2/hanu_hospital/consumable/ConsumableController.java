@@ -1,4 +1,4 @@
-package se2.hanu_hospital.domain.consumable;
+package se2.hanu_hospital.consumable;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se2.hanu_hospital.domain.consumable.dto.CreateConsumableDTO;
-import se2.hanu_hospital.domain.consumable.dto.UpdateConsumableDTO;
-import se2.hanu_hospital.domain.consumable.entity.Consumable;
+import se2.hanu_hospital.consumable.dto.CreateConsumableDTO;
+import se2.hanu_hospital.consumable.dto.UpdateConsumableDTO;
+import se2.hanu_hospital.consumable.entity.Consumable;
 
 
 import javax.validation.Valid;

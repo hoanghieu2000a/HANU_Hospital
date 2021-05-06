@@ -1,4 +1,4 @@
-package se2.hanu_hospital.domain.consumable.dto;
+package se2.hanu_hospital.consumable.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package se2.hanu_hospital.domain.medical_procedure;
+package se2.hanu_hospital.medical_procedure;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se2.hanu_hospital.domain.medical_procedure.dto.CreateProcedureDTO;
-import se2.hanu_hospital.domain.medical_procedure.dto.UpdateProcedureDTO;
-import se2.hanu_hospital.domain.medical_procedure.entity.MedicalProcedure;
+import se2.hanu_hospital.medical_procedure.dto.CreateProcedureDTO;
+import se2.hanu_hospital.medical_procedure.dto.UpdateProcedureDTO;
+import se2.hanu_hospital.medical_procedure.entity.MedicalProcedure;
 
 import javax.validation.Valid;
 import java.util.ArrayList;

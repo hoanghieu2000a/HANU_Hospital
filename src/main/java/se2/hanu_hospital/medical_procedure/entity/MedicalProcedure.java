@@ -1,9 +1,9 @@
-package se2.hanu_hospital.domain.medical_procedure.entity;
+package se2.hanu_hospital.medical_procedure.entity;
 
 import lombok.*;
-import se2.hanu_hospital.domain.consumable.entity.Consumable;
-import se2.hanu_hospital.domain.facility.entity.Facility;
-import se2.hanu_hospital.domain.patient.entity.Patient;
+import se2.hanu_hospital.consumable.entity.Consumable;
+import se2.hanu_hospital.facility.entity.Facility;
+import se2.hanu_hospital.patient.entity.Patient;
 
 
 import javax.persistence.*;

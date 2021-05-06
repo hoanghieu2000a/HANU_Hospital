@@ -1,7 +1,7 @@
-package se2.hanu_hospital.domain.consumable;
+package se2.hanu_hospital.consumable;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import se2.hanu_hospital.domain.consumable.entity.Consumable;
+import se2.hanu_hospital.consumable.entity.Consumable;
 
 import java.util.List;
 

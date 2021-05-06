@@ -1,8 +1,8 @@
-package se2.hanu_hospital.domain.facility.entity;
+package se2.hanu_hospital.facility.entity;
 
 
 import lombok.*;
-import se2.hanu_hospital.domain.medical_procedure.entity.MedicalProcedure;
+import se2.hanu_hospital.medical_procedure.entity.MedicalProcedure;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

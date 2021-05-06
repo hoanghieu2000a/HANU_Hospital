@@ -1,4 +1,4 @@
-package se2.hanu_hospital.domain.patient;
+package se2.hanu_hospital.patient;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -6,12 +6,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import se2.hanu_hospital.domain.patient.dto.CreatePatientDTO;
-import se2.hanu_hospital.domain.patient.dto.UpdatePatientDTO;
-import se2.hanu_hospital.domain.patient.entity.Patient;
-//import vn.daoanhthanh.hanu_hospital_my_part.domain.patient.dto.CreatePatientDTO;
-//import vn.daoanhthanh.hanu_hospital_my_part.domain.patient.dto.UpdatePatientDTO;
-//import vn.daoanhthanh.hanu_hospital_my_part.domain.patient.entity.Patient;
+import se2.hanu_hospital.patient.dto.CreatePatientDTO;
+import se2.hanu_hospital.patient.dto.UpdatePatientDTO;
+import se2.hanu_hospital.patient.entity.Patient;
+//import vn.daoanhthanh.hanu_hospital_my_part.patient.dto.CreatePatientDTO;
+//import vn.daoanhthanh.hanu_hospital_my_part.patient.dto.UpdatePatientDTO;
+//import vn.daoanhthanh.hanu_hospital_my_part.patient.entity.Patient;
 
 import javax.validation.Valid;
 import java.util.List;

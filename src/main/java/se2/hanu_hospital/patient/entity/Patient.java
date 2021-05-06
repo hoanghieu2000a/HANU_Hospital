@@ -1,4 +1,4 @@
-package se2.hanu_hospital.domain.patient.entity;
+package se2.hanu_hospital.patient.entity;
 
 
 import lombok.AllArgsConstructor;

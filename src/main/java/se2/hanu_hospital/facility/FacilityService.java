@@ -1,9 +1,9 @@
-package se2.hanu_hospital.domain.facility;
+package se2.hanu_hospital.facility;
 
 
-import se2.hanu_hospital.domain.facility.dto.CreateFacilityDTO;
-import se2.hanu_hospital.domain.facility.dto.UpdateFacilityDTO;
-import se2.hanu_hospital.domain.facility.entity.Facility;
+import se2.hanu_hospital.facility.dto.CreateFacilityDTO;
+import se2.hanu_hospital.facility.dto.UpdateFacilityDTO;
+import se2.hanu_hospital.facility.entity.Facility;
 import se2.hanu_hospital.util.CRUDService;
 
 import java.util.List;

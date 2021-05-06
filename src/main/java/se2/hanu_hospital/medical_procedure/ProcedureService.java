@@ -1,10 +1,10 @@
-package se2.hanu_hospital.domain.medical_procedure;
+package se2.hanu_hospital.medical_procedure;
 
 
 
-import se2.hanu_hospital.domain.medical_procedure.dto.CreateProcedureDTO;
-import se2.hanu_hospital.domain.medical_procedure.dto.UpdateProcedureDTO;
-import se2.hanu_hospital.domain.medical_procedure.entity.MedicalProcedure;
+import se2.hanu_hospital.medical_procedure.dto.CreateProcedureDTO;
+import se2.hanu_hospital.medical_procedure.dto.UpdateProcedureDTO;
+import se2.hanu_hospital.medical_procedure.entity.MedicalProcedure;
 import se2.hanu_hospital.util.CRUDService;
 
 import java.util.List;
