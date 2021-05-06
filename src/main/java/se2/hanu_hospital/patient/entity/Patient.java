@@ -1,12 +1,12 @@
 package se2.hanu_hospital.patient.entity;
 
 
-import com.nimbusds.openid.connect.sdk.claims.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import se2.hanu_hospital.util.TimeStamps;
+import se2.hanu_hospital.util.Gender;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
-public class Patient implements TimeStamps {
+public class Patient{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

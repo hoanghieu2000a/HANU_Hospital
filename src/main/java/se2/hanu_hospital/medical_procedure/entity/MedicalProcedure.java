@@ -1,25 +1,17 @@
 package se2.hanu_hospital.medical_procedure.entity;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import se2.hanu_hospital.consumable.entity.Consumable;
 import se2.hanu_hospital.facility.entity.Facility;
 import se2.hanu_hospital.patient.entity.Patient;
+
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import java.time.LocalDateTime;
+import java.util.List;
+
 
 @Data
 @Entity
@@ -31,6 +23,9 @@ public class MedicalProcedure {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotNull
+    private String medicalProcedureCode;
 
     @OneToMany(mappedBy = "medicalProcedure", cascade = CascadeType.ALL)
     @EqualsAndHashCode.Exclude
@@ -45,6 +40,13 @@ public class MedicalProcedure {
     @OneToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
+
+    @PastOrPresent
+    private LocalDateTime createdAt;
+
+    @PastOrPresent
+    private LocalDateTime updatedAt;
+    
 
 
 

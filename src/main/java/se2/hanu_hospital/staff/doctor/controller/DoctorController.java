@@ -9,8 +9,6 @@ import se2.hanu_hospital.staff.doctor.doctorMapper.DoctorDTO;
 import se2.hanu_hospital.staff.doctor.model.Doctor;
 import se2.hanu_hospital.staff.doctor.service.DoctorService;
 
-import java.io.IOException;
-
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(path = {"/api/doctor"})

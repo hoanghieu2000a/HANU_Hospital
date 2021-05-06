@@ -2,7 +2,6 @@ package se2.hanu_hospital.staff;
 
 import javax.persistence.*;
 
-@Entity
 @MappedSuperclass
 public class Staff {
 

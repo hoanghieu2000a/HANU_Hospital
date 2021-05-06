@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import se2.hanu_hospital.patient.dto.CreatePatientDTO;
 import se2.hanu_hospital.patient.dto.UpdatePatientDTO;
 import se2.hanu_hospital.patient.entity.Patient;
+//import vn.daoanhthanh.hanu_hospital_my_part.patient.dto.CreatePatientDTO;
+//import vn.daoanhthanh.hanu_hospital_my_part.patient.dto.UpdatePatientDTO;
+//import vn.daoanhthanh.hanu_hospital_my_part.patient.entity.Patient;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
