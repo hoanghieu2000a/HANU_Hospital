@@ -3,7 +3,9 @@ package se2.hanu_hospital.room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import se2.hanu_hospital.patient.PatientRepository;
 import se2.hanu_hospital.patient.PatientService;
+import se2.hanu_hospital.patient.PatientServiceImpl;
 import se2.hanu_hospital.patient.entity.Patient;
 
 import java.util.List;
@@ -11,10 +13,12 @@ import java.util.List;
 @Service
 public class RoomService {
     private final RoomRepository roomRepository;
+    private PatientRepository patientRepository;
 
     @Autowired
-    public RoomService(RoomRepository roomRepository) {
+    public RoomService(RoomRepository roomRepository, PatientRepository patientRepository) {
         this.roomRepository = roomRepository;
+        this.patientRepository = patientRepository;
     }
 
     public List<Room> getAllRoom(){
@@ -43,11 +47,19 @@ public class RoomService {
 
 
     public void addPatient(Long id ,Long  patientId){
-
+        Room room = roomRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
+        Patient patient = patientRepository.findById(patientId)
+                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
+        patient.setRoom(room);
+        patientRepository.save(patient);
     }
 
-    public void removePatient(Long id ,Long patientId){
-
+    public void removePatient(Long patientId){
+        Patient patient = patientRepository.findById(patientId)
+                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
+        patient.setRoom(null);
+        patientRepository.save(patient);
     }
 
     public Room getRoomById(Long id){

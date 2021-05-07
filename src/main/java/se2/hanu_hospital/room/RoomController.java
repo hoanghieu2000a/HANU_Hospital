@@ -97,10 +97,10 @@ public class RoomController {
         }
     }
 
-    @PutMapping(path = {"/removePatient/{id}"})
-    public ResponseEntity<?> removePatient(@PathVariable Long id, @RequestParam Long patientId){
+    @PutMapping(path = {"/removePatient"})
+    public ResponseEntity<?> removePatient(@RequestParam Long patientId){
         try{
-            roomService.removePatient(id, patientId);
+            roomService.removePatient(patientId);
             return new ResponseEntity<>("ok", HttpStatus.OK);
         }catch(Exception e){
             return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
