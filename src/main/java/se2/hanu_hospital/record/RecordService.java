@@ -85,13 +85,13 @@ public class RecordService {
         return recordRepository.findById(id).orElseThrow(() -> new IllegalStateException("Record does not exist!"));
     }
 
-    public List<Record> getRecordByPatientId(Long id){
-        return recordRepository.findRecordByPatientId(id);
-    }
-
-    public List<Record> getRecordByDoctorId(Long id){
-        return recordRepository.findRecordByDoctorId(id);
-    }
+//    public List<Record> getRecordByPatientId(Long id){
+//        return recordRepository.findRecordByPatientId(id);
+//    }
+//
+//    public List<Record> getRecordByDoctorId(Long id){
+//        return recordRepository.findRecordByDoctorId(id);
+//    }
 
 
 }

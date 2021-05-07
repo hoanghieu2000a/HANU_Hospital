@@ -67,21 +67,21 @@ public class RecordController {
         }
     }
 
-    @GetMapping(path = "/getRecordByPatientId/{id}")
-    public ResponseEntity<?> getRecordByPatientId (@PathVariable("id") Long id){
-        try{
-            return new ResponseEntity<>(recordService.getRecordByPatientId(id), HttpStatus.OK);
-        }catch(Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @GetMapping(path = "/getRecordByDoctorId/{id}")
-    public ResponseEntity<?> getRecordByDoctorId (@PathVariable("id") Long id){
-        try{
-            return new ResponseEntity<>(recordService.getRecordByDoctorId(id), HttpStatus.OK);
-        }catch(Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @GetMapping(path = "/getRecordByPatientId/{id}")
+//    public ResponseEntity<?> getRecordByPatientId (@PathVariable("id") Long id){
+//        try{
+//            return new ResponseEntity<>(recordService.getRecordByPatientId(id), HttpStatus.OK);
+//        }catch(Exception e){
+//            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+//
+//    @GetMapping(path = "/getRecordByDoctorId/{id}")
+//    public ResponseEntity<?> getRecordByDoctorId (@PathVariable("id") Long id){
+//        try{
+//            return new ResponseEntity<>(recordService.getRecordByDoctorId(id), HttpStatus.OK);
+//        }catch(Exception e){
+//            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 }
