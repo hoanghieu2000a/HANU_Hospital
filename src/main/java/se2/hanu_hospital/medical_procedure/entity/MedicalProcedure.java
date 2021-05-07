@@ -41,10 +41,11 @@ public class MedicalProcedure {
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
-    @PastOrPresent
+    @Column(nullable = false, updatable = false, insertable = false,
+            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
-    @PastOrPresent
+    @Column(columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
     
 

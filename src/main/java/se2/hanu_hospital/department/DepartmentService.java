@@ -40,7 +40,7 @@ public class DepartmentService {
         departmentRepository.save(department);
     }
 
-    public void updateDepartment(Long id, DepartmentDTO departmentDTO) throws IOException {
+    public void updateDepartment(Long id, DepartmentDTO departmentDTO) {
         if(!departmentRepository.existsById(id)){
             throw new IllegalStateException("There is no department with that id!");
         }
