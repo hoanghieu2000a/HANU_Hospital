@@ -10,7 +10,7 @@ import se2.hanu_hospital.staff.nurse.service.NurseService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping(path = {"/api/Receptionist"})
+@RequestMapping(path = {"/nurse"})
 public class NurseController {
     private final NurseService nurseService;
 
