@@ -25,6 +25,7 @@ import java.time.LocalDateTime;
 public class Patient{
 
     @Id
+    @Column(name = "id", columnDefinition = "INT(6) UNSIGNED ", precision = 4, updatable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
@@ -32,7 +33,6 @@ public class Patient{
     @Size(max = 100)
     private String name;
 
-    @NotNull
     private Gender gender;
 
     @PastOrPresent
@@ -44,6 +44,12 @@ public class Patient{
     @NotNull
     private String address;
 
+    @ManyToOne
+    @JoinColumn(name = "room_id")
+    @JsonIgnore
+    private Room room;
+
+
 //    @OneToOne
 //    @MapsId
 //    @JoinColumn(name = "patient_details_id")
@@ -54,4 +60,5 @@ public class Patient{
 
     @PastOrPresent
     private LocalDateTime updatedAt;
+    
 }
