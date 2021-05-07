@@ -1,10 +1,11 @@
 package se2.hanu_hospital.patient.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se2.hanu_hospital.patient.entity.Gender;
 import se2.hanu_hospital.room.Room;
 
 import javax.persistence.*;
@@ -17,9 +18,10 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "patients")
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
-public class Patient  {
+public class Patient{
 
     @Id
     @Column(name = "id", columnDefinition = "INT(6) UNSIGNED ", precision = 4, updatable = false)
@@ -57,16 +59,5 @@ public class Patient  {
 
     @PastOrPresent
     private LocalDateTime updatedAt;
-
-    public Patient(long id, String name, Gender gender, LocalDate dob, String phoneNumber, String address, Room room, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.id = id;
-        this.name = name;
-        this.gender = gender;
-        this.dob = dob;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-        this.room = room;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
+    
 }
