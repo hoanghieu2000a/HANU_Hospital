@@ -18,7 +18,7 @@ public class Doctor extends Staff {
 
     @OneToMany(mappedBy = "doctor")
     @JsonIgnore
-    private Set<Record> record = new HashSet<>();
+    private Set<Record> records = new HashSet<>();
 
     public Doctor(String name, Long id, String phone, String email, Integer age, Double salary, String speciality, boolean available) {
         super(name, id, phone, email, age, salary);
@@ -44,5 +44,13 @@ public class Doctor extends Staff {
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public Set<Record> getRecords() {
+        return records;
+    }
+
+    public void setRecords(Set<Record> record) {
+        this.records = record;
     }
 }

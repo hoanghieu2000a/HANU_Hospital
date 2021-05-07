@@ -11,6 +11,7 @@ import se2.hanu_hospital.util.Valid;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class RecordService {
@@ -31,12 +32,16 @@ public class RecordService {
         return recordRepository.findAll();
     }
 
-    public void addRecord(Record record){
-        try{
-            recordRepository.save(record);
-        } catch (Exception e){
-            throw new IllegalStateException("Invalid input");
-        }
+    public void addRecord(RecordPayload recordPayLoad){
+        Record record = new Record();
+        record.setDescription(recordPayLoad.getDescription());
+        record.setDiagnosis(recordPayLoad.getDiagnosis());
+        Doctor doctor = doctorService.getById(recordPayLoad.getDoctorId());
+        record.setDoctor(doctor);
+        Patient patient = patientService.getById(recordPayLoad.getId());
+        record.setPatient(patient);
+
+        recordRepository.save(record);
     }
 
     public void deleteRecord(Long id) throws IOException {
@@ -57,8 +62,6 @@ public class RecordService {
             record.setDescription(recordPayLoad.getDescription());
         if(Valid.stringValid(recordPayLoad.getDiagnosis()))
             record.setDiagnosis(recordPayLoad.getDiagnosis());
-        if(recordPayLoad.getStatus().equals(RecordStatus.DISCHARGED))
-            record.setStatus(RecordStatus.DISCHARGED);
         if(Valid.unsignedLongValid(recordPayLoad.getDoctorId())){
             Doctor doctor = doctorService.getById(recordPayLoad.getDoctorId());
             record.setDoctor(doctor);
@@ -71,27 +74,23 @@ public class RecordService {
         recordRepository.save(record);
     }
 
-    public void changeStatus(Long id){
-        Record record = recordRepository.findById(id)
-                .orElseThrow(() -> new IllegalStateException("Record does not exist!"));
-        if(record.getStatus()==RecordStatus.CONFIRM){
-            record.setStatus(RecordStatus.DISCHARGED);
-            recordRepository.save(record);
-        }
-    }
-
-
     public Record getRecordById(Long id){
         return recordRepository.findById(id).orElseThrow(() -> new IllegalStateException("Record does not exist!"));
     }
 
-//    public List<Record> getRecordByPatientId(Long id){
-//        return recordRepository.findRecordByPatientId(id);
-//    }
-//
-//    public List<Record> getRecordByDoctorId(Long id){
-//        return recordRepository.findRecordByDoctorId(id);
-//    }
+    public Set<Record> getRecordByPatientId(Long id){
+        Patient patient = patientService.getById(id);
+        if(patient == null)
+            return null;
+        return patient.getRecords();
+    }
+
+    public Set<Record> getRecordByDoctorId(Long id){
+        Doctor doctor = doctorService.getById(id);
+        if(doctor == null)
+            return null;
+        return doctor.getRecords();
+    }
 
 
 }

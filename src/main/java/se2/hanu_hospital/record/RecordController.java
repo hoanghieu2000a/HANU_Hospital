@@ -28,9 +28,9 @@ public class RecordController {
     }
 
     @PostMapping(path = "/add")
-    public ResponseEntity<?> addRecord(@RequestBody Record record){
+    public ResponseEntity<?> addRecord(@RequestBody RecordPayload recordPayload){
         try {
-            recordService.addRecord(record);
+            recordService.addRecord(recordPayload);
             return new ResponseEntity<>("ok", HttpStatus.OK);
         } catch(Exception e){
             return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -67,21 +67,21 @@ public class RecordController {
         }
     }
 
-//    @GetMapping(path = "/getRecordByPatientId/{id}")
-//    public ResponseEntity<?> getRecordByPatientId (@PathVariable("id") Long id){
-//        try{
-//            return new ResponseEntity<>(recordService.getRecordByPatientId(id), HttpStatus.OK);
-//        }catch(Exception e){
-//            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
-//
-//    @GetMapping(path = "/getRecordByDoctorId/{id}")
-//    public ResponseEntity<?> getRecordByDoctorId (@PathVariable("id") Long id){
-//        try{
-//            return new ResponseEntity<>(recordService.getRecordByDoctorId(id), HttpStatus.OK);
-//        }catch(Exception e){
-//            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
+    @GetMapping(path = "/getRecordByPatientId/{id}")
+    public ResponseEntity<?> getRecordByPatientId (@PathVariable("id") Long id){
+        try{
+            return new ResponseEntity<>(recordService.getRecordByPatientId(id), HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping(path = "/getRecordByDoctorId/{id}")
+    public ResponseEntity<?> getRecordByDoctorId (@PathVariable("id") Long id){
+        try{
+            return new ResponseEntity<>(recordService.getRecordByDoctorId(id), HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

@@ -114,4 +114,12 @@ public class Patient{
     public void setRoom(Room room) {
         this.room = room;
     }
+
+    public Set<Record> getRecords() {
+        return records;
+    }
+
+    public void setRecords(Set<Record> records) {
+        this.records = records;
+    }
 }

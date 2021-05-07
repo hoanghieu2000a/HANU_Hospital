@@ -25,8 +25,6 @@ public class Record {
     @Lob
     private String diagnosis = "This record does not have diagnosis yet";
 
-    private RecordStatus status;
-
     @ManyToOne()
     @JoinColumn(name = "patient")
     @JsonIgnore
@@ -47,11 +45,10 @@ public class Record {
     @Column(columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
-    public Record(Long id, String description, String diagnosis, RecordStatus status, Patient patient, Doctor doctor, Set<Prescription> prescriptionMedicine) {
+    public Record(Long id, String description, String diagnosis, Patient patient, Doctor doctor, Set<Prescription> prescriptionMedicine) {
         this.id = id;
         this.description = description;
         this.diagnosis =diagnosis;
-        this.status = status;
         this.patient = patient;
         this.doctor = doctor;
         this.prescriptionMedicine = prescriptionMedicine;
@@ -88,14 +85,6 @@ public class Record {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public RecordStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(RecordStatus status) {
-        this.status = status;
     }
 
     public Patient getPatient() {

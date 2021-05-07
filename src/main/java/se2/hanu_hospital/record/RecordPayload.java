@@ -6,7 +6,6 @@ public class RecordPayload {
     private Long id;
     private String description;
     private String diagnosis;
-    private RecordStatus status;
     private Long patientId;
     private Long doctorId;
 
@@ -22,9 +21,6 @@ public class RecordPayload {
         return diagnosis;
     }
 
-    public RecordStatus getStatus() {
-        return status;
-    }
 
     public Long getPatientId() {
         return patientId;
