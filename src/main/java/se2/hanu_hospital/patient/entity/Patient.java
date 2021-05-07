@@ -1,11 +1,12 @@
 package se2.hanu_hospital.patient.entity;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import se2.hanu_hospital.util.Gender;
+import se2.hanu_hospital.patient.entity.Gender;
+import se2.hanu_hospital.room.Room;
 
 
 import javax.persistence.*;
