@@ -1,8 +1,12 @@
 package se2.hanu_hospital.record;
 
 
+import se2.hanu_hospital.prescription.Prescription;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "record")
@@ -29,11 +33,10 @@ public class Record {
     //    @JoinColumn(name = "user_id")
     private Long doctorId;
 
-//    @OneToMany(mappedBy = "record")
-//    private Set<Prescription> prescriptionMedicine = new HashSet<>();
+    @OneToMany(mappedBy = "record")
+    private Set<Prescription> prescriptionMedicine = new HashSet<>();
 
-
-    public Record(Long id, LocalDate date, String description, String diagnosis, RecordStatus status, Long patientId, Long doctorId) {
+    public Record(Long id, LocalDate date, String description, String diagnosis, RecordStatus status, Long patientId, Long doctorId, Set<Prescription> prescriptionMedicine) {
         this.id = id;
         this.date = date;
         this.description = description;
@@ -41,9 +44,17 @@ public class Record {
         this.status = status;
         this.patientId = patientId;
         this.doctorId = doctorId;
+        this.prescriptionMedicine = prescriptionMedicine;
     }
 
     public Record() {
+    }
+    public Set<Prescription> getPrescriptionMedicine() {
+        return prescriptionMedicine;
+    }
+
+    public void setPrescriptionMedicine(Set<Prescription> prescriptionMedicine) {
+        this.prescriptionMedicine = prescriptionMedicine;
     }
     public String getDiagnosis() {
         return diagnosis;

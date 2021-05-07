@@ -59,10 +59,7 @@ public class RoomService {
     }
 
     public void removePatient(Long patientId){
-        Patient patient = patientRepository.findById(patientId)
-                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
-        patient.setRoom(null);
-        patientRepository.save(patient);
+
     }
 
     public Room getRoomById(Long id){

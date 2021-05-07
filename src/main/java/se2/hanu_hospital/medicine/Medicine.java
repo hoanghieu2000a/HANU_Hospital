@@ -1,7 +1,12 @@
 package se2.hanu_hospital.medicine;
 
+import se2.hanu_hospital.prescription.Prescription;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "medicine")
@@ -11,12 +16,8 @@ public class Medicine {
     @Column(name = "id", columnDefinition = "INT(4) UNSIGNED ", precision = 4, updatable = false)
     private Long id;
 
-    @Column(length = 50)
+    @Size(max = 50)
     private String name;
-
-//    @Column(nullable = false, updatable = false, insertable = false,
-//            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-//    private LocalDate importDate;
 
     private LocalDate expireDate;
 
@@ -30,13 +31,23 @@ public class Medicine {
     private int quantity;
 
 
+
     public Medicine(Long id, String name, LocalDate expireDate, Double sellPrice, Double importPrice, int quantity) {
         this.id = id;
-        this.name = name;
         this.expireDate = expireDate;
+        this.name = name;
         this.sellPrice = sellPrice;
         this.importPrice = importPrice;
-        this.quantity = 0;
+        this.quantity = quantity;
+    }
+    public Medicine() { }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getQuantity() {
@@ -47,23 +58,12 @@ public class Medicine {
         this.quantity = quantity;
     }
 
-    public Medicine() {
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public LocalDate getExpireDate() {
