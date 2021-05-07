@@ -49,17 +49,17 @@ public class DoctorService {
         return (Doctor) doctorRepository.getDoctorById(id);
     }
 
-    public void prescribeMedicine(Prescription prescription) throws Exception {
-        prescriptionService.add(prescription);
-    }
-
-    public void updatePrescription(Prescription prescription) throws IOException {
-        prescriptionService.update(prescription);
-    }
-
-    public void deletePrescription(Long id) throws IOException {
-        prescriptionService.delete(id);
-    }
+//    public void prescribeMedicine(Prescription prescription) throws Exception {
+//        prescriptionService.add(prescription);
+//    }
+//
+//    public void updatePrescription(Prescription prescription) throws IOException {
+//        prescriptionService.update(prescription);
+//    }
+//
+//    public void deletePrescription(Long id) throws IOException {
+//        prescriptionService.delete(id);
+//    }
 
     public List<Doctor> getAvailableDoctors() {
         return doctorRepository.getDoctorByAvailableIsTrue();

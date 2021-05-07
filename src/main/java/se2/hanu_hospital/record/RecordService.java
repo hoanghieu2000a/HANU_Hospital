@@ -35,11 +35,8 @@ public class RecordService {
         if (!recordRepository.existsById(id)){
             throw new IllegalStateException("Record does not exist");
         }
-        Record record =getRecordById(id);
-
-        prescriptionService.deleteAllPresByRecordId(record.getId());
-        recordRepository.delete(record);
-
+        prescriptionService.deleteAllPresOfRecord(id);
+        recordRepository.deleteById(id);
     }
 
     public void updateRecord(Record record){

@@ -69,35 +69,35 @@ public class DoctorController {
         }
     }
 
-    @PostMapping(path = "/prescribe")
-    public ResponseEntity<?> prescribe(@RequestBody Prescription prescription) {
-        try {
-            doctorService.prescribeMedicine(prescription);
-            return new ResponseEntity<>(null, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @PutMapping(path = "/prescibe/update")
-    public ResponseEntity<?> updatePrescription(@RequestBody Prescription prescription) {
-        try {
-            doctorService.updatePrescription(prescription);
-            return new ResponseEntity<>(null, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @DeleteMapping(path = "/prescibe/delete/{id}")
-    public ResponseEntity<?> deletePrescription(@PathVariable Long id) {
-        try {
-            doctorService.deletePrescription(id);
-            return new ResponseEntity<>(null, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @PostMapping(path = "/prescribe")
+//    public ResponseEntity<?> prescribe(@RequestBody Prescription prescription) {
+//        try {
+//            doctorService.prescribeMedicine(prescription);
+//            return new ResponseEntity<>(null, HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+//
+//    @PutMapping(path = "/prescibe/update")
+//    public ResponseEntity<?> updatePrescription(@RequestBody Prescription prescription) {
+//        try {
+//            doctorService.updatePrescription(prescription);
+//            return new ResponseEntity<>(null, HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+//
+//    @DeleteMapping(path = "/prescibe/delete/{id}")
+//    public ResponseEntity<?> deletePrescription(@PathVariable Long id) {
+//        try {
+//            doctorService.deletePrescription(id);
+//            return new ResponseEntity<>(null, HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
     @GetMapping(path = "/available")
     public ResponseEntity<?> viewAvailableDoctor() {

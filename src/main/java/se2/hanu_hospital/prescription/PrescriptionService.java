@@ -3,27 +3,34 @@ package se2.hanu_hospital.prescription;
 import org.springframework.stereotype.Service;
 import se2.hanu_hospital.medicine.Medicine;
 import se2.hanu_hospital.medicine.MedicineService;
+import se2.hanu_hospital.record.RecordRepository;
+import se2.hanu_hospital.record.Record;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class PrescriptionService {
     private final PrescriptionRepository prescriptionRepository;
-    private MedicineService medicineService;
+    private final MedicineService medicineService;
+    private final RecordRepository recordRepository;
 
-    public PrescriptionService(PrescriptionRepository prescriptionRepository, MedicineService medicineService ) {
+    public PrescriptionService(PrescriptionRepository prescriptionRepository, MedicineService medicineService, RecordRepository recordRepository) {
         this.prescriptionRepository = prescriptionRepository;
         this.medicineService = medicineService;
+        this.recordRepository = recordRepository;
     }
 
-    public void add(Prescription prescription) throws Exception {
-        Medicine medicine = medicineService.getMedicineByName(prescription.getName());
-        if(!medicineService.isExisted(medicine) || !prescriptionValidate(prescription)){
-            throw new IllegalStateException("error");
+    public void add(Prescription prescription, Long recordId, Long medicineId) throws Exception {
+        if(!prescriptionValidate(prescription)){
+            throw new IllegalStateException("invalid");
         }
+        prescription.setMedicine(medicineService.getMedicineById(medicineId));
+        prescription.setRecord(recordRepository.findById(recordId)
+                .orElseThrow(() -> new IllegalStateException("Record does not exist!")));
         prescriptionRepository.save(prescription);
-        updateMedicineQuantity(medicine.getName());
+        updateMedicineQty(medicineId);
     }
 
     public List<Prescription> getAll(){
@@ -34,26 +41,32 @@ public class PrescriptionService {
         if(!prescriptionRepository.existsById(id)){
             throw new IllegalStateException ("Prescription does not Exist");
         }
-        Prescription prescription = getById(id);
-        String name = prescription.getName();
-
+        Prescription prescription = prescriptionRepository.findById(id).orElseThrow(() -> new IllegalStateException("Prescription does not exist!"));
+        Long medicineId = prescription.getMedicine().getId();
         prescriptionRepository.deleteById(id);
-
-        updateMedicineQuantity(name);
+        updateMedicineQty(medicineId);
     }
 
-    public void update (Prescription prescription) throws IOException {
+    public void deleteAllPresOfRecord(Long id){
+        Set<Prescription> prescriptionList = getAllByRecordId(id);
+        for(Prescription prescriptionX : prescriptionList){
+                prescriptionRepository.delete(prescriptionX);
+
+        }
+    }
+
+    public void update (Prescription prescription, Long recordId, Long medicineId) throws IOException {
         if(!prescriptionValidate(prescription)) {
             throw new IllegalStateException("Invalid input");
         }
         if(!prescriptionRepository.existsById(prescription.getId())){
             throw new IllegalStateException("Prescription does not Exist");
         }
+        prescription.setRecord(recordRepository.findById(recordId)
+                .orElseThrow(() -> new IllegalStateException("Record does not exist!")));
+        prescription.setMedicine(medicineService.getMedicineById(medicineId));
         prescriptionRepository.save(prescription);
-
-        String name = prescription.getName();
-
-        updateMedicineQuantity(name);
+        updateMedicineQty(medicineId);
     }
 
     public Prescription getById(Long id){
@@ -62,46 +75,29 @@ public class PrescriptionService {
         return prescription;
     }
 
-    public List<Prescription> getAllByRecordId(Long recordId){
-        List<Prescription> prescriptionList = prescriptionRepository.findPrescriptionByRecordId(recordId);
-        return prescriptionList;
+    public Set<Prescription> getAllByRecordId(Long recordId){
+        Record record = recordRepository.findById(recordId)
+                .orElseThrow(() -> new IllegalStateException("Record does not exist!"));
+        return record.getPrescriptionMedicine();
     }
 
     private boolean prescriptionValidate(Prescription prescription){
-        if( prescription.getName().length() <=0 ||
-            prescription.getDosage()<= 0||
-            prescription.getRecordId()<= 0
-            ){
+        if(prescription.getDosage()<= 0){
             return false;
         } return true;
     }
 
-    public void updateMedicineQuantity(String medicineName) throws IOException {
-        List<Prescription> prescriptionList = prescriptionRepository.findAllByNameContaining(medicineName);
-        Medicine medicine = medicineService.getMedicineByName(medicineName);
-
+    public void updateMedicineQty(Long medicineId) throws IOException {
         int currQty = 0;
-        if (prescriptionList.size() == 0) {
-            medicine.setQuantity(0);
-            medicineService.updateMedicine(medicine);
-        } else {
-            for (Prescription prescription : prescriptionList) {
-                currQty += prescription.getDosage();
-            }
-            medicine.setQuantity(currQty);
-            medicineService.updateMedicine(medicine);
-        }
-    }
-
-    public void deleteAllPresByRecordId(Long recordId) throws IOException {
-        List<Prescription> prescriptionList = getAllByRecordId(recordId);
-        if(prescriptionList.size()!=0){
-            for (Prescription prescription : prescriptionList) {
-                Long presId = prescription.getId();
-
-                delete(presId);
+        Medicine medicine = medicineService.getMedicineById(medicineId);
+        List<Prescription> prescriptionList = getAll();
+        for(Prescription prescriptionX: prescriptionList){
+            if(prescriptionX.getMedicine().equals(medicine)){
+                currQty += prescriptionX.getDosage();
             }
         }
+        medicine.setQuantity(currQty);
+        medicineService.updateMedicine(medicine);
     }
 
     public int getQuantity(Long id){

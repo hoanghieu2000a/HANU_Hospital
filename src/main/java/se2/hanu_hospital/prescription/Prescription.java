@@ -1,8 +1,13 @@
 package se2.hanu_hospital.prescription;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import se2.hanu_hospital.medicine.Medicine;
+import se2.hanu_hospital.record.Record;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table (name = "prescription")
@@ -12,14 +17,14 @@ public class Prescription {
     @Column(name = "id", columnDefinition = "INT(4) UNSIGNED ", precision = 4, updatable = false)
     private Long id;
 
-    @Column(columnDefinition = "INT(4) UNSIGNED ", precision = 4, updatable = false)
-    private Long recordId;
+//    @Column(columnDefinition = "INT(4) UNSIGNED ", precision = 4, updatable = false)
+//    private Long recordId;
 
-    @Column(length = 50)
-    private String name;
-
-//    @Column(columnDefinition = "INT(4) UNSIGNED")
-//    private int quantity;
+//    @Column(length = 50)
+//    private String name;
+    @ManyToOne
+    @JoinColumn(name = "medicine_id")
+    private Medicine medicine;
 
     private LocalDate startDate;
     private LocalDate endDate;
@@ -27,21 +32,19 @@ public class Prescription {
     @Column(columnDefinition = "INT(4) UNSIGNED")
     private int dosage;
 
-//    @Column(precision = 8, scale = 2)
-//    private Double costPerDose;
-//    @Column(precision = 8, scale = 2)
-//    private Double total;
+    @ManyToOne
+    @JoinColumn(name = "record_id")
+    @JsonIgnore
+    private Record record;
 
-    public Prescription(Long id, Long recordId, String name, LocalDate startDate, LocalDate endDate, int dosage) {
+    public Prescription(Long id, Record record, Medicine medicine, LocalDate startDate, LocalDate endDate, int dosage) {
         this.id = id;
-        this.recordId = recordId;
-        this.name = name;
-//        this.quantity = quantity;
+        this.record = record;
+        this.medicine = medicine;
         this.startDate = startDate;
         this.endDate = endDate;
         this.dosage = dosage;
-//        this.costPerDose = costPerDose;
-//        this.total = this.total;
+
     }
 
     public Prescription() {
@@ -51,8 +54,8 @@ public class Prescription {
     public String toString() {
         return "Prescription{" +
                 "id=" + id +
-                ", recordId=" + recordId +
-                ", name='" + name + '\'' +
+                ", record=" + record +
+                ", medicine='" + medicine + '\'' +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", dosage=" + dosage +
@@ -67,29 +70,21 @@ public class Prescription {
         this.id = id;
     }
 
-    public Long getRecordId() {
-        return recordId;
+    public Record getRecord() {
+        return record;
     }
 
-    public void setRecordId(Long recordId) {
-        this.recordId = recordId;
+    public void setRecord(Record record) {
+        this.record = record;
     }
 
-    public String getName() {
-        return name;
+    public Medicine getMedicine() {
+        return medicine;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
     }
-
-//    public int getQuantity() {
-//        return quantity;
-//    }
-//
-//    public void setQuantity(int quantity) {
-//        this.quantity = quantity;
-//    }
 
     public LocalDate getStartDate() {
         return startDate;
@@ -115,19 +110,4 @@ public class Prescription {
         this.dosage = dosage;
     }
 
-//    public Double getCostPerDose() {
-//        return costPerDose;
-//    }
-//
-//    public void setCostPerDose(Double costPerDose) {
-//        this.costPerDose = costPerDose;
-//    }
-//
-//    public Double getTotal() {
-//        return total;
-//    }
-//
-//    public void setTotal(Double total) {
-//        this.total = total;
-//    }
 }

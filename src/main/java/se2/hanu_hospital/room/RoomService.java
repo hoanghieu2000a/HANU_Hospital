@@ -47,19 +47,11 @@ public class RoomService {
 
 
     public void addPatient(Long id ,Long  patientId){
-        Room room = roomRepository.findById(id)
-                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
-        Patient patient = patientRepository.findById(patientId)
-                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
-        patient.setRoom(room);
-        patientRepository.save(patient);
+
     }
 
     public void removePatient(Long patientId){
-        Patient patient = patientRepository.findById(patientId)
-                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
-        patient.setRoom(null);
-        patientRepository.save(patient);
+
     }
 
     public Room getRoomById(Long id){
