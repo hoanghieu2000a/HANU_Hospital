@@ -2,7 +2,12 @@ package se2.hanu_hospital.record;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se2.hanu_hospital.patient.Patient;
+import se2.hanu_hospital.patient.PatientService;
 import se2.hanu_hospital.prescription.PrescriptionService;
+import se2.hanu_hospital.staff.doctor.model.Doctor;
+import se2.hanu_hospital.staff.doctor.service.DoctorService;
+import se2.hanu_hospital.util.Valid;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,10 +16,15 @@ import java.util.List;
 public class RecordService {
     private final RecordRepository recordRepository;
     private final PrescriptionService prescriptionService;
+    private final PatientService patientService;
+    private final DoctorService doctorService;
 
-    public RecordService(RecordRepository recordRepository, PrescriptionService prescriptionService) {
+    @Autowired
+    public RecordService(RecordRepository recordRepository, PrescriptionService prescriptionService, PatientService patientService, DoctorService doctorService) {
         this.recordRepository = recordRepository;
         this.prescriptionService = prescriptionService;
+        this.patientService = patientService;
+        this.doctorService = doctorService;
     }
 
     public List<Record> getAllRecord(){
@@ -23,9 +33,7 @@ public class RecordService {
 
     public void addRecord(Record record){
         try{
-            if(validateRecord(record)){
-                recordRepository.save(record);
-            }
+            recordRepository.save(record);
         } catch (Exception e){
             throw new IllegalStateException("Invalid input");
         }
@@ -39,12 +47,25 @@ public class RecordService {
         recordRepository.deleteById(id);
     }
 
-    public void updateRecord(Record record){
-        if(!validateRecord(record)){
-            throw new IllegalStateException("Invallid input");
-        }
-        if (!recordRepository.existsById(record.getId())){
+    public void updateRecord(RecordPayload recordPayLoad){
+        if (!recordRepository.existsById(recordPayLoad.getId())){
             throw new IllegalStateException("Record does not exist");
+        }
+
+        Record record = recordRepository.getRecordById(recordPayLoad.getId());
+        if(Valid.stringValid(recordPayLoad.getDescription()))
+            record.setDescription(recordPayLoad.getDescription());
+        if(Valid.stringValid(recordPayLoad.getDiagnosis()))
+            record.setDiagnosis(recordPayLoad.getDiagnosis());
+        if(recordPayLoad.getStatus().equals(RecordStatus.DISCHARGED))
+            record.setStatus(RecordStatus.DISCHARGED);
+        if(Valid.unsignedLongValid(recordPayLoad.getDoctorId())){
+            Doctor doctor = doctorService.getById(recordPayLoad.getDoctorId());
+            record.setDoctor(doctor);
+        }
+        if(Valid.unsignedLongValid(recordPayLoad.getPatientId())){
+            Patient patient = patientService.getById(recordPayLoad.getId());
+            record.setPatient(patient);
         }
 
         recordRepository.save(record);
@@ -61,7 +82,7 @@ public class RecordService {
 
 
     public Record getRecordById(Long id){
-        return recordRepository.findById(id).orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
+        return recordRepository.findById(id).orElseThrow(() -> new IllegalStateException("Record does not exist!"));
     }
 
     public List<Record> getRecordByPatientId(Long id){
@@ -72,10 +93,5 @@ public class RecordService {
         return recordRepository.findRecordByDoctorId(id);
     }
 
-    private boolean validateRecord(Record record){
-        if( record.getDoctorId() <= 0||
-            record.getPatientId() <= 0){
-            return false;
-        } return true;
-    }
+
 }

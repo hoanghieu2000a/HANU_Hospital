@@ -1,6 +1,6 @@
-package se2.hanu_hospital.staff.receptionist.receptionistMapper;
+package se2.hanu_hospital.staff.nurse.nurseMapper;
 
-public class ReceptionistDTO {
+public class NurseDTO {
     private String name;
     private Long id;
     private String phone;

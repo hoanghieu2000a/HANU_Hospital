@@ -1,8 +1,9 @@
 package se2.hanu_hospital.room;
 
-import se2.hanu_hospital.patient.entity.Patient;
+import se2.hanu_hospital.patient.Patient;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,6 +23,13 @@ public class Room {
     private int capacity;
 
     private boolean isFull;
+
+    @Column(nullable = false, updatable = false, insertable = false,
+            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
+
+    @Column(columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    private LocalDateTime updatedAt;
 
     public Room(Long id, int roomNo, Set<Patient> patients, int capacity) {
         this.id = id;

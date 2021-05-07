@@ -5,6 +5,7 @@ import se2.hanu_hospital.prescription.Prescription;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,7 +31,12 @@ public class Medicine {
     @Column(columnDefinition = "INT(4) UNSIGNED")
     private int quantity;
 
+    @Column(nullable = false, updatable = false, insertable = false,
+            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
 
+    @Column(columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    private LocalDateTime updatedAt;
 
     public Medicine(Long id, String name, LocalDate expireDate, Double sellPrice, Double importPrice, int quantity) {
         this.id = id;

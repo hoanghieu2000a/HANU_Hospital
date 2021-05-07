@@ -2,21 +2,17 @@ package se2.hanu_hospital.department;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se2.hanu_hospital.department.DepartmentMapper.DepartmentDTO;
-import se2.hanu_hospital.department.DepartmentMapper.DepartmentsMapper;
 import se2.hanu_hospital.staff.Staff;
 import se2.hanu_hospital.staff.StaffService;
+import se2.hanu_hospital.util.Valid;
 
 
-import java.io.IOException;
 import java.util.List;
 
 @Service
 public class DepartmentService {
     @Autowired
     private DepartmentRepository departmentRepository;
-    @Autowired
-    private DepartmentsMapper mapper;
     @Autowired
     private StaffService staffService;
 
@@ -33,17 +29,22 @@ public class DepartmentService {
                 .orElseThrow(() -> new IllegalStateException("Department does not exist!"));
     }
 
+    public Department getDepartmentByName(String name) {
+        return departmentRepository.findByNameContaining(name);
+    }
+
     public void addDepartment(Department department) {
         departmentRepository.save(department);
     }
 
-    public void updateDepartment(Long id, DepartmentDTO departmentDTO) throws IOException {
+    public void updateDepartment(Long id, DepartmentPayload departmentPayload) {
         if(!departmentRepository.existsById(id)){
             throw new IllegalStateException("There is no department with that id!");
         }
 
         Department departmentInDB =  departmentRepository.getDepartmentById(id);
-        mapper.updateDoctorFromDto(departmentDTO, departmentInDB);
+        if(Valid.stringValid(departmentPayload.getName()))
+            departmentInDB.setName(departmentPayload.getName());
         departmentRepository.save(departmentInDB);
     }
 

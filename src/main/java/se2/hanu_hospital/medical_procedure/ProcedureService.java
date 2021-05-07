@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import se2.hanu_hospital.department.Department;
-import se2.hanu_hospital.medical_procedure.procedureMapper.ProcedureDTO;
-import se2.hanu_hospital.medical_procedure.procedureMapper.ProcedureMapper;
-import se2.hanu_hospital.util.CRUDService;
+import se2.hanu_hospital.util.Valid;
 
 import java.util.List;
 
@@ -16,14 +13,11 @@ import java.util.List;
 public class ProcedureService{
 
     @Autowired
-    private ProcedureRepository procedureRepository;
-    @Autowired
-    private ProcedureMapper mapper;
+    private final ProcedureRepository procedureRepository;
 
     @Autowired
     public ProcedureService(ProcedureRepository procedureRepository){
         this.procedureRepository = procedureRepository;
-        this.mapper = mapper;
     }
     
     public MedicalProcedure addProcedure(MedicalProcedure medicalProcedure) {
@@ -31,13 +25,14 @@ public class ProcedureService{
     }
 
 
-    public MedicalProcedure updateById(Long id, ProcedureDTO procedureDTO) {
+    public MedicalProcedure updateById(Long id, MedicalProcedurePayload medicalProcedurePayload) {
         if(!procedureRepository.existsById(id)){
             throw new IllegalStateException("There is no department with that id!");
         }
 
         MedicalProcedure procedureInDB =  procedureRepository.getProcedureById(id);
-        mapper.updateProcedureFromDto(procedureDTO, procedureInDB);
+        if(Valid.stringValid(medicalProcedurePayload.getName()))
+            procedureInDB.setName(medicalProcedurePayload.getName());
         return procedureRepository.save(procedureInDB);
     }
 

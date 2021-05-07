@@ -11,7 +11,7 @@ import se2.hanu_hospital.staff.doctor.service.DoctorService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping(path = {"/api/doctor"})
+@RequestMapping(path = {"/doctor"})
 public class DoctorController {
     private final DoctorService doctorService;
 

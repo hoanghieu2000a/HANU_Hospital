@@ -1,4 +1,4 @@
-package se2.hanu_hospital.patient.entity;
+package se2.hanu_hospital.patient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -26,7 +26,7 @@ public class Patient{
 
     @Id
     @Column(name = "id", columnDefinition = "INT(6) UNSIGNED ", precision = 4, updatable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotNull

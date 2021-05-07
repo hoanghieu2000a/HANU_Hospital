@@ -12,8 +12,8 @@ public class Doctor extends Staff {
     @Column(columnDefinition="BOOLEAN DEFAULT false")
     private boolean available;
 
-    public Doctor(String name, Long id, String phone, String email, Integer age, String speciality, boolean available) {
-        super(name, id, phone, email, age);
+    public Doctor(String name, Long id, String phone, String email, Integer age, Double salary, String speciality, boolean available) {
+        super(name, id, phone, email, age, salary);
         this.speciality = speciality;
         this.available = available;
     }

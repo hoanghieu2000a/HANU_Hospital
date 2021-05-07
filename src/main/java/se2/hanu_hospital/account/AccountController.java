@@ -41,7 +41,7 @@ public class AccountController {
     }
 
     @PostMapping(path="/update")
-    public ResponseEntity<?> upadateAccount (@RequestParam Long id, @Valid @RequestBody UserPayload request){
+    public ResponseEntity<?> updateAccount (@RequestParam Long id, @Valid @RequestBody UserPayload request){
         return new ResponseEntity<>(accountService.updateUser(id, request), HttpStatus.OK);
     }
 

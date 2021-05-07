@@ -1,28 +1,28 @@
-package se2.hanu_hospital.staff.receptionist.controller;
+package se2.hanu_hospital.staff.nurse.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se2.hanu_hospital.staff.receptionist.model.Receptionist;
-import se2.hanu_hospital.staff.receptionist.receptionistMapper.ReceptionistDTO;
-import se2.hanu_hospital.staff.receptionist.service.ReceptionistService;
+import se2.hanu_hospital.staff.nurse.model.Nurse;
+import se2.hanu_hospital.staff.nurse.nurseMapper.NurseDTO;
+import se2.hanu_hospital.staff.nurse.service.NurseService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(path = {"/api/Receptionist"})
-public class ReceptionistController {
-    private final ReceptionistService receptionistService;
+public class NurseController {
+    private final NurseService nurseService;
 
     @Autowired
-    public ReceptionistController(ReceptionistService receptionistService) {
-        this.receptionistService = receptionistService;
+    public NurseController(NurseService nurseService) {
+        this.nurseService = nurseService;
     }
 
     @GetMapping(path = "/getAll")
     public ResponseEntity<?> getAll() {
         try {
-            return new ResponseEntity<>(receptionistService.getAllReceptionist(), HttpStatus.OK);
+            return new ResponseEntity<>(nurseService.getAllReceptionist(), HttpStatus.OK);
         } catch(Exception e) {
             return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -31,7 +31,7 @@ public class ReceptionistController {
     @GetMapping(path = "/get/{id}")
     public ResponseEntity<?> getById(@PathVariable Long id) {
         try {
-            receptionistService.getById(id);
+            nurseService.getById(id);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -41,7 +41,7 @@ public class ReceptionistController {
     @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         try {
-            receptionistService.deleteById(id);
+            nurseService.deleteById(id);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch(Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -49,9 +49,9 @@ public class ReceptionistController {
     }
 
     @PostMapping(path = "/add")
-    public ResponseEntity<?> add(@RequestBody Receptionist receptionist) {
+    public ResponseEntity<?> add(@RequestBody Nurse nurse) {
         try {
-            receptionistService.addReceptionist(receptionist);
+            nurseService.addReceptionist(nurse);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -59,9 +59,9 @@ public class ReceptionistController {
     }
 
     @PutMapping(path = "/update/{id}")
-    public ResponseEntity<?> updateReceptionistById(@PathVariable Long id, @RequestBody ReceptionistDTO receptionistDTO) {
+    public ResponseEntity<?> updateReceptionistById(@PathVariable Long id, @RequestBody NurseDTO nurseDTO) {
         try {
-            receptionistService.updateById(id, receptionistDTO);
+            nurseService.updateById(id, nurseDTO);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -71,7 +71,7 @@ public class ReceptionistController {
     @PutMapping(path = "/assignDoctor/{id}")
     public ResponseEntity<?> assignDoctor(@PathVariable Long id) {
         try {
-            receptionistService.assignDoctor(id);
+            nurseService.assignDoctor(id);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -81,7 +81,7 @@ public class ReceptionistController {
     @GetMapping(path = "/checkAvailable")
     public ResponseEntity<?> checkAvailableDoctor() {
         try {
-            receptionistService.checkAvailableDoctor();
+            nurseService.checkAvailableDoctor();
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

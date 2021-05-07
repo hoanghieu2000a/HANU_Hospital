@@ -4,5 +4,4 @@ public enum RoleName {
     ROLE_DOCTOR,
     ROLE_ADMIN,
     ROLE_NURSE,
-    ROLE_RECEPTIONIST
 }

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import se2.hanu_hospital.patient.PatientRepository;
-import se2.hanu_hospital.patient.entity.Patient;
+import se2.hanu_hospital.patient.Patient;
 
 import java.util.List;
 
@@ -76,6 +76,6 @@ public class RoomService {
     }
 
     private boolean validateRoom(Room room){
-        return room.getId() > 0 && room.getCapacity() > 0;
+        return room.getCapacity() > 0;
     }
 }

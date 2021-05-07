@@ -1,14 +1,12 @@
 package se2.hanu_hospital.medical_procedure;
 
 import lombok.*;
-import se2.hanu_hospital.consumable.entity.Consumable;
-import se2.hanu_hospital.facility.entity.Facility;
-import se2.hanu_hospital.patient.entity.Patient;
+import se2.hanu_hospital.consumable.Consumable;
+import se2.hanu_hospital.facility.Facility;
 
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,7 +15,7 @@ import java.util.List;
 public class MedicalProcedure {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -52,15 +50,18 @@ public class MedicalProcedure {
         this.name = name;
     }
 
+    public MedicalProcedure() {
+    }
+
     public Long getId() {
         return id;
     }
 
-    public String getname() {
+    public String getName() {
         return name;
     }
 
-    public void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

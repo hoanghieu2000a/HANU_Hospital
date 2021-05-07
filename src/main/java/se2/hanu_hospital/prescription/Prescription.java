@@ -6,6 +6,7 @@ import se2.hanu_hospital.medicine.Medicine;
 import se2.hanu_hospital.record.Record;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,6 +33,13 @@ public class Prescription {
     @Column(columnDefinition = "INT(4) UNSIGNED")
     private int dosage;
 
+    @Column(nullable = false, updatable = false, insertable = false,
+            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
+
+    @Column(columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    private LocalDateTime updatedAt;
+
     @ManyToOne
     @JoinColumn(name = "record_id")
     @JsonIgnore
@@ -44,7 +52,6 @@ public class Prescription {
         this.startDate = startDate;
         this.endDate = endDate;
         this.dosage = dosage;
-
     }
 
     public Prescription() {

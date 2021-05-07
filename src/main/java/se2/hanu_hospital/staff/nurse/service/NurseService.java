@@ -1,51 +1,51 @@
-package se2.hanu_hospital.staff.receptionist.service;
+package se2.hanu_hospital.staff.nurse.service;
 
 import org.springframework.stereotype.Service;
 import se2.hanu_hospital.staff.doctor.model.Doctor;
 import se2.hanu_hospital.staff.doctor.repository.DoctorRepository;
-import se2.hanu_hospital.staff.receptionist.model.Receptionist;
-import se2.hanu_hospital.staff.receptionist.receptionistMapper.ReceptionistDTO;
-import se2.hanu_hospital.staff.receptionist.receptionistMapper.ReceptionistMapper;
-import se2.hanu_hospital.staff.receptionist.repository.ReceptionistRepository;
+import se2.hanu_hospital.staff.nurse.model.Nurse;
+import se2.hanu_hospital.staff.nurse.nurseMapper.NurseDTO;
+import se2.hanu_hospital.staff.nurse.nurseMapper.NurseMapper;
+import se2.hanu_hospital.staff.nurse.repository.NurseRepository;
 
 import java.io.IOException;
 import java.util.List;
 
 @Service
-public class ReceptionistService {
-    private final ReceptionistRepository receptionistRepository;
+public class NurseService {
+    private final NurseRepository receptionistRepository;
     private final DoctorRepository doctorRepository;
-    private ReceptionistMapper mapper;
+    private NurseMapper mapper;
 
-    public ReceptionistService(ReceptionistRepository receptionistRepository, DoctorRepository doctorRepository) {
+    public NurseService(NurseRepository receptionistRepository, DoctorRepository doctorRepository) {
         this.receptionistRepository = receptionistRepository;
         this.doctorRepository = doctorRepository;
     }
 
-    public List<Receptionist> getAllReceptionist() {
+    public List<Nurse> getAllReceptionist() {
         return receptionistRepository.getAllReceptionist();
     }
 
-    public void addReceptionist(Receptionist receptionist) {
-        receptionistRepository.save(receptionist);
+    public void addReceptionist(Nurse nurse) {
+        receptionistRepository.save(nurse);
     }
 
-    public void updateById(Long id, ReceptionistDTO receptionist) throws IOException {
+    public void updateById(Long id, NurseDTO receptionist) throws IOException {
         if(!receptionistRepository.existsById(id)){
             throw new IllegalStateException("There is no receptionist with that id!");
         }
 
-        Receptionist receptionistInDB = (Receptionist) receptionistRepository.getReceptionistById(id);
-        mapper.updateReceptionistFromDto(receptionist, receptionistInDB);
-        receptionistRepository.save(receptionistInDB);
+        Nurse nurseInDB = (Nurse) receptionistRepository.getReceptionistById(id);
+        mapper.updateReceptionistFromDto(receptionist, nurseInDB);
+        receptionistRepository.save(nurseInDB);
     }
 
     public void deleteById(Long id) {
         receptionistRepository.deleteById(id);
     }
 
-    public Receptionist getById(Long id) {
-        return (Receptionist) receptionistRepository.getReceptionistById(id);
+    public Nurse getById(Long id) {
+        return (Nurse) receptionistRepository.getReceptionistById(id);
     }
 
     public void assignDoctor(Long id) {

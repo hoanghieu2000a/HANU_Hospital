@@ -1,10 +1,13 @@
 package se2.hanu_hospital.record;
 
 
+import se2.hanu_hospital.patient.Patient;
 import se2.hanu_hospital.prescription.Prescription;
+import se2.hanu_hospital.staff.doctor.model.Doctor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,8 +19,6 @@ public class Record {
     @Column(name = "id", columnDefinition = "INT(4) UNSIGNED ", precision = 4, updatable = false)
     private Long id;
 
-    private LocalDate date;
-
     @Lob
     private String description = "This record does not have description";
     @Lob
@@ -25,25 +26,31 @@ public class Record {
 
     private RecordStatus status;
 
-    //    @ManyToOne(optional = true)
-    //    @JoinColumn(name = "user_id")
-    private Long patientId;
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
 
-    //    @ManyToOne(optional = true)
-    //    @JoinColumn(name = "user_id")
-    private Long doctorId;
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "patient_id")
+    private Doctor doctor;
 
     @OneToMany(mappedBy = "record")
     private Set<Prescription> prescriptionMedicine = new HashSet<>();
 
-    public Record(Long id, LocalDate date, String description, String diagnosis, RecordStatus status, Long patientId, Long doctorId, Set<Prescription> prescriptionMedicine) {
+    @Column(nullable = false, updatable = false, insertable = false,
+            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
+
+    @Column(columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    private LocalDateTime updatedAt;
+
+    public Record(Long id, String description, String diagnosis, RecordStatus status, Patient patient, Doctor doctor, Set<Prescription> prescriptionMedicine) {
         this.id = id;
-        this.date = date;
         this.description = description;
         this.diagnosis =diagnosis;
         this.status = status;
-        this.patientId = patientId;
-        this.doctorId = doctorId;
+        this.patient = patient;
+        this.doctor = doctor;
         this.prescriptionMedicine = prescriptionMedicine;
     }
 
@@ -72,14 +79,6 @@ public class Record {
         this.id = id;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -96,20 +95,19 @@ public class Record {
         this.status = status;
     }
 
-    public Long getPatientId() {
-        return patientId;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setPatientId(Long patientId) {
-        this.patientId = patientId;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
-    public Long getDoctorId() {
-        return doctorId;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
-
 }

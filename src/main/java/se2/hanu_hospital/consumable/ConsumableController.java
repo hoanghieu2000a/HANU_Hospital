@@ -1,24 +1,19 @@
 package se2.hanu_hospital.consumable;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se2.hanu_hospital.consumable.dto.CreateConsumableDTO;
-import se2.hanu_hospital.consumable.dto.UpdateConsumableDTO;
-import se2.hanu_hospital.consumable.entity.Consumable;
-
 
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
+@RequestMapping(path = {"/item"})
 @Tag(name = "Consumable Items Controller", description = "Consumable Items API")
 public class ConsumableController {
     private final ConsumableService consumableService;
@@ -30,22 +25,12 @@ public class ConsumableController {
 
     @PostMapping("/add_item")
     @Operation(summary = "Create a new consumable item")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
-    })
-    public Consumable create(@Valid @RequestBody CreateConsumableDTO createConsumableDTO){
-        return consumableService.create(createConsumableDTO);
+    public Consumable create(@Valid @RequestBody Consumable consumable){
+        return consumableService.create(consumable);
     }
 
     @Operation(summary = "Find consumable item by keyword")
-    @GetMapping("/items")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
-    })
+    @GetMapping("/getItems")
     public ResponseEntity<List<Consumable>> findAll(@RequestParam(required = false) String keyword){
         try {
             List<Consumable> items = new ArrayList<Consumable>();
@@ -66,12 +51,7 @@ public class ConsumableController {
     } 
 
     @Operation(summary = "Find item by id")
-    @GetMapping("/item/{id}")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
-    })
+    @GetMapping("/{id}")
     public ResponseEntity<Consumable> findById(@PathVariable("id") Long id){
         Consumable itemData = consumableService.getById(id);
         if(itemData != null){
@@ -81,23 +61,13 @@ public class ConsumableController {
     }
 
     @Operation(summary = "Update item")
-    @PutMapping("/item/{id}")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-            @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-            @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
-    })
-    public Consumable updateById(@PathVariable Long id, @Valid @RequestBody UpdateConsumableDTO updateConsumableDTO){
-        return consumableService.updateById(id, updateConsumableDTO);
+    @PutMapping("/{id}")
+    public Consumable updateById(@PathVariable Long id, @Valid @RequestBody ConsumablePayload consumablePayload){
+        return consumableService.updateById(id, consumablePayload);
     }
 
     @Operation(summary = "Delete a item by ID")
-    @DeleteMapping(value = "/item/{id}")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
-    })
+    @DeleteMapping(value = "/{id}")
     public void deleteByID(@PathVariable Long id) {
         consumableService.deleteById(id);
     }

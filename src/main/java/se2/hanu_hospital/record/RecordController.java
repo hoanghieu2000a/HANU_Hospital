@@ -8,7 +8,7 @@ import se2.hanu_hospital.medicine.Medicine;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping(path = {"/api/record"})
+@RequestMapping(path = {"/record"})
 public class RecordController {
     private final RecordService recordService;
 
@@ -58,9 +58,9 @@ public class RecordController {
     }
 
     @PutMapping(path = "/update")
-    public ResponseEntity<?> updateRecord(@RequestBody Record record){
+    public ResponseEntity<?> updateRecord(@RequestBody RecordPayload recordPayload){
         try {
-            recordService.updateRecord(record);
+            recordService.updateRecord(recordPayload);
             return new ResponseEntity<>("ok", HttpStatus.OK);
         } catch(Exception e){
             return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);

@@ -34,7 +34,6 @@ public class UserPayload {
     @NotNull
     private String address;
 
-    private String role;
 
     public String getName() {
         return name;
@@ -66,13 +65,5 @@ public class UserPayload {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 }

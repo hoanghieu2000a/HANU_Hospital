@@ -3,19 +3,19 @@ package se2.hanu_hospital.medical_procedure;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se2.hanu_hospital.medical_procedure.procedureMapper.ProcedureDTO;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(path = {"/services"})
+@Tag(name = "Service Controller", description = "Service API")
 public class ProcedureController {
     @Autowired
     private ProcedureService service;
@@ -26,15 +26,10 @@ public class ProcedureController {
     @Operation(summary = "Find all services")
     public ResponseEntity<List<MedicalProcedure>> getAll() {
         try {
-        List<MedicalProcedure> services = new ArrayList<MedicalProcedure>();
+            return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
 
-        if (services.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        return new ResponseEntity<>(services, HttpStatus.OK);
-        } catch (Exception e) {
-        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -62,11 +57,11 @@ public class ProcedureController {
 
     @PutMapping("/{id}")
     @Operation(summary = "Update medical procedure")
-    public ResponseEntity<MedicalProcedure> updateMedicalProcedure(@PathVariable("id") long id, @Valid @RequestBody ProcedureDTO procedureDTO) {
+    public ResponseEntity<MedicalProcedure> updateMedicalProcedure(@PathVariable("id") long id, @Valid @RequestBody MedicalProcedurePayload medicalProcedurePayload) {
         MedicalProcedure data = service.getById(id);
 
         if (data != null) {
-        return new ResponseEntity<>(service.updateById(id, procedureDTO), HttpStatus.OK);
+        return new ResponseEntity<>(service.updateById(id, medicalProcedurePayload), HttpStatus.OK);
         } else {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

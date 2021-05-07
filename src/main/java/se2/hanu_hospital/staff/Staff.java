@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import se2.hanu_hospital.department.Department;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -15,36 +16,48 @@ public class Staff {
     private String phone;
     private String email;
     private Integer age;
+    private Double salary;
     @ManyToOne
     @JoinColumn(name = "department")
     @JsonIgnore
     private Department department;
 
+    @Column(nullable = false, updatable = false, insertable = false,
+            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
+
+    @Column(columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    private LocalDateTime updatedAt;
+
+
     public Staff() {
     }
 
-    public Staff(String name, Long id, String phone, String email, Integer age, Department department) {
+    public Staff(String name, Long id, String phone, String email, Integer age, Double salary, Department department) {
         this.name = name;
         this.id = id;
         this.phone = phone;
         this.email = email;
         this.age = age;
+        this.salary = salary;
         this.department = department;
     }
 
-    public Staff(String name, Long id, String phone, String email, Integer age) {
+    public Staff(String name, Long id, String phone, String email, Integer age, Double salary) {
         this.name = name;
         this.id = id;
         this.phone = phone;
         this.email = email;
         this.age = age;
+        this.salary = salary;
     }
 
-    public Staff(String name, String phone, String email, Integer age) {
+    public Staff(String name, String phone, String email, Integer age, Double salary) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.age = age;
+        this.salary = salary;
     }
 
     public String getName() {

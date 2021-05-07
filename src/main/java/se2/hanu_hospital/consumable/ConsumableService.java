@@ -1,19 +1,50 @@
 package se2.hanu_hospital.consumable;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 
-import se2.hanu_hospital.consumable.dto.CreateConsumableDTO;
-import se2.hanu_hospital.consumable.dto.UpdateConsumableDTO;
-import se2.hanu_hospital.consumable.entity.Consumable;
-import se2.hanu_hospital.util.CRUDService;
-
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
-// import org.springframework.data.Page;
-// import org.springframework.data.Pageable;
+
+@Service
+public class ConsumableService{
+
+    @Autowired
+    private ConsumableRepository consumableRepository;
 
 
-public interface ConsumableService extends CRUDService<Consumable, Long, CreateConsumableDTO, UpdateConsumableDTO> {
-    List<Consumable> findAllByName(String consumableName);
-    
+    public Consumable create(Consumable consumable) {
+        return consumableRepository.save(consumable);
+    }
+
+    public Consumable updateById(Long id, ConsumablePayload consumablePayload) {
+        Consumable consumable = consumableRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return consumableRepository.save(consumable);
+    }
+
+    public void deleteById(Long id) {
+        consumableRepository.deleteById(id);        
+    }
+
+    public List<Consumable> findAll() {
+        return consumableRepository.findAll();
+    }
+
+    public Consumable getById(Long id) {
+        return consumableRepository.findById(id).orElse(null);
+    }
+
+    public Page<Consumable> findAll(Pageable pageable) {
+        return consumableRepository.findAll(pageable);
+    }
+
+    public List<Consumable> findAllByName(String consumableName) {
+        
+        return consumableRepository.findByName(consumableName);
+    }  
 }
