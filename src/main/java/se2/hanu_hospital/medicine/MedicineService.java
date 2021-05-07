@@ -15,7 +15,7 @@ public class MedicineService {
     }
 
     public void addMedicine(Medicine medicine) throws IOException {
-        if (!medicineValidation(medicine) || isDuplicated(medicine.getName())){
+        if (!medicineValidation(medicine) || isDuplicated(medicine)){
             throw new IOException("Invalid input!");
         }
         medicineRepository.save(medicine);
@@ -66,29 +66,29 @@ public class MedicineService {
         if (    medicine.getName().length() <= 0 ||
                 medicine.getSellPrice() <= 0 ||
                 medicine.getImportPrice() <=0 ||
-                medicine.getQuantity() < 0 ||
                 LocalDate.now().isAfter(medicine.getExpireDate())) {
             return false;
         } return true;
     }
 
-    private boolean isDuplicated(String name){
+    private boolean isDuplicated(Medicine medicine){
         List<Medicine> medicineList = medicineRepository.findAll();
-        for(Medicine medicine: medicineList){
-            if(medicine.getName().equals(name)){
+        for(Medicine medicineX: medicineList){
+            if(medicineX.getName().equals(medicine.getName())){
                 return true;
             }
         } return false;
     }
 
     public void updateMedicine(Medicine medicine) throws IOException {
-        if (medicineValidation(medicine) == false){
-            throw new IOException("Invalid input!");
+        if(!medicineRepository.existsById(medicine.getId())) {
+            throw new IllegalStateException("Invalid medicine");
         }
-        if (!medicineRepository.existsById(medicine.getId())){
-            throw new IllegalStateException("Order does not exist");
-        }
+        if(medicineValidation(medicine)){
         medicineRepository.save(medicine);
+        } else {
+            throw new IllegalStateException("Invalid medicine");
+        }
     }
 
     public boolean isExisted(Medicine  medicine){
