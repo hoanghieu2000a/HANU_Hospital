@@ -7,7 +7,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import se2.hanu_hospital.department.Department;
 
 @Mapper(componentModel = "spring")
-public interface DepartmentMapper {
+public interface DepartmentsMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateDoctorFromDto(DepartmentDTO dto, @MappingTarget Department entity);
+    void updateDepartmentFromDto(DepartmentDTO departmentDTO, @MappingTarget Department entity);
 }

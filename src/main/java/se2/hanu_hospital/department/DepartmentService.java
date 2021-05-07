@@ -3,13 +3,10 @@ package se2.hanu_hospital.department;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se2.hanu_hospital.department.DepartmentMapper.DepartmentDTO;
-import se2.hanu_hospital.department.DepartmentMapper.DepartmentMapper;
-import se2.hanu_hospital.medicine.Medicine;
+import se2.hanu_hospital.department.DepartmentMapper.DepartmentsMapper;
 import se2.hanu_hospital.staff.Staff;
 import se2.hanu_hospital.staff.StaffService;
-import se2.hanu_hospital.staff.doctor.model.Doctor;
-import se2.hanu_hospital.staff.doctor.service.DoctorService;
-import se2.hanu_hospital.staff.receptionist.model.Receptionist;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -19,7 +16,7 @@ public class DepartmentService {
     @Autowired
     private DepartmentRepository departmentRepository;
     @Autowired
-    private DepartmentMapper mapper;
+    private DepartmentsMapper mapper;
     @Autowired
     private StaffService staffService;
 

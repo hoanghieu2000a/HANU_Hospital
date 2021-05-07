@@ -6,8 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se2.hanu_hospital.department.DepartmentMapper.DepartmentDTO;
-import se2.hanu_hospital.medicine.Medicine;
-import se2.hanu_hospital.staff.Staff;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController

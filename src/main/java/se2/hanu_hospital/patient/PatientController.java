@@ -18,7 +18,6 @@ import java.util.List;
 
 
 @RestController
-@Tag(name = "Patient Controller", description = "The Patient API")
 public class PatientController {
 
     private final PatientService patientService;
