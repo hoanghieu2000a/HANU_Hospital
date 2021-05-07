@@ -14,29 +14,37 @@ public class Room {
     @Column(name = "id", columnDefinition = "INT(4) UNSIGNED ", precision = 4, updatable = false)
     private Long id;
 
-    private int name;
+    private int roomNo;
 
     @OneToMany(mappedBy = "room")
     private Set<Patient> patients = new HashSet<>();
 
     private int capacity;
 
-    public Room(Long id, Set<Patient> patients, int capacity, int name) {
+    private boolean isFull;
+
+    public Room(Long id, int roomNo, Set<Patient> patients, int capacity) {
         this.id = id;
         this.patients = patients;
         this.capacity = capacity;
-        this.name = name;
+        this.roomNo = roomNo;
+    }
+
+    public Room(Long id, int roomNo, int capacity) {
+        this.id = id;
+        this.roomNo = roomNo;
+        this.capacity = capacity;
     }
 
     public Room() {
     }
 
-    public int getName() {
-        return name;
+    public int getRoomNo() {
+        return roomNo;
     }
 
-    public void setName(int name) {
-        this.name = name;
+    public void setRoomNo(int roomNo) {
+        this.roomNo = roomNo;
     }
 
     public int getCapacity() {
@@ -45,6 +53,12 @@ public class Room {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public boolean isFull() {
+        isFull = patients.size() == capacity;
+
+        return isFull;
     }
 
     public Long getId() {

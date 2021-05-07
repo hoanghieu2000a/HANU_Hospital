@@ -34,7 +34,4 @@ public class UpdatePatientDTO {
 
     @NotNull
     private String address;
-    @JsonIgnore
-    @Builder.Default
-    private LocalDateTime updatedAt = LocalDateTime.now();
 }

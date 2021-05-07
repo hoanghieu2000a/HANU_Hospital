@@ -35,4 +35,8 @@ public class CreatePatientDTO{
     @NotNull
     private String address;
 
+    @JsonIgnore
+    private LocalDateTime createdAt;
+    @JsonIgnore
+    private LocalDateTime updatedAt;
 }

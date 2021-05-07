@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import se2.hanu_hospital.patient.entity.Gender;
 import se2.hanu_hospital.room.Room;
+import se2.hanu_hospital.util.Gender;
 
 
 import javax.persistence.*;
@@ -49,7 +49,6 @@ public class Patient{
     @JsonIgnore
     private Room room;
 
-
 //    @OneToOne
 //    @MapsId
 //    @JoinColumn(name = "patient_details_id")
@@ -60,5 +59,52 @@ public class Patient{
 
     @PastOrPresent
     private LocalDateTime updatedAt;
-    
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 }

@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import se2.hanu_hospital.patient.PatientRepository;
-import se2.hanu_hospital.patient.PatientService;
-import se2.hanu_hospital.patient.PatientServiceImpl;
 import se2.hanu_hospital.patient.entity.Patient;
 
 import java.util.List;
@@ -51,6 +49,11 @@ public class RoomService {
                 .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
+
+        if(room.isFull()){
+            throw new IllegalStateException("Room is full!");
+        }
+
         patient.setRoom(room);
         patientRepository.save(patient);
     }
@@ -66,8 +69,8 @@ public class RoomService {
         return roomRepository.findById(id).orElseThrow(() -> new IllegalStateException("Room does not exist!"));
     }
 
-    public Room getRoomByName(int name){
-        return roomRepository.findRoomByName(name);
+    public Room getRoomByRoomNo(int roomNo){
+        return roomRepository.findRoomByRoomNo(roomNo);
     }
 
     public boolean isFull(Long id){

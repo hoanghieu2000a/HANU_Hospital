@@ -58,15 +58,6 @@ public class RoomController {
         }
     }
 
-    @GetMapping(path = {"/isFull/{id}"})
-    public ResponseEntity<?> isFull(@PathVariable long id){
-            try{
-                return new ResponseEntity<>(roomService.isFull(id), HttpStatus.OK);
-        } catch(Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @GetMapping(path = {"/getRoomById/{id}"})
     public ResponseEntity<?> getRoomById(@PathVariable long id){
         try{
@@ -77,11 +68,10 @@ public class RoomController {
         }
     }
 
-    @GetMapping(path = {"/getRoomByName/{name}"})
-    public ResponseEntity<?> getRoomByName(@PathVariable int name){
+    @GetMapping(path = {"/getRoomByName/{roomNo}"})
+    public ResponseEntity<?> getRoomByName(@PathVariable int roomNo){
         try{
-
-            return new ResponseEntity<>(roomService.getRoomByName(name), HttpStatus.OK);
+            return new ResponseEntity<>(roomService.getRoomByRoomNo(roomNo), HttpStatus.OK);
         } catch(Exception e){
             return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
         }
