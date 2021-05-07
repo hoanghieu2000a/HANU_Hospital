@@ -14,6 +14,10 @@ public class BillLineController {
 
     private final BillLineService service;
 
+    public BillLineController(BillLineService service) {
+        this.service = service;
+    }
+
     @GetMapping
     public ResponseEntity<List<BillLine>> getAll() {
         return ResponseEntity.ok(service.getAll());

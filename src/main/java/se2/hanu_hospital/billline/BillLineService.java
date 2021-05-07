@@ -1,6 +1,5 @@
 package se2.hanu_hospital.billline;
 
-import com.example.api.exception.ResourceNotFound;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +12,18 @@ public class BillLineService {
 
     private final BillLineRepository repository;
 
+    public BillLineService(BillLineRepository repository) {
+        this.repository = repository;
+    }
+
     public BillLine getBillLine(long id) {
         Optional<BillLine> opt = repository.findById(id);
 
         if (opt.isPresent()) {
             return opt.get();
         }
-        throw new ResourceNotFound();
+
+        return null;
     }
 
     public void updateBillLine(long id, BillLine billLine) {
@@ -27,7 +31,6 @@ public class BillLineService {
             billLine.setId(id);
             repository.save(billLine);
         } else {
-            throw new ResourceNotFound();
         }
     }
 
@@ -40,7 +43,6 @@ public class BillLineService {
         if (repository.existsById(id)) {
             repository.deleteById(id);
         } else {
-            throw new ResourceNotFound();
         }
     }
 
