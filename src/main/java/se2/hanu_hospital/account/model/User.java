@@ -2,6 +2,7 @@ package se2.hanu_hospital.account.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.NaturalId;
+import se2.hanu_hospital.staff.Staff;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -59,6 +60,9 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private UserStatus status;
+
+    @OneToOne()
+    private Staff staff;
 
     public User() {
 

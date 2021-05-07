@@ -1,6 +1,7 @@
 package se2.hanu_hospital.staff;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import se2.hanu_hospital.account.model.User;
 import se2.hanu_hospital.department.Department;
 
 import javax.persistence.*;
@@ -29,6 +30,8 @@ public class Staff {
     @Column(columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
+    @OneToOne()
+    private User user;
 
     public Staff() {
     }
@@ -106,6 +109,14 @@ public class Staff {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 
     @Override
