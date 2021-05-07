@@ -8,12 +8,13 @@ import org.springframework.stereotype.Service;
 import se2.hanu_hospital.medical_procedure.dto.CreateProcedureDTO;
 import se2.hanu_hospital.medical_procedure.dto.UpdateProcedureDTO;
 import se2.hanu_hospital.medical_procedure.entity.MedicalProcedure;
+import se2.hanu_hospital.util.CRUDService;
 
 import java.util.List;
 
 
 @Service
-public class ProcedureServiceImpl implements ProcedureService{
+public class ProcedureServiceImpl implements CRUDService<MedicalProcedure, Long, CreateProcedureDTO, UpdateProcedureDTO> {
 
     private ProcedureRepository procedureRepository;
     private ModelMapper modelMapper;
@@ -24,10 +25,13 @@ public class ProcedureServiceImpl implements ProcedureService{
         this.modelMapper = modelMapper;
     }
     
+    public MedicalProcedure addProcedure(MedicalProcedure medicalProcedure) {
+        return procedureRepository.save(medicalProcedure);
+    }
+
     @Override
-    public MedicalProcedure create(CreateProcedureDTO createProcedureDTO) {
-        MedicalProcedure pro = modelMapper.map(createProcedureDTO, MedicalProcedure.class);
-        return procedureRepository.save(pro);
+    public MedicalProcedure create(CreateProcedureDTO modelType) {
+        return null;
     }
 
     @Override
@@ -55,11 +59,6 @@ public class ProcedureServiceImpl implements ProcedureService{
     @Override
     public Page<MedicalProcedure> findAll(Pageable pageable) {
         return procedureRepository.findAll(pageable);
-    }
-
-    @Override
-    public List<MedicalProcedure> findByPatientName(String patientName) {
-        return procedureRepository.findByPatientName(patientName);
     }
 
 }

@@ -31,14 +31,9 @@ public class ProcedureController {
         @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
         @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
     })
-    public ResponseEntity<List<MedicalProcedure>> getAll(@RequestParam(required = false) String patientName) {
+    public ResponseEntity<List<MedicalProcedure>> getAll() {
         try {
         List<MedicalProcedure> services = new ArrayList<MedicalProcedure>();
-
-        if (patientName == null)
-            service.findAll().forEach(services::add);
-        else
-            service.findByPatientName(patientName).forEach(services::add);
 
         if (services.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -74,10 +69,9 @@ public class ProcedureController {
         @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
         @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
     })
-    public ResponseEntity<MedicalProcedure> createMedicalProcedure(@RequestBody CreateProcedureDTO createProcedureDTO) {
+    public ResponseEntity<MedicalProcedure> createMedicalProcedure(@RequestBody MedicalProcedure medicalProcedure) {
         try {
-
-        return new ResponseEntity<>(service.create(createProcedureDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(service.addProcedure(medicalProcedure), HttpStatus.CREATED);
         } catch (Exception e) {
         return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

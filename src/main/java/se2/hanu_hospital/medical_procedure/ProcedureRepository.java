@@ -7,5 +7,5 @@ import java.util.List;
 
 
 public interface ProcedureRepository extends JpaRepository<MedicalProcedure, Long> {
-    List<MedicalProcedure> findByPatientName(String patientName);
+
 }

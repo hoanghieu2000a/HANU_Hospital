@@ -54,10 +54,11 @@ public class Patient{
 //    @JoinColumn(name = "patient_details_id")
 //    private PatientDetails patientDetails;
 
-    @PastOrPresent
+    @Column(nullable = false, updatable = false, insertable = false,
+            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
-    @PastOrPresent
+    @Column(columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
     public String getName() {
