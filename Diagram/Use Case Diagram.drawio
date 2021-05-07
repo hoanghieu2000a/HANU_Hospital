@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-05-07T13:27:09.099Z" agent="5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/94.0.202 Chrome/88.0.4324.202 Safari/537.36" etag="LJrA-Z-uDqXmLNZ3UUJF" version="14.6.9" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2021-05-07T13:27:35.116Z" agent="5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/94.0.202 Chrome/88.0.4324.202 Safari/537.36" etag="3M5OR9Bo3ZGhEb8AW-hy" version="14.6.9" type="github" pages="2">
   <diagram id="A-tYAIB530SBXRurAQad" name="Page-1">
     <mxGraphModel dx="2193" dy="926" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -40,7 +40,7 @@
         <mxCell id="kUZNZiTdFEKLK9RPC_KO-18" value="Manage accounting" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="260" y="780" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="kUZNZiTdFEKLK9RPC_KO-19" value="Manage patient prescibtion record" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="kUZNZiTdFEKLK9RPC_KO-19" value="Manage patient presciption record" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="440" y="740" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="kUZNZiTdFEKLK9RPC_KO-20" value="Manage expense and profit" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
