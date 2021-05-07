@@ -1,4 +1,4 @@
-# HANU_Hospital ver 0.3.1
+# HANU_Hospital ver 0.5.0
 Open Swagger UI with link when run backend: http://localhost:8085/swagger-ui.html
 
 A project of Software Engineering 2 course: 
@@ -24,3 +24,5 @@ during their treatment.
   - Database: MySQL 5
   - Server: Apache Tomcat 9
   - IDE: IntellJ Ultimate
+* Documents:
+  - Report paper: https://docs.google.com/document/d/1REMaovzF3r8MNPB3rVOwMmgAKM0qUq6jFNrPJanGMHQ/edit?usp=sharing

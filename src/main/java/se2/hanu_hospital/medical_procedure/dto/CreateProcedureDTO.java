@@ -1,21 +1,25 @@
 package se2.hanu_hospital.medical_procedure.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
 public class CreateProcedureDTO {
-    private Long procedureId;
-    private String patientName;
+    
+    @NotNull
+    private String medicalProcedureCode;
+
+
+
     @JsonIgnore
     private LocalDateTime createdAt;
     @JsonIgnore

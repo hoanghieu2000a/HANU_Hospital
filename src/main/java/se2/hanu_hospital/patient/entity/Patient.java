@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import se2.hanu_hospital.patient.entity.Gender;
 import se2.hanu_hospital.room.Room;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;

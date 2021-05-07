@@ -1,30 +1,32 @@
 package se2.hanu_hospital.consumable;
 
-import java.util.List;
-
-import javax.persistence.EntityNotFoundException;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import se2.hanu_hospital.consumable.dto.CreateConsumableDTO;
 import se2.hanu_hospital.consumable.dto.UpdateConsumableDTO;
 import se2.hanu_hospital.consumable.entity.Consumable;
 
+
+import javax.persistence.EntityNotFoundException;
+import java.util.List;
+
+
 @Service
 public class ConsumableServiceImp  implements ConsumableService{
 
+    @Autowired
     private ConsumableRepository consumableRepository;
+    @Autowired
     private ModelMapper modelMapper;
 
-    @Autowired
-    public ConsumableServiceImp(ConsumableRepository consumableRepository, ModelMapper modelMapper){
-        this.consumableRepository = consumableRepository;
-        this.modelMapper = modelMapper;
-    }
+//    @Autowired
+//    public ConsumableServiceImp(ConsumableRepository consumableRepository, ModelMapper modelMapper){
+//        this.consumableRepository = consumableRepository;
+//        this.modelMapper = modelMapper;
+//    }
 
     @Override
     public Consumable create(CreateConsumableDTO createConsumableDTO) {
@@ -63,12 +65,5 @@ public class ConsumableServiceImp  implements ConsumableService{
     public List<Consumable> findAllByName(String consumableName) {
         
         return consumableRepository.findByName(consumableName);
-    }
-
-
-
-
-
-
-    
+    }  
 }
