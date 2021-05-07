@@ -1,6 +1,7 @@
 package se2.hanu_hospital.record;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import se2.hanu_hospital.patient.Patient;
 import se2.hanu_hospital.prescription.Prescription;
 import se2.hanu_hospital.staff.doctor.model.Doctor;
@@ -26,12 +27,14 @@ public class Record {
 
     private RecordStatus status;
 
-    @ManyToOne(optional = true)
-    @JoinColumn(name = "patient_id")
+    @ManyToOne()
+    @JoinColumn(name = "patient")
+    @JsonIgnore
     private Patient patient;
 
-    @ManyToOne(optional = true)
-    @JoinColumn(name = "patient_id")
+    @ManyToOne()
+    @JoinColumn(name = "doctor")
+    @JsonIgnore
     private Doctor doctor;
 
     @OneToMany(mappedBy = "record")

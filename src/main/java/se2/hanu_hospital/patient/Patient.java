@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se2.hanu_hospital.record.Record;
 import se2.hanu_hospital.room.Room;
 import se2.hanu_hospital.util.Gender;
 
@@ -15,6 +16,8 @@ import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "patients")
@@ -48,6 +51,9 @@ public class Patient{
     @JoinColumn(name = "room_id")
     @JsonIgnore
     private Room room;
+
+    @OneToMany(mappedBy = "patient")
+    private Set<Record> records = new HashSet<>();
 
 //    @OneToOne
 //    @MapsId
