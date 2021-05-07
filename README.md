@@ -26,3 +26,4 @@ during their treatment.
   - IDE: IntellJ Ultimate
 * Documents:
   - Report paper: https://docs.google.com/document/d/1REMaovzF3r8MNPB3rVOwMmgAKM0qUq6jFNrPJanGMHQ/edit?usp=sharing
+  - SCICT Document: https://docs.google.com/document/d/1ypacJ13xsyxvjJ-V5xUjdcDgfcQvBRsWWXcs1Uzg-s4/edit?usp=sharing
