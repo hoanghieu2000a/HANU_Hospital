@@ -6,6 +6,7 @@ public class DoctorDTO {
     private String phone;
     private String email;
     private Integer age;
+    private Double salary;
     private String speciality;
     private String department;
     private boolean available;

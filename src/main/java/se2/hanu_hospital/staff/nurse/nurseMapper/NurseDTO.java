@@ -6,4 +6,5 @@ public class NurseDTO {
     private String phone;
     private String email;
     private Integer age;
+    private Double salary;
 }

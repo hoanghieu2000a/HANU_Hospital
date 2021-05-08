@@ -9,5 +9,5 @@ import se2.hanu_hospital.staff.nurse.model.Nurse;
 @Mapper(componentModel = "spring")
 public interface NurseMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateReceptionistFromDto(NurseDTO dto, @MappingTarget Nurse entity);
+    void updateNurseFromDto(NurseDTO dto, @MappingTarget Nurse entity);
 }

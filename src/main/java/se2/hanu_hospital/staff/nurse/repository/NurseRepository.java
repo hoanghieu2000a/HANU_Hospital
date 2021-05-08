@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface NurseRepository extends JpaRepository<Nurse, Long> {
     @Query(value = "SELECT * from receptionist", nativeQuery = true)
-    List<Nurse> getAllReceptionist();
+    List<Nurse> getAllNurse();
 
-    List<Nurse> getReceptionistById(Long id);
+    Nurse getNurseById(Long id);
 }

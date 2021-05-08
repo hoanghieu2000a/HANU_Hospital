@@ -13,39 +13,39 @@ import java.util.List;
 
 @Service
 public class NurseService {
-    private final NurseRepository receptionistRepository;
+    private final NurseRepository nurseRepository;
     private final DoctorRepository doctorRepository;
     private NurseMapper mapper;
 
-    public NurseService(NurseRepository receptionistRepository, DoctorRepository doctorRepository) {
-        this.receptionistRepository = receptionistRepository;
+    public NurseService(NurseRepository nurseRepository, DoctorRepository doctorRepository) {
+        this.nurseRepository = nurseRepository;
         this.doctorRepository = doctorRepository;
     }
 
-    public List<Nurse> getAllReceptionist() {
-        return receptionistRepository.getAllReceptionist();
+    public List<Nurse> getAllNurse() {
+        return nurseRepository.getAllNurse();
     }
 
-    public void addReceptionist(Nurse nurse) {
-        receptionistRepository.save(nurse);
+    public void addNurse(Nurse nurse) {
+        nurseRepository.save(nurse);
     }
 
-    public void updateById(Long id, NurseDTO receptionist) throws IOException {
-        if(!receptionistRepository.existsById(id)){
-            throw new IllegalStateException("There is no receptionist with that id!");
+    public void updateById(Long id, NurseDTO nurse) throws IOException {
+        if(!nurseRepository.existsById(id)){
+            throw new IllegalStateException("There is no nurse with that id!");
         }
 
-        Nurse nurseInDB = (Nurse) receptionistRepository.getReceptionistById(id);
-        mapper.updateReceptionistFromDto(receptionist, nurseInDB);
-        receptionistRepository.save(nurseInDB);
+        Nurse nurseInDB =  nurseRepository.getNurseById(id);
+        mapper.updateNurseFromDto(nurse, nurseInDB);
+        nurseRepository.save(nurseInDB);
     }
 
     public void deleteById(Long id) {
-        receptionistRepository.deleteById(id);
+        nurseRepository.deleteById(id);
     }
 
     public Nurse getById(Long id) {
-        return (Nurse) receptionistRepository.getReceptionistById(id);
+        return nurseRepository.getNurseById(id);
     }
 
     public void assignDoctor(Long id) {

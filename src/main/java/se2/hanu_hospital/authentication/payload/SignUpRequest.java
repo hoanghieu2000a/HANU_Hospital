@@ -4,6 +4,7 @@ import se2.hanu_hospital.account.model.Role;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class SignUpRequest {
@@ -26,7 +27,7 @@ public class SignUpRequest {
     @Size(min = 6, max = 20)
     private String password;
 
-    @NotBlank
+    @NotNull
     private Role role;
 
     public String getName() {

@@ -5,7 +5,7 @@ import se2.hanu_hospital.staff.Staff;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "receptionist")
+@Table(name = "nurse")
 public class Nurse extends Staff {
     public Nurse() {
     }

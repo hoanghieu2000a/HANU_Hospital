@@ -36,7 +36,7 @@ public class DepartmentController {
         }
     }
 
-    @GetMapping(path = "/getById/{name}")
+    @GetMapping(path = "/getByName/{name}")
     public ResponseEntity<?> getDepartmentByName (@PathVariable("name") String name){
         try{
             return new ResponseEntity<>(departmentService.getDepartmentByName(name), HttpStatus.OK);

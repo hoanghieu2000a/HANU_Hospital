@@ -22,7 +22,7 @@ public class NurseController {
     @GetMapping(path = "/getAll")
     public ResponseEntity<?> getAll() {
         try {
-            return new ResponseEntity<>(nurseService.getAllReceptionist(), HttpStatus.OK);
+            return new ResponseEntity<>(nurseService.getAllNurse(), HttpStatus.OK);
         } catch(Exception e) {
             return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -31,8 +31,7 @@ public class NurseController {
     @GetMapping(path = "/get/{id}")
     public ResponseEntity<?> getById(@PathVariable Long id) {
         try {
-            nurseService.getById(id);
-            return new ResponseEntity<>(null, HttpStatus.OK);
+            return new ResponseEntity<>(nurseService.getById(id), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -51,7 +50,7 @@ public class NurseController {
     @PostMapping(path = "/add")
     public ResponseEntity<?> add(@RequestBody Nurse nurse) {
         try {
-            nurseService.addReceptionist(nurse);
+            nurseService.addNurse(nurse);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -59,7 +58,7 @@ public class NurseController {
     }
 
     @PutMapping(path = "/update/{id}")
-    public ResponseEntity<?> updateReceptionistById(@PathVariable Long id, @RequestBody NurseDTO nurseDTO) {
+    public ResponseEntity<?> updateNurseById(@PathVariable Long id, @RequestBody NurseDTO nurseDTO) {
         try {
             nurseService.updateById(id, nurseDTO);
             return new ResponseEntity<>(null, HttpStatus.OK);
