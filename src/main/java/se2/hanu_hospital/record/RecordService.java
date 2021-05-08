@@ -1,16 +1,20 @@
 package se2.hanu_hospital.record;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Transient;
 import org.springframework.stereotype.Service;
+import se2.hanu_hospital.bill.BillService;
+import se2.hanu_hospital.medical_procedure.MedicalProcedure;
+import se2.hanu_hospital.medical_procedure.ProcedureService;
 import se2.hanu_hospital.patient.Patient;
 import se2.hanu_hospital.patient.PatientService;
+import se2.hanu_hospital.prescription.Prescription;
 import se2.hanu_hospital.prescription.PrescriptionService;
 import se2.hanu_hospital.staff.doctor.doctorMapper.DoctorDTOAdapter;
 import se2.hanu_hospital.staff.doctor.model.Doctor;
 import se2.hanu_hospital.staff.doctor.service.DoctorService;
 import se2.hanu_hospital.util.Valid;
 
-import javax.print.Doc;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
@@ -21,13 +25,17 @@ public class RecordService {
     private final PrescriptionService prescriptionService;
     private final PatientService patientService;
     private final DoctorService doctorService;
+    private final BillService billService;
+    private final ProcedureService medicalProcedureService;
 
     @Autowired
-    public RecordService(RecordRepository recordRepository, PrescriptionService prescriptionService, PatientService patientService, DoctorService doctorService) {
+    public RecordService(RecordRepository recordRepository, PrescriptionService prescriptionService, PatientService patientService, DoctorService doctorService, BillService billService, ProcedureService medicalProcedureService) {
         this.recordRepository = recordRepository;
         this.prescriptionService = prescriptionService;
         this.patientService = patientService;
         this.doctorService = doctorService;
+        this.billService = billService;
+        this.medicalProcedureService = medicalProcedureService;
     }
 
     public List<Record> getAllRecord(){
@@ -40,8 +48,10 @@ public class RecordService {
         record.setDiagnosis(recordPayLoad.getDiagnosis());
         Doctor doctor = doctorService.getById(recordPayLoad.getDoctorId());
         doctor.setAvailable(false);
+        doctor.getRecords().add(record);
         record.setDoctor(doctor);
-        Patient patient = patientService.getById(recordPayLoad.getId());
+        Patient patient = patientService.getById(recordPayLoad.getPatientId());
+        patient.getRecords().add(record);
         record.setPatient(patient);
 
         doctorService.updateById(doctor.getId(), DoctorDTOAdapter.convertToDoctorDTO(doctor));
@@ -106,7 +116,7 @@ public class RecordService {
         return doctor.getRecords();
     }
 
-
+    @Transient
     public void dischargePatient(Long id) throws IOException {
         Record record = recordRepository.findById(id).orElseThrow(() -> new IllegalStateException("Record does not exist!"));
         Doctor doctor = record.getDoctor();
@@ -114,10 +124,29 @@ public class RecordService {
         record.setDischargePatient(true);
 
         doctorService.updateById(doctor.getId(), DoctorDTOAdapter.convertToDoctorDTO(doctor));
+        billService.addBill(record);
         recordRepository.save(record);
     }
 
     public List<Record> getRecordNotDischarged() {
         return recordRepository.findByDischargePatient(false);
+    }
+
+    public void addPrescriptionToRecord(Long id, Long prescriptionId) {
+        Record record = recordRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
+
+        Prescription prescription = prescriptionService.getById(prescriptionId);
+        prescription.setRecord(record);
+        prescriptionService.updatePrescriptionToRecord(prescriptionId, prescription);
+    }
+
+    public void addMedicalProcedureToRecord(Long id, Long medicalProcedureId) {
+        Record record = recordRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
+
+        MedicalProcedure medicalProcedure = medicalProcedureService.getById(medicalProcedureId);
+        medicalProcedure.setRecord(record);
+        medicalProcedureService.updateMedicalProcedureToRecord(medicalProcedureId, medicalProcedure);
     }
 }

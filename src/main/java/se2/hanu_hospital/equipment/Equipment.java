@@ -6,6 +6,7 @@ import se2.hanu_hospital.medical_procedure.MedicalProcedure;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ public class Equipment {
     @NotNull
     private String name;
     @NotNull
-    private Long price;
+    private Double price;
     @NotNull
     private Integer quantity;
 
@@ -29,7 +30,7 @@ public class Equipment {
     @JsonIgnore
     private Set<MedicalProcedure> medicalProcedure = new HashSet<>();
 
-    public Equipment(Long id, String name, Long price, Integer quantity, Set<MedicalProcedure> medicalProcedure) {
+    public Equipment(Long id, String name, Double price, Integer quantity, Set<MedicalProcedure> medicalProcedure) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -37,7 +38,7 @@ public class Equipment {
         this.medicalProcedure = medicalProcedure;
     }
 
-    public Equipment(Long id, String name, Long price, Integer quantity) {
+    public Equipment(Long id, String name, Double price, Integer quantity) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -63,11 +64,11 @@ public class Equipment {
         this.name = name;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

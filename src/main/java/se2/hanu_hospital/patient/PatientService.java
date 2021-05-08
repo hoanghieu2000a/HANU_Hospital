@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import se2.hanu_hospital.medical_procedure.MedicalProcedure;
+import se2.hanu_hospital.medicine.Medicine;
 import se2.hanu_hospital.util.Valid;
 
 import javax.persistence.EntityNotFoundException;
@@ -60,7 +61,9 @@ public class PatientService {
     }
 
     public Patient getById(Long id) {
-        return patientRepository.findById(id).orElse(null);
+        Patient patient = patientRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Patient does not exist!"));
+        return patient;
     }
 
     public Page<Patient> findAll(Pageable pageable) {

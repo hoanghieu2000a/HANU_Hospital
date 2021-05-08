@@ -26,16 +26,4 @@ public class BillLineController {
     public ResponseEntity<BillLine> getBillLine(@PathVariable long id ) {
         return ResponseEntity.ok(service.getBillLine(id));
     }
-
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<Void> updateBillLine(@PathVariable long id, @RequestBody BillLine billLine) {
-        service.updateBillLine(id, billLine);
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
-
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deleteBillLine(@PathVariable long id) {
-        service.deleteBillLine(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
 }

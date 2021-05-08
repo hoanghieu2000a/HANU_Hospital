@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class ServiceBillLine extends BillLine {
 
-    @OneToOne
+    @OneToOne()
     @JoinColumn(name = "medicalProcedure")
     @JsonIgnore
     private MedicalProcedure medicalProcedure;

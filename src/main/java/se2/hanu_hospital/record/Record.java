@@ -43,23 +43,15 @@ public class Record {
     @OneToMany(mappedBy = "record")
     private Set<Prescription> prescriptionMedicine = new HashSet<>();
 
-    @OneToOne(mappedBy = "record")
+    @OneToMany(mappedBy = "record")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    private MedicalProcedure medicalProcedure;
+    private Set<MedicalProcedure> medicalProcedure = new HashSet<>();
 
     @OneToOne(mappedBy = "record")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Bill bill;
-
-    @Column(nullable = false, updatable = false, insertable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime createdAt;
-
-    @Column(nullable = false, updatable = false, insertable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime updatedAt;
 
     public Record(Long id, String description, String diagnosis, Patient patient, Doctor doctor, Set<Prescription> prescriptionMedicine) {
         this.id = id;
@@ -128,11 +120,11 @@ public class Record {
         this.dischargePatient = dischargePatient;
     }
 
-    public MedicalProcedure getMedicalProcedure() {
+    public Set<MedicalProcedure> getMedicalProcedure() {
         return medicalProcedure;
     }
 
-    public void setMedicalProcedure(MedicalProcedure medicalProcedure) {
+    public void setMedicalProcedure(Set<MedicalProcedure> medicalProcedure) {
         this.medicalProcedure = medicalProcedure;
     }
 
@@ -143,4 +135,5 @@ public class Record {
     public void setBill(Bill bill) {
         this.bill = bill;
     }
+
 }

@@ -31,6 +31,7 @@ public class Patient{
     @Size(max = 100)
     private String name;
 
+    @Enumerated
     private Gender gender;
 
     @PastOrPresent
@@ -44,14 +45,6 @@ public class Patient{
 
     @OneToMany(mappedBy = "patient")
     private Set<Record> records = new HashSet<>();
-
-    @Column(nullable = false, updatable = false, insertable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime createdAt;
-
-    @Column(nullable = false, updatable = false, insertable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime updatedAt;
 
     public String getName() {
         return name;

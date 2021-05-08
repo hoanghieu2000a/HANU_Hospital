@@ -32,7 +32,7 @@ public class EquipmentService {
         Equipment equipmentInDB = equipmentRepository.getFacilityById(id);
         if(Valid.stringValid(equipmentPayload.getName()))
             equipmentInDB.setName(equipmentPayload.getName());
-        if(Valid.unsignedLongValid(equipmentPayload.getPrice()))
+        if(equipmentPayload.getPrice() > 0)
             equipmentInDB.setPrice(equipmentPayload.getPrice());
         if(equipmentPayload.getQuantity() > 0){
             equipmentInDB.setQuantity(equipmentPayload.getQuantity());

@@ -34,14 +34,6 @@ public class Prescription {
     @Column(columnDefinition = "INT(4) UNSIGNED")
     private int dosage;
 
-    @Column(nullable = false, updatable = false, insertable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime createdAt;
-
-    @Column(nullable = false, updatable = false, insertable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime updatedAt;
-
     @ManyToOne
     @JoinColumn(name = "record_id")
     @JsonIgnore

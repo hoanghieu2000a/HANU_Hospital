@@ -105,4 +105,12 @@ public class PrescriptionService {
                 .orElseThrow(() -> new IllegalStateException("Prescription does not exist!"));
         return prescription.getDosage();
     }
+
+    public void updatePrescriptionToRecord(Long prescriptionId, Prescription prescription) {
+        Prescription prescriptionInDB = prescriptionRepository.findById(prescriptionId)
+                .orElseThrow(() -> new IllegalStateException("Prescription does not exist!"));
+
+        prescriptionInDB.setRecord(prescription.getRecord());
+        prescriptionRepository.save(prescriptionInDB);
+    }
 }

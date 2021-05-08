@@ -27,20 +27,4 @@ public class BillController {
     public ResponseEntity<Bill> getBill(@PathVariable long id) {
         return ResponseEntity.ok(billService.getBill(id));
     }
-
-    @PostMapping(value = "/add")
-    public ResponseEntity<Void> addBill(@RequestParam Long recordId) {
-        billService.addBill(recordId);
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .build();
-    }
-
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deleteBill(@PathVariable long id) {
-        billService.deleteBill(id);
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .build();
-    }
 }

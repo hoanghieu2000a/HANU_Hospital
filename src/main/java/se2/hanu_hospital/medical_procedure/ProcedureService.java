@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import se2.hanu_hospital.equipment.Equipment;
 import se2.hanu_hospital.equipment.EquipmentService;
+import se2.hanu_hospital.staff.Staff;
 import se2.hanu_hospital.util.Valid;
 
 import java.util.List;
@@ -83,6 +84,14 @@ public class ProcedureService{
         procedureInDB.getEquipments().add(equipment);
 
         equipmentService.updateEquipment(equipment.getId(), equipment);
+    }
+
+    public void updateMedicalProcedureToRecord(Long medicalProcedureId, MedicalProcedure medicalProcedure) {
+        MedicalProcedure medicalProcedureInDB = procedureRepository.findById(medicalProcedureId)
+                .orElseThrow(() -> new IllegalStateException("Department does not exist!"));
+
+        medicalProcedureInDB.setRecord(medicalProcedure.getRecord());
+        procedureRepository.save(medicalProcedureInDB);
     }
 }
 

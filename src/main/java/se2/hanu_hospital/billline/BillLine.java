@@ -13,7 +13,7 @@ public class BillLine {
 
     protected double price;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "bill")
     private Bill bill;
 
@@ -37,8 +37,17 @@ public class BillLine {
         return price;
     }
 
-    public void setPrice(double price) {
+    public double setPrice(double price) {
         this.price = price;
+        return price;
+    }
+
+    public Bill getBill() {
+        return bill;
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
     }
 
     @Override

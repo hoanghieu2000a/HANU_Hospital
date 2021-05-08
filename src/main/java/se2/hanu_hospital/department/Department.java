@@ -25,14 +25,6 @@ public class Department {
     @ToString.Exclude
     private Set<Staff> staff = new HashSet<>();
 
-    @Column(nullable = false, updatable = false, insertable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime createdAt;
-
-    @Column(nullable = false, updatable = false, insertable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime updatedAt;
-
     public Department(Long id, String name) {
         this.id = id;
         this.name = name;

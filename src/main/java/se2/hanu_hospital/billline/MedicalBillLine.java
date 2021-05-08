@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class MedicalBillLine extends BillLine {
 
-    @OneToOne
+    @OneToOne()
     @JoinColumn(name = "prescription")
     private Prescription prescription;
 

@@ -67,6 +67,26 @@ public class RecordController {
         }
     }
 
+    @PutMapping(path = "/addPrescription/{id}")
+    public ResponseEntity<?> addPrescriptionToRecord(@PathVariable Long id, @RequestParam Long prescriptionId){
+        try {
+            recordService.addPrescriptionToRecord(id, prescriptionId);
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        } catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping(path = "/addMedicalProcedure/{id}")
+    public ResponseEntity<?> addMedicalProcedureToRecord(@PathVariable Long id, @RequestParam Long medicalProcedureId){
+        try {
+            recordService.addMedicalProcedureToRecord(id, medicalProcedureId);
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        } catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping(path = "/getRecordByPatientId/{id}")
     public ResponseEntity<?> getRecordByPatientId (@PathVariable("id") Long id){
         try{

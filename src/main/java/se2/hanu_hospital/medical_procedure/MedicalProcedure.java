@@ -28,21 +28,13 @@ public class MedicalProcedure {
     @ToString.Exclude
     private List<Equipment> equipments;
 
-    @Column(nullable = false, updatable = false, insertable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime createdAt;
-
-    @OneToOne()
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "record")
     @JsonIgnore
     private Record record;
 
-    @OneToOne(mappedBy = "medicalProcedure")
+    @OneToOne(mappedBy = "medicalProcedure", cascade=CascadeType.ALL)
     private ServiceBillLine billLine;
-
-    @Column(nullable = false, updatable = false, insertable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime updatedAt;
 
     public MedicalProcedure(Long id, String name, List<Equipment> equipments) {
         this.id = id;
