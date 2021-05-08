@@ -116,4 +116,8 @@ public class RecordService {
         doctorService.updateById(doctor.getId(), DoctorDTOAdapter.convertToDoctorDTO(doctor));
         recordRepository.save(record);
     }
+
+    public List<Record> getRecordNotDischarged() {
+        return recordRepository.findByDischargePatient(false);
+    }
 }

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface RecordRepository extends JpaRepository<Record, Long> {
     Record getRecordById(Long id);
+
+    List<Record> findByDischargePatient(boolean b);
 }
