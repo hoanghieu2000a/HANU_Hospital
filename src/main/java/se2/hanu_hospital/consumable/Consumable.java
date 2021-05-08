@@ -37,4 +37,63 @@ public class Consumable {
     @Column(nullable = false, updatable = false, insertable = false,
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
+
+    public Consumable(Long id, String name, int quantity, int priceBought, int priceSell) {
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+        this.priceBought = priceBought;
+        this.priceSell = priceSell;
+    }
+
+    public Consumable() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getPriceBought() {
+        return priceBought;
+    }
+
+    public void setPriceBought(int priceBought) {
+        this.priceBought = priceBought;
+    }
+
+    public int getPriceSell() {
+        return priceSell;
+    }
+
+    public void setPriceSell(int priceSell) {
+        this.priceSell = priceSell;
+    }
+
+    public MedicalProcedure getMedicalProcedure() {
+        return medicalProcedure;
+    }
+
+    public void setMedicalProcedure(MedicalProcedure medicalProcedure) {
+        this.medicalProcedure = medicalProcedure;
+    }
 }
