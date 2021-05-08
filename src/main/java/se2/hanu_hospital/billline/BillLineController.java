@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/billlines")
-@RequiredArgsConstructor
 public class BillLineController {
 
     private final BillLineService service;
@@ -26,12 +25,6 @@ public class BillLineController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<BillLine> getBillLine(@PathVariable long id ) {
         return ResponseEntity.ok(service.getBillLine(id));
-    }
-
-    @PostMapping
-    public ResponseEntity<Void> addBillLine(@RequestBody BillLine billLine) {
-        service.addBillLine(billLine);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping(value = "/{id}")

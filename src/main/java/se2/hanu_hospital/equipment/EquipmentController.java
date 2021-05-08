@@ -1,4 +1,4 @@
-package se2.hanu_hospital.facility;
+package se2.hanu_hospital.equipment;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -16,27 +16,27 @@ import java.util.List;
 @RestController
 @RequestMapping(path = {"/facility"})
 @Tag(name = "Facilities Controller")
-public class FacilityController {
+public class EquipmentController {
 
     @Autowired
-    private FacilityService facilityService;
+    private EquipmentService equipmentService;
 
     @PostMapping("/add_facility")
     @Operation(summary = "Create a new facility")
-    public Facility create(@Valid @RequestBody Facility facility){
-        return facilityService.create(facility);
+    public Equipment create(@Valid @RequestBody Equipment equipment){
+        return equipmentService.create(equipment);
     }
 
     @Operation(summary = "Find facility facility by keyword")
     @GetMapping("/getFacilities")
-    public ResponseEntity<List<Facility>> findAll(@RequestParam(required = false) String code){
+    public ResponseEntity<List<Equipment>> findAll(@RequestParam(required = false) String code){
         try {
-            List<Facility> facilities = new ArrayList<Facility>();
+            List<Equipment> facilities = new ArrayList<Equipment>();
       
             if (code == null)
-                facilities.addAll(facilityService.findAll());
+                facilities.addAll(equipmentService.findAll());
             else
-                facilities.addAll(facilityService.findByName(code));
+                facilities.addAll(equipmentService.findByName(code));
       
             if (facilities.isEmpty()) {
               return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -50,23 +50,23 @@ public class FacilityController {
 
     @Operation(summary = "Find facility by id")
     @GetMapping("/facility/{id}")
-    public ResponseEntity<Facility> findById(@PathVariable("id") Long id){
-        Facility facilityData = facilityService.getById(id);
-        if(facilityData != null){
-            return new ResponseEntity<>(facilityData, HttpStatus.OK);
+    public ResponseEntity<Equipment> findById(@PathVariable("id") Long id){
+        Equipment equipmentData = equipmentService.getById(id);
+        if(equipmentData != null){
+            return new ResponseEntity<>(equipmentData, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @Operation(summary = "Update facility")
     @PutMapping("/facility/{id}")
-    public Facility updateById(@PathVariable Long id, @Valid @RequestBody FacilityPayload facilityPayload){
-        return facilityService.updateById(id, facilityPayload);
+    public Equipment updateById(@PathVariable Long id, @Valid @RequestBody EquipmentPayload equipmentPayload){
+        return equipmentService.updateById(id, equipmentPayload);
     }
 
     @Operation(summary = "Delete a facility by ID")
     @DeleteMapping(value = "/facility/{id}")
     public void deleteByID(@PathVariable Long id) {
-        facilityService.deleteById(id);
+        equipmentService.deleteById(id);
     }
 }

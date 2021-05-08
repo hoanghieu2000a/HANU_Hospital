@@ -28,7 +28,7 @@ public class BillController {
         return ResponseEntity.ok(billService.getBill(id));
     }
 
-    @PostMapping
+    @PostMapping(value = "/add")
     public ResponseEntity<Void> addBill(@RequestParam Long recordId) {
         billService.addBill(recordId);
         return ResponseEntity

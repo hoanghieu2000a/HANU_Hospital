@@ -1,5 +1,7 @@
 package se2.hanu_hospital.department;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import se2.hanu_hospital.staff.Staff;
 
 import javax.persistence.*;
@@ -19,6 +21,8 @@ public class Department {
     private String name;
 
     @OneToMany(mappedBy = "department")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Set<Staff> staff = new HashSet<>();
 
     @Column(nullable = false, updatable = false, insertable = false,

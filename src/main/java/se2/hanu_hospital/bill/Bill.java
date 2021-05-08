@@ -1,12 +1,17 @@
 package se2.hanu_hospital.bill;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import se2.hanu_hospital.billline.BillLine;
 import se2.hanu_hospital.record.Record;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Setter
@@ -17,7 +22,13 @@ public class Bill {
     private Long id;
 
     @OneToOne
+    @JoinColumn(name = "record")
     private Record record;
+
+    @OneToMany(mappedBy = "bill")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Set<BillLine> billLines = new HashSet<>();
 
     private double totalPrice;
 
@@ -46,5 +57,13 @@ public class Bill {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Set<BillLine> getBillLines() {
+        return billLines;
+    }
+
+    public void setBillLines(Set<BillLine> billLines) {
+        this.billLines = billLines;
     }
 }

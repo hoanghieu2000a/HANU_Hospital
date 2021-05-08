@@ -2,6 +2,9 @@ package se2.hanu_hospital.record;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import se2.hanu_hospital.bill.Bill;
 import se2.hanu_hospital.medical_procedure.MedicalProcedure;
 import se2.hanu_hospital.patient.Patient;
 import se2.hanu_hospital.prescription.Prescription;
@@ -41,7 +44,14 @@ public class Record {
     private Set<Prescription> prescriptionMedicine = new HashSet<>();
 
     @OneToOne(mappedBy = "record")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private MedicalProcedure medicalProcedure;
+
+    @OneToOne(mappedBy = "record")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Bill bill;
 
     @Column(nullable = false, updatable = false, insertable = false,
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
@@ -116,5 +126,21 @@ public class Record {
 
     public void setDischargePatient(boolean dischargePatient) {
         this.dischargePatient = dischargePatient;
+    }
+
+    public MedicalProcedure getMedicalProcedure() {
+        return medicalProcedure;
+    }
+
+    public void setMedicalProcedure(MedicalProcedure medicalProcedure) {
+        this.medicalProcedure = medicalProcedure;
+    }
+
+    public Bill getBill() {
+        return bill;
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
     }
 }
