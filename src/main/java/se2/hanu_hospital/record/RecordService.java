@@ -118,6 +118,10 @@ public class RecordService {
     @Transient
     public void dischargePatient(Long id) throws IOException {
         Record record = recordRepository.findById(id).orElseThrow(() -> new IllegalStateException("Record does not exist!"));
+        if(record.isDischargePatient()){
+            throw new IllegalStateException("Patient already discharged");
+        }
+
         Doctor doctor = record.getDoctor();
         doctor.setAvailable(true);
         record.setDischargePatient(true);
