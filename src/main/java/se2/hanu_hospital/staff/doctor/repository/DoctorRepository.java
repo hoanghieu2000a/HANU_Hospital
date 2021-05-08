@@ -11,7 +11,7 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
     @Query(value = "SELECT * from doctor", nativeQuery = true)
     List<Doctor> getAllDoctors();
 
-    List<Doctor> getDoctorById(Long id);
+    Doctor getDoctorById(Long id);
 
     List<Doctor> getDoctorByAvailableIsTrue();
 }
