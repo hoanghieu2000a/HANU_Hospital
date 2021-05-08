@@ -84,4 +84,14 @@ public class RecordController {
             return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PutMapping(path = "/discharge/{id}")
+    public ResponseEntity<?> dischargePatient (@PathVariable("id") Long id){
+        try{
+            recordService.dischargePatient(id);
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

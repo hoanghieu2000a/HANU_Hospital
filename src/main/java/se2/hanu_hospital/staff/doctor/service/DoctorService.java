@@ -36,7 +36,7 @@ public class DoctorService {
             throw new IllegalStateException("There is no doctor with that id!");
         }
 
-        Doctor doctorInDB = (Doctor) doctorRepository.getDoctorById(id);
+        Doctor doctorInDB = doctorRepository.getDoctorById(id);
         mapper.updateDoctorFromDto(doctor, doctorInDB);
         doctorRepository.save(doctorInDB);
     }
@@ -46,7 +46,7 @@ public class DoctorService {
     }
 
     public Doctor getById(Long id) {
-        return (Doctor) doctorRepository.getDoctorById(id);
+        return doctorRepository.getDoctorById(id);
     }
 
 //    public void prescribeMedicine(Prescription prescription) throws Exception {

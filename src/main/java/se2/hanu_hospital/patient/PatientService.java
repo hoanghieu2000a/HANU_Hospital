@@ -76,7 +76,8 @@ public class PatientService {
     }
 
     public List<Patient> findByKeyword(String keyword) {
-        return patientRepository.findAllByNameLike(keyword);
+        List<Patient> patient = patientRepository.findAllByNameLike(keyword);
+        return patient;
     }
 }
 

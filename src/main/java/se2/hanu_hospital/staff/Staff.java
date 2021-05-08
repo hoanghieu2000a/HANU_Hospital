@@ -5,6 +5,7 @@ import se2.hanu_hospital.account.model.User;
 import se2.hanu_hospital.department.Department;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,7 +17,7 @@ public class Staff {
     private Long id;
     private String phone;
     private String email;
-    private Integer age;
+    private LocalDate dob;
     private Double salary;
     @ManyToOne
     @JoinColumn(name = "department")
@@ -37,30 +38,30 @@ public class Staff {
     public Staff() {
     }
 
-    public Staff(String name, Long id, String phone, String email, Integer age, Double salary, Department department) {
+    public Staff(String name, Long id, String phone, String email, LocalDate dob, Double salary, Department department) {
         this.name = name;
         this.id = id;
         this.phone = phone;
         this.email = email;
-        this.age = age;
+        this.dob = dob;
         this.salary = salary;
         this.department = department;
     }
 
-    public Staff(String name, Long id, String phone, String email, Integer age, Double salary) {
+    public Staff(String name, Long id, String phone, String email, LocalDate dob, Double salary) {
         this.name = name;
         this.id = id;
         this.phone = phone;
         this.email = email;
-        this.age = age;
+        this.dob = dob;
         this.salary = salary;
     }
 
-    public Staff(String name, String phone, String email, Integer age, Double salary) {
+    public Staff(String name, String phone, String email, LocalDate dob, Double salary) {
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.age = age;
+        this.dob = dob;
         this.salary = salary;
     }
 
@@ -96,12 +97,12 @@ public class Staff {
         this.email = email;
     }
 
-    public Integer getAge() {
-        return age;
+    public LocalDate getDob() {
+        return dob;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
     }
 
     public Department getDepartment() {
@@ -127,7 +128,7 @@ public class Staff {
                 ", id=" + id +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", age=" + age +
+                ", dob=" + dob +
                 '}';
     }
 }

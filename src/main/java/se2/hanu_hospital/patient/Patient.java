@@ -21,10 +21,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "patients")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder(toBuilder = true)
 public class Patient{
 
     @Id
@@ -55,11 +51,6 @@ public class Patient{
     @OneToMany(mappedBy = "patient")
     private Set<Record> records = new HashSet<>();
 
-//    @OneToOne
-//    @MapsId
-//    @JoinColumn(name = "patient_details_id")
-//    private PatientDetails patientDetails;
-
     @Column(nullable = false, updatable = false, insertable = false,
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
@@ -70,6 +61,10 @@ public class Patient{
 
     public String getName() {
         return name;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public void setName(String name) {

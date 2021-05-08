@@ -5,6 +5,7 @@ import se2.hanu_hospital.record.Record;
 import se2.hanu_hospital.staff.Staff;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,8 +21,8 @@ public class Doctor extends Staff {
     @JsonIgnore
     private Set<Record> records = new HashSet<>();
 
-    public Doctor(String name, Long id, String phone, String email, Integer age, Double salary, String speciality, boolean available) {
-        super(name, id, phone, email, age, salary);
+    public Doctor(String name, Long id, String phone, String email, LocalDate dob, Double salary, String speciality, boolean available) {
+        super(name, id, phone, email, dob, salary);
         this.speciality = speciality;
         this.available = available;
     }

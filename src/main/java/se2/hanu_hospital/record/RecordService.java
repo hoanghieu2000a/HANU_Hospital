@@ -5,10 +5,12 @@ import org.springframework.stereotype.Service;
 import se2.hanu_hospital.patient.Patient;
 import se2.hanu_hospital.patient.PatientService;
 import se2.hanu_hospital.prescription.PrescriptionService;
+import se2.hanu_hospital.staff.doctor.doctorMapper.DoctorDTOAdapter;
 import se2.hanu_hospital.staff.doctor.model.Doctor;
 import se2.hanu_hospital.staff.doctor.service.DoctorService;
 import se2.hanu_hospital.util.Valid;
 
+import javax.print.Doc;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
@@ -32,15 +34,17 @@ public class RecordService {
         return recordRepository.findAll();
     }
 
-    public void addRecord(RecordPayload recordPayLoad){
+    public void addRecord(RecordPayload recordPayLoad) throws IOException {
         Record record = new Record();
         record.setDescription(recordPayLoad.getDescription());
         record.setDiagnosis(recordPayLoad.getDiagnosis());
         Doctor doctor = doctorService.getById(recordPayLoad.getDoctorId());
+        doctor.setAvailable(false);
         record.setDoctor(doctor);
         Patient patient = patientService.getById(recordPayLoad.getId());
         record.setPatient(patient);
 
+        doctorService.updateById(doctor.getId(), DoctorDTOAdapter.convertToDoctorDTO(doctor));
         recordRepository.save(record);
     }
 
@@ -74,6 +78,16 @@ public class RecordService {
         recordRepository.save(record);
     }
 
+    public void setDoctor(Long recordId, Doctor doctor){
+        if (!recordRepository.existsById(recordId)){
+            throw new IllegalStateException("Record does not exist");
+        }
+
+        Record record = recordRepository.getRecordById(recordId);
+        record.setDoctor(doctor);
+        recordRepository.save(record);
+    }
+
     public Record getRecordById(Long id){
         return recordRepository.findById(id).orElseThrow(() -> new IllegalStateException("Record does not exist!"));
     }
@@ -93,4 +107,13 @@ public class RecordService {
     }
 
 
+    public void dischargePatient(Long id) throws IOException {
+        Record record = recordRepository.findById(id).orElseThrow(() -> new IllegalStateException("Record does not exist!"));
+        Doctor doctor = record.getDoctor();
+        doctor.setAvailable(true);
+        record.setDischargePatient(true);
+
+        doctorService.updateById(doctor.getId(), DoctorDTOAdapter.convertToDoctorDTO(doctor));
+        recordRepository.save(record);
+    }
 }

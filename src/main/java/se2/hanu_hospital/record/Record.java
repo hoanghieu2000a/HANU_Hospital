@@ -7,7 +7,6 @@ import se2.hanu_hospital.prescription.Prescription;
 import se2.hanu_hospital.staff.doctor.model.Doctor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,6 +23,8 @@ public class Record {
     private String description = "This record does not have description";
     @Lob
     private String diagnosis = "This record does not have diagnosis yet";
+
+    private boolean dischargePatient;
 
     @ManyToOne()
     @JoinColumn(name = "patient")
@@ -52,6 +53,7 @@ public class Record {
         this.diagnosis =diagnosis;
         this.patient = patient;
         this.doctor = doctor;
+        this.dischargePatient = false;
         this.prescriptionMedicine = prescriptionMedicine;
     }
 
@@ -102,5 +104,13 @@ public class Record {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+    }
+
+    public boolean isDischargePatient() {
+        return dischargePatient;
+    }
+
+    public void setDischargePatient(boolean dischargePatient) {
+        this.dischargePatient = dischargePatient;
     }
 }

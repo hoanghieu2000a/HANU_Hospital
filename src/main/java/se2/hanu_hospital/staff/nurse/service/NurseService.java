@@ -1,6 +1,7 @@
 package se2.hanu_hospital.staff.nurse.service;
 
 import org.springframework.stereotype.Service;
+import se2.hanu_hospital.record.RecordService;
 import se2.hanu_hospital.staff.doctor.model.Doctor;
 import se2.hanu_hospital.staff.doctor.repository.DoctorRepository;
 import se2.hanu_hospital.staff.nurse.model.Nurse;
@@ -17,7 +18,7 @@ public class NurseService {
     private final DoctorRepository doctorRepository;
     private final NurseMapper mapper;
 
-    public NurseService(NurseRepository nurseRepository, DoctorRepository doctorRepository, NurseMapper nurseMapper) {
+    public NurseService(NurseRepository nurseRepository, DoctorRepository doctorRepository, RecordService recordService, NurseMapper nurseMapper) {
         this.nurseRepository = nurseRepository;
         this.doctorRepository = doctorRepository;
         this.mapper = nurseMapper;
@@ -48,17 +49,6 @@ public class NurseService {
     public Nurse getById(Long id) {
         Nurse nurse = nurseRepository.getNurseById(id);
         return nurse;
-    }
-
-    public void assignDoctor(Long id) {
-        Doctor doctor = (Doctor) doctorRepository.getDoctorById(id);
-        doctor.setAvailable(false);
-        doctorRepository.save(doctor);
-
-        /*Record record = recordRepository.getRecordById(id);
-        record.setCurator(doctor);
-        recordRepository.save(record);*/
-
     }
 
     public List<Doctor> checkAvailableDoctor() {

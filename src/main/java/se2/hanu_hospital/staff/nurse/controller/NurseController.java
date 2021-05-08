@@ -67,16 +67,6 @@ public class NurseController {
         }
     }
 
-    @PutMapping(path = "/assignDoctor/{id}")
-    public ResponseEntity<?> assignDoctor(@PathVariable Long id) {
-        try {
-            nurseService.assignDoctor(id);
-            return new ResponseEntity<>(null, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @GetMapping(path = "/checkAvailable")
     public ResponseEntity<?> checkAvailableDoctor() {
         try {
