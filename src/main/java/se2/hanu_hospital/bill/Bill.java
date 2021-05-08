@@ -25,7 +25,7 @@ public class Bill {
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
-    @Column(nullable = false, updatable = true, insertable = false,
+    @Column(nullable = false, updatable = false, insertable = false,
             columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
