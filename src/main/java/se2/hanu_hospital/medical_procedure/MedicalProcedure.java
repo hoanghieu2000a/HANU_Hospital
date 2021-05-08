@@ -2,8 +2,8 @@ package se2.hanu_hospital.medical_procedure;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import se2.hanu_hospital.consumable.Consumable;
-import se2.hanu_hospital.facility.Facility;
+import se2.hanu_hospital.billline.ServiceBillLine;
+import se2.hanu_hospital.equipment.Equipment;
 import se2.hanu_hospital.record.Record;
 
 
@@ -23,15 +23,10 @@ public class MedicalProcedure {
     @NotNull
     private String name;
 
-    @OneToMany(mappedBy = "medicalProcedure", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "medicalProcedure", cascade = CascadeType.ALL)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    private List<Facility> facilities;
-
-    @OneToMany(mappedBy = "medicalProcedure", cascade = CascadeType.ALL)
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    private List<Consumable> consumables;
+    private List<Equipment> equipments;
 
     @Column(nullable = false, updatable = false, insertable = false,
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
@@ -42,15 +37,17 @@ public class MedicalProcedure {
     @JsonIgnore
     private Record record;
 
+    @OneToOne(mappedBy = "medicalProcedure")
+    private ServiceBillLine billLine;
+
     @Column(nullable = false, updatable = false, insertable = false,
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
-    public MedicalProcedure(Long id, String name, List<Facility> facilities, List<Consumable> consumables) {
+    public MedicalProcedure(Long id, String name, List<Equipment> equipments) {
         this.id = id;
         this.name = name;
-        this.facilities = facilities;
-        this.consumables = consumables;
+        this.equipments = equipments;
     }
 
     public MedicalProcedure(Long id, String name) {
@@ -73,19 +70,27 @@ public class MedicalProcedure {
         this.name = name;
     }
 
-    public List<Facility> getFacilities() {
-        return facilities;
+    public List<Equipment> getEquipments() {
+        return equipments;
     }
 
-    public void setFacilities(List<Facility> facilities) {
-        this.facilities = facilities;
+    public void setEquipments(List<Equipment> equipments) {
+        this.equipments = equipments;
     }
 
-    public List<Consumable> getConsumables() {
-        return consumables;
+    public Record getRecord() {
+        return record;
     }
 
-    public void setConsumables(List<Consumable> consumables) {
-        this.consumables = consumables;
+    public void setRecord(Record record) {
+        this.record = record;
+    }
+
+    public ServiceBillLine getBillLine() {
+        return billLine;
+    }
+
+    public void setBillLine(ServiceBillLine billLine) {
+        this.billLine = billLine;
     }
 }

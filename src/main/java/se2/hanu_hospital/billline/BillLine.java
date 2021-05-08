@@ -1,5 +1,7 @@
 package se2.hanu_hospital.billline;
 
+import se2.hanu_hospital.bill.Bill;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,10 @@ public class BillLine {
     protected Long id;
 
     protected double price;
+
+    @ManyToOne
+    @JoinColumn(name = "bill")
+    private Bill bill;
 
     public BillLine(Long id, double price) {
         this.id = id;

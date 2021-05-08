@@ -1,15 +1,16 @@
-package se2.hanu_hospital.facility;
+package se2.hanu_hospital.equipment;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
 import se2.hanu_hospital.medical_procedure.MedicalProcedure;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-public class Facility {
+public class Equipment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,26 +18,33 @@ public class Facility {
     private String name;
     @NotNull
     private Long price;
-    
-    @ManyToOne
-    @JoinColumn(name = "medical_procedure_id")
-    @JsonIgnore
-    private MedicalProcedure medicalProcedure;
+    @NotNull
+    private Integer quantity;
 
-    public Facility(Long id, String name, Long price, MedicalProcedure medicalProcedure) {
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(
+            name = "equipment_procedure",
+            joinColumns = @JoinColumn(name = "equipment_id"),
+            inverseJoinColumns = @JoinColumn(name = "medical_procedure_id"))
+    @JsonIgnore
+    private Set<MedicalProcedure> medicalProcedure = new HashSet<>();
+
+    public Equipment(Long id, String name, Long price, Integer quantity, Set<MedicalProcedure> medicalProcedure) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.quantity = quantity;
         this.medicalProcedure = medicalProcedure;
     }
 
-    public Facility(Long id, String name, Long price) {
+    public Equipment(Long id, String name, Long price, Integer quantity) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.quantity = quantity;
     }
 
-    public Facility() {
+    public Equipment() {
     }
 
     public Long getId() {
@@ -63,11 +71,19 @@ public class Facility {
         this.price = price;
     }
 
-    public MedicalProcedure getMedicalProcedure() {
+    public Set<MedicalProcedure> getMedicalProcedure() {
         return medicalProcedure;
     }
 
-    public void setMedicalProcedure(MedicalProcedure medicalProcedure) {
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setMedicalProcedure(Set<MedicalProcedure> medicalProcedure) {
         this.medicalProcedure = medicalProcedure;
     }
 }

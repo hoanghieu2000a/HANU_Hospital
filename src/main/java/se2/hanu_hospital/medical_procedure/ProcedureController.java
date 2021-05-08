@@ -67,6 +67,26 @@ public class ProcedureController {
         }
     }
 
+    @PutMapping(path = "/addEquipment/{id}")
+    public ResponseEntity<?> addEquipmentToProcedure(@PathVariable Long id, @RequestParam Long equipmentId){
+        try {
+            service.addEquipmentToProcedure(id, equipmentId);
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        } catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping(path = "/removeEquipment/{id}")
+    public ResponseEntity<?> removeEquipmentFromProcedure(@PathVariable Long id, @RequestParam Long equipmentId){
+        try {
+            service.removeEquipmentFromProcedure(id, equipmentId);
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        } catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete a medical procedure")
     public ResponseEntity<HttpStatus> deleteMedicalProcedure(@PathVariable("id") long id) {

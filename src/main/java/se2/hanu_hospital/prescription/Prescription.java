@@ -2,6 +2,7 @@ package se2.hanu_hospital.prescription;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import se2.hanu_hospital.billline.MedicalBillLine;
 import se2.hanu_hospital.medicine.Medicine;
 import se2.hanu_hospital.record.Record;
 import javax.persistence.*;
@@ -45,6 +46,9 @@ public class Prescription {
     @JoinColumn(name = "record_id")
     @JsonIgnore
     private Record record;
+
+    @OneToOne(mappedBy = "prescription")
+    private MedicalBillLine billLine;
 
     public Prescription(Long id, Record record, Medicine medicine, LocalDate startDate, LocalDate endDate, int dosage) {
         this.id = id;
@@ -117,5 +121,6 @@ public class Prescription {
     public void setDosage(int dosage) {
         this.dosage = dosage;
     }
+
 
 }

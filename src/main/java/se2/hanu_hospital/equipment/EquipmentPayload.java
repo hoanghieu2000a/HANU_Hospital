@@ -1,7 +1,7 @@
-package se2.hanu_hospital.facility;
+package se2.hanu_hospital.equipment;
 
 
-public class FacilityPayload {
+public class EquipmentPayload {
     private String name;
     private Long price;
 
