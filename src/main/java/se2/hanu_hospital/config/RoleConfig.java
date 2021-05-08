@@ -23,13 +23,10 @@ public class RoleConfig {
                 r2.setName(RoleName.ROLE_NURSE);
                 Role r3 = new Role();
                 r3.setName(RoleName.ROLE_DOCTOR);
-                Role r4 = new Role();
-                r4.setName(RoleName.ROLE_RECEPTIONIST);
                 List<Role> list = new ArrayList<>();
                 list.add(r1);
                 list.add(r2);
                 list.add(r3);
-                list.add(r4);
 
                 roleRepository.saveAll(list);
             }

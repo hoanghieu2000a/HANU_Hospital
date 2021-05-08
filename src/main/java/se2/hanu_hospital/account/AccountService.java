@@ -87,17 +87,6 @@ public class AccountService {
         user.setPhoneNumber(request.getPhoneNumber());
         user.setAddress(request.getAddress());
 
-
-        Role role = roleRepository.findByName(RoleName.valueOf(request.getRole()));
-
-
-        Set<Role> roles = user.getRoles();
-
-        Role lastRole = roles.stream().findFirst().get();
-
-        roles.remove(lastRole);
-        roles.add(role);
-
         return userRepository.save(user);
     }
 

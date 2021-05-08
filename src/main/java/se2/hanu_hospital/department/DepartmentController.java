@@ -5,9 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se2.hanu_hospital.department.DepartmentMapper.DepartmentDTO;
-import se2.hanu_hospital.medicine.Medicine;
-import se2.hanu_hospital.staff.Staff;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -39,6 +36,15 @@ public class DepartmentController {
         }
     }
 
+    @GetMapping(path = "/getByName/{name}")
+    public ResponseEntity<?> getDepartmentByName (@PathVariable("name") String name){
+        try{
+            return new ResponseEntity<>(departmentService.getDepartmentByName(name), HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PostMapping(path = "/add")
     public ResponseEntity<?> addDepartment(@RequestBody Department department){
         try {
@@ -50,9 +56,9 @@ public class DepartmentController {
     }
 
     @PutMapping(path = "/update/{id}")
-    public ResponseEntity<?> updateDepartment(@PathVariable Long id, @RequestBody DepartmentDTO departmentDTO){
+    public ResponseEntity<?> updateDepartment(@PathVariable Long id, @RequestBody DepartmentPayload departmentPayload){
         try {
-            departmentService.updateDepartment(id,departmentDTO);
+            departmentService.updateDepartment(id, departmentPayload);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch(Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

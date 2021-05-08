@@ -1,8 +1,15 @@
 package se2.hanu_hospital.record;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import se2.hanu_hospital.patient.Patient;
+import se2.hanu_hospital.prescription.Prescription;
+import se2.hanu_hospital.staff.doctor.model.Doctor;
+
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "record")
@@ -12,38 +19,52 @@ public class Record {
     @Column(name = "id", columnDefinition = "INT(4) UNSIGNED ", precision = 4, updatable = false)
     private Long id;
 
-    private LocalDate date;
-
     @Lob
     private String description = "This record does not have description";
     @Lob
     private String diagnosis = "This record does not have diagnosis yet";
 
-    private RecordStatus status;
+    private boolean dischargePatient;
 
-    //    @ManyToOne(optional = true)
-    //    @JoinColumn(name = "user_id")
-    private Long patientId;
+    @ManyToOne()
+    @JoinColumn(name = "patient")
+    @JsonIgnore
+    private Patient patient;
 
-    //    @ManyToOne(optional = true)
-    //    @JoinColumn(name = "user_id")
-    private Long doctorId;
+    @ManyToOne()
+    @JoinColumn(name = "doctor")
+    @JsonIgnore
+    private Doctor doctor;
 
-//    @OneToMany(mappedBy = "record")
-//    private Set<Prescription> prescriptionMedicine = new HashSet<>();
+    @OneToMany(mappedBy = "record")
+    private Set<Prescription> prescriptionMedicine = new HashSet<>();
 
+    @Column(nullable = false, updatable = false, insertable = false,
+            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
 
-    public Record(Long id, LocalDate date, String description, String diagnosis, RecordStatus status, Long patientId, Long doctorId) {
+    @Column(nullable = false, updatable = false, insertable = false,
+            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime updatedAt;
+
+    public Record(Long id, String description, String diagnosis, Patient patient, Doctor doctor, Set<Prescription> prescriptionMedicine) {
         this.id = id;
-        this.date = date;
         this.description = description;
         this.diagnosis =diagnosis;
-        this.status = status;
-        this.patientId = patientId;
-        this.doctorId = doctorId;
+        this.patient = patient;
+        this.doctor = doctor;
+        this.dischargePatient = false;
+        this.prescriptionMedicine = prescriptionMedicine;
     }
 
     public Record() {
+    }
+    public Set<Prescription> getPrescriptionMedicine() {
+        return prescriptionMedicine;
+    }
+
+    public void setPrescriptionMedicine(Set<Prescription> prescriptionMedicine) {
+        this.prescriptionMedicine = prescriptionMedicine;
     }
     public String getDiagnosis() {
         return diagnosis;
@@ -61,14 +82,6 @@ public class Record {
         this.id = id;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -77,28 +90,27 @@ public class Record {
         this.description = description;
     }
 
-    public RecordStatus getStatus() {
-        return status;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setStatus(RecordStatus status) {
-        this.status = status;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
-    public Long getPatientId() {
-        return patientId;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setPatientId(Long patientId) {
-        this.patientId = patientId;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
-    public Long getDoctorId() {
-        return doctorId;
+    public boolean isDischargePatient() {
+        return dischargePatient;
     }
 
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
+    public void setDischargePatient(boolean dischargePatient) {
+        this.dischargePatient = dischargePatient;
     }
-
 }

@@ -1,7 +1,10 @@
 package se2.hanu_hospital.authentication.payload;
 
+import se2.hanu_hospital.account.model.Role;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class SignUpRequest {
@@ -24,7 +27,8 @@ public class SignUpRequest {
     @Size(min = 6, max = 20)
     private String password;
 
-
+    @NotNull
+    private Role role;
 
     public String getName() {
         return name;
@@ -64,5 +68,13 @@ public class SignUpRequest {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

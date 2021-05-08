@@ -1,62 +1,40 @@
 package se2.hanu_hospital.medical_procedure;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se2.hanu_hospital.medical_procedure.dto.CreateProcedureDTO;
-import se2.hanu_hospital.medical_procedure.dto.UpdateProcedureDTO;
-import se2.hanu_hospital.medical_procedure.entity.MedicalProcedure;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
+@RequestMapping(path = {"/services"})
+@Tag(name = "Service Controller", description = "Service API")
 public class ProcedureController {
     @Autowired
-    private ProcedureServiceImpl service;
+    private ProcedureService service;
     @Autowired
     private ProcedureRepository repo;
 
-    @GetMapping("/services")
-    @Operation(summary = "Return existed medical procedures")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
-    })
-    public ResponseEntity<List<MedicalProcedure>> getAll(@RequestParam(required = false) String patientName) {
+    @GetMapping("/all")
+    @Operation(summary = "Find all services")
+    public ResponseEntity<List<MedicalProcedure>> getAll() {
         try {
-        List<MedicalProcedure> services = new ArrayList<MedicalProcedure>();
+            return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
 
-        if (patientName == null)
-            service.findAll().forEach(services::add);
-        else
-            service.findByPatientName(patientName).forEach(services::add);
-
-        if (services.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        return new ResponseEntity<>(services, HttpStatus.OK);
-        } catch (Exception e) {
-        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @GetMapping("/services/{id}")
-    @Operation(summary = "Find Medical procedure by id")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
-    })
+    @GetMapping("/{id}")
+    @Operation(summary = "Find service by id")
     public ResponseEntity<MedicalProcedure> getMedicalProcedureById(@PathVariable("id") long id) {
         MedicalProcedure medicalServiceData = service.getById(id);
 
@@ -67,46 +45,30 @@ public class ProcedureController {
         }
     }
 
-    @PostMapping("/services")
+    @PostMapping("/add")
     @Operation(summary = "Cretae a new medical procedure")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
-    })
-    public ResponseEntity<MedicalProcedure> createMedicalProcedure(@RequestBody CreateProcedureDTO createProcedureDTO) {
+    public ResponseEntity<MedicalProcedure> createMedicalProcedure(@RequestBody MedicalProcedure medicalProcedure) {
         try {
-
-        return new ResponseEntity<>(service.create(createProcedureDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(service.addProcedure(medicalProcedure), HttpStatus.CREATED);
         } catch (Exception e) {
         return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PutMapping("/services/{id}")
+    @PutMapping("/{id}")
     @Operation(summary = "Update medical procedure")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
-    })
-    public ResponseEntity<MedicalProcedure> updateMedicalProcedure(@PathVariable("id") long id, @Valid @RequestBody UpdateProcedureDTO updateProcedureDTO) {
+    public ResponseEntity<MedicalProcedure> updateMedicalProcedure(@PathVariable("id") long id, @Valid @RequestBody MedicalProcedurePayload medicalProcedurePayload) {
         MedicalProcedure data = service.getById(id);
 
         if (data != null) {
-        return new ResponseEntity<>(service.updateById(id, updateProcedureDTO), HttpStatus.OK);
+        return new ResponseEntity<>(service.updateById(id, medicalProcedurePayload), HttpStatus.OK);
         } else {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @DeleteMapping("/services/{id}")
+    @DeleteMapping("/{id}")
     @Operation(summary = "Delete a medical procedure")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
-    })
     public ResponseEntity<HttpStatus> deleteMedicalProcedure(@PathVariable("id") long id) {
         try {
         service.deleteById(id);
@@ -116,13 +78,8 @@ public class ProcedureController {
         }
     }
 
-    @DeleteMapping("/services")
+    @DeleteMapping("/deleteAll")
     @Operation(summary = "Delete medical procedure (t test thử cái này, ô đừng dùng nhé)")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "400", description = "Missing Request Parameter"),
-        @ApiResponse(responseCode = "422", description = "Input validation(s) failed"),
-        @ApiResponse(responseCode = "409", description = "Field value(s) already exists")
-    })
     public ResponseEntity<HttpStatus> deleteAllMedicalProcedure() {
         try {
         repo.deleteAll();
