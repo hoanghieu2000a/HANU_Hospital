@@ -34,7 +34,6 @@ public class BillLineService {
     }
 
     public void addBillLine(BillLine billLine) {
-        billLine.setId(null);
         repository.save(billLine);
     }
 

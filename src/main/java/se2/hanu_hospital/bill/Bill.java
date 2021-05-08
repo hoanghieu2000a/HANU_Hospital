@@ -30,6 +30,10 @@ public class Bill {
     @ToString.Exclude
     private Set<BillLine> billLines = new HashSet<>();
 
+    @Column(nullable = false, updatable = false, insertable = false,
+            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDate createdAt;
+
     private double totalPrice;
 
     public Bill() {
@@ -57,5 +61,13 @@ public class Bill {
 
     public void setBillLines(Set<BillLine> billLines) {
         this.billLines = billLines;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
     }
 }

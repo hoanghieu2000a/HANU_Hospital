@@ -13,6 +13,9 @@ import se2.hanu_hospital.medicine.MedicineService;
 import se2.hanu_hospital.prescription.Prescription;
 import se2.hanu_hospital.record.Record;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -20,6 +23,11 @@ public class BillService {
     private final BillRepository billRepository;
     private final BillLineService billLineService;
     private final MedicineService medicineService;
+
+    private Calendar cal1 = Calendar.getInstance();
+    private Calendar cal2 = Calendar.getInstance();
+    private LocalDate currentDate = LocalDate.now();
+
 
     @Autowired
     public BillService(BillRepository billRepository, BillLineService billLineService, MedicineService medicineService) {
@@ -73,7 +81,15 @@ public class BillService {
     public Double getIncome() {
         double totalIncome = 0.0;
         for (Bill bill: billRepository.findAll()){
-            totalIncome += bill.getTotalPrice();
+            LocalDate importDate = bill.getCreatedAt();
+            cal1.set(importDate.getYear(), importDate.getMonthValue(), importDate.getDayOfMonth());
+            cal2.set(currentDate.getYear(), currentDate.getMonthValue(), currentDate.getDayOfMonth());
+
+            if(cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)) {
+                if (cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)) {
+                    totalIncome += bill.getTotalPrice();
+                }
+            }
         }
 
         return totalIncome;
@@ -83,7 +99,15 @@ public class BillService {
         double totalExpend = 0.0;
 
         for(Medicine medicine: medicineService.getMedicine()){
-            totalExpend += medicine.getQuantity() * medicine.getImportPrice();
+            LocalDate importDate = medicine.getImportDate();
+            cal1.set(importDate.getYear(), importDate.getMonthValue(), importDate.getDayOfMonth());
+            cal2.set(currentDate.getYear(), currentDate.getMonthValue(), currentDate.getDayOfMonth());
+
+            if(cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)) {
+                if(cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)) {
+                    totalExpend += medicine.getQuantity() * medicine.getImportPrice();
+                }
+            }
         }
 
         return totalExpend;

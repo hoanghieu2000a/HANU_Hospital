@@ -31,6 +31,10 @@ public class Medicine {
     @Column(columnDefinition = "INT(4) UNSIGNED")
     private int quantity;
 
+    @Column(nullable = false, updatable = false, insertable = false,
+            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDate importDate;
+
     public Medicine(Long id, String name, LocalDate expireDate, Double sellPrice, Double importPrice, int quantity) {
         this.id = id;
         this.expireDate = expireDate;
@@ -85,6 +89,14 @@ public class Medicine {
 
     public void setImportPrice(Double importPrice) {
         this.importPrice = importPrice;
+    }
+
+    public LocalDate getImportDate() {
+        return importDate;
+    }
+
+    public void setImportDate(LocalDate importDate) {
+        this.importDate = importDate;
     }
 }
 
