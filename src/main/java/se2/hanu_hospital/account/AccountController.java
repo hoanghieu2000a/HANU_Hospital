@@ -37,7 +37,6 @@ public class AccountController {
         } catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @PostMapping(path="/update")

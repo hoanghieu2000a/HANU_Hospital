@@ -2,6 +2,7 @@ package se2.hanu_hospital.record;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import se2.hanu_hospital.medical_procedure.MedicalProcedure;
 import se2.hanu_hospital.patient.Patient;
 import se2.hanu_hospital.prescription.Prescription;
 import se2.hanu_hospital.staff.doctor.model.Doctor;
@@ -38,6 +39,9 @@ public class Record {
 
     @OneToMany(mappedBy = "record")
     private Set<Prescription> prescriptionMedicine = new HashSet<>();
+
+    @OneToOne(mappedBy = "record")
+    private MedicalProcedure medicalProcedure;
 
     @Column(nullable = false, updatable = false, insertable = false,
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

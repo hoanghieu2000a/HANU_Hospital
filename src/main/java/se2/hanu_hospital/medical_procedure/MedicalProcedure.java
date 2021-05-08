@@ -1,8 +1,10 @@
 package se2.hanu_hospital.medical_procedure;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import se2.hanu_hospital.consumable.Consumable;
 import se2.hanu_hospital.facility.Facility;
+import se2.hanu_hospital.record.Record;
 
 
 import javax.persistence.*;
@@ -35,6 +37,10 @@ public class MedicalProcedure {
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
+    @OneToOne()
+    @JoinColumn(name = "record")
+    @JsonIgnore
+    private Record record;
 
     @Column(nullable = false, updatable = false, insertable = false,
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
