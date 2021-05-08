@@ -25,23 +25,8 @@ public class BillLineService {
         return null;
     }
 
-    public void updateBillLine(long id, BillLine billLine) {
-        if (repository.existsById(id)) {
-            billLine.setId(id);
-            repository.save(billLine);
-        } else {
-        }
-    }
-
     public void addBillLine(BillLine billLine) {
         repository.save(billLine);
-    }
-
-    public void deleteBillLine(long id) {
-        if (repository.existsById(id)) {
-            repository.deleteById(id);
-        } else {
-        }
     }
 
     public List<BillLine> getAll() {
