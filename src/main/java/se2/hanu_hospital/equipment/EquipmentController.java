@@ -14,21 +14,21 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping(path = {"/facility"})
-@Tag(name = "Facilities Controller")
+@RequestMapping(path = {"/equipment"})
+@Tag(name = "Equipments Controller")
 public class EquipmentController {
 
     @Autowired
     private EquipmentService equipmentService;
 
-    @PostMapping("/add_facility")
-    @Operation(summary = "Create a new facility")
+    @PostMapping("/add_equipment")
+    @Operation(summary = "Create a new equipment")
     public Equipment create(@Valid @RequestBody Equipment equipment){
         return equipmentService.create(equipment);
     }
 
-    @Operation(summary = "Find facility facility by keyword")
-    @GetMapping("/getFacilities")
+    @Operation(summary = "Find equipment by keyword")
+    @GetMapping("/getEquipments")
     public ResponseEntity<List<Equipment>> findAll(@RequestParam(required = false) String code){
         try {
             List<Equipment> facilities = new ArrayList<Equipment>();
@@ -48,8 +48,8 @@ public class EquipmentController {
           }
     } 
 
-    @Operation(summary = "Find facility by id")
-    @GetMapping("/facility/{id}")
+    @Operation(summary = "Find equipment by id")
+    @GetMapping("/equipment/{id}")
     public ResponseEntity<Equipment> findById(@PathVariable("id") Long id){
         Equipment equipmentData = equipmentService.getById(id);
         if(equipmentData != null){
@@ -58,14 +58,14 @@ public class EquipmentController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @Operation(summary = "Update facility")
-    @PutMapping("/facility/{id}")
+    @Operation(summary = "Update equipment")
+    @PutMapping("/equipment/{id}")
     public Equipment updateById(@PathVariable Long id, @Valid @RequestBody EquipmentPayload equipmentPayload){
         return equipmentService.updateById(id, equipmentPayload);
     }
 
-    @Operation(summary = "Delete a facility by ID")
-    @DeleteMapping(value = "/facility/{id}")
+    @Operation(summary = "Delete a equipment by ID")
+    @DeleteMapping(value = "/equipment/{id}")
     public void deleteByID(@PathVariable Long id) {
         equipmentService.deleteById(id);
     }
