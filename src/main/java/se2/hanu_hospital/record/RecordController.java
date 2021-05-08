@@ -8,7 +8,7 @@ import se2.hanu_hospital.medicine.Medicine;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping(path = {"/api/record"})
+@RequestMapping(path = {"/record"})
 public class RecordController {
     private final RecordService recordService;
 
@@ -28,9 +28,9 @@ public class RecordController {
     }
 
     @PostMapping(path = "/add")
-    public ResponseEntity<?> addRecord(@RequestBody Record record){
+    public ResponseEntity<?> addRecord(@RequestBody RecordPayload recordPayload){
         try {
-            recordService.addRecord(record);
+            recordService.addRecord(recordPayload);
             return new ResponseEntity<>("ok", HttpStatus.OK);
         } catch(Exception e){
             return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -58,9 +58,9 @@ public class RecordController {
     }
 
     @PutMapping(path = "/update")
-    public ResponseEntity<?> updateRecord(@RequestBody Record record){
+    public ResponseEntity<?> updateRecord(@RequestBody RecordPayload recordPayload){
         try {
-            recordService.updateRecord(record);
+            recordService.updateRecord(recordPayload);
             return new ResponseEntity<>("ok", HttpStatus.OK);
         } catch(Exception e){
             return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -80,6 +80,16 @@ public class RecordController {
     public ResponseEntity<?> getRecordByDoctorId (@PathVariable("id") Long id){
         try{
             return new ResponseEntity<>(recordService.getRecordByDoctorId(id), HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping(path = "/discharge/{id}")
+    public ResponseEntity<?> dischargePatient (@PathVariable("id") Long id){
+        try{
+            recordService.dischargePatient(id);
+            return new ResponseEntity<>(null, HttpStatus.OK);
         }catch(Exception e){
             return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
         }

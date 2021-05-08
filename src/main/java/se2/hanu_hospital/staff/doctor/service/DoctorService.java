@@ -17,10 +17,10 @@ public class DoctorService {
     private final PrescriptionService prescriptionService;
     private DoctorMapper mapper;
 
-    public DoctorService(DoctorRepository doctorRepository, PrescriptionService prescriptionService) {
+    public DoctorService(DoctorRepository doctorRepository, PrescriptionService prescriptionService, DoctorMapper mapper) {
         this.doctorRepository = doctorRepository;
-
         this.prescriptionService = prescriptionService;
+        this.mapper = mapper;
     }
 
     public List<Doctor> getAllDoctors() {
@@ -36,7 +36,7 @@ public class DoctorService {
             throw new IllegalStateException("There is no doctor with that id!");
         }
 
-        Doctor doctorInDB = (Doctor) doctorRepository.getDoctorById(id);
+        Doctor doctorInDB = doctorRepository.getDoctorById(id);
         mapper.updateDoctorFromDto(doctor, doctorInDB);
         doctorRepository.save(doctorInDB);
     }
@@ -46,20 +46,20 @@ public class DoctorService {
     }
 
     public Doctor getById(Long id) {
-        return (Doctor) doctorRepository.getDoctorById(id);
+        return doctorRepository.getDoctorById(id);
     }
 
-    public void prescribeMedicine(Prescription prescription) throws Exception {
-        prescriptionService.add(prescription);
-    }
-
-    public void updatePrescription(Prescription prescription) throws IOException {
-        prescriptionService.update(prescription);
-    }
-
-    public void deletePrescription(Long id) throws IOException {
-        prescriptionService.delete(id);
-    }
+//    public void prescribeMedicine(Prescription prescription) throws Exception {
+//        prescriptionService.add(prescription);
+//    }
+//
+//    public void updatePrescription(Prescription prescription) throws IOException {
+//        prescriptionService.update(prescription);
+//    }
+//
+//    public void deletePrescription(Long id) throws IOException {
+//        prescriptionService.delete(id);
+//    }
 
     public List<Doctor> getAvailableDoctors() {
         return doctorRepository.getDoctorByAvailableIsTrue();

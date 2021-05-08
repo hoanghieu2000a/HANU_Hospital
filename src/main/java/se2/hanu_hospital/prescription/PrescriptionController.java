@@ -36,9 +36,9 @@ public class PrescriptionController {
     }
 
     @PutMapping(path = "/update")
-    public ResponseEntity<?> update(@RequestBody Prescription prescription) {
+    public ResponseEntity<?> update(@RequestBody Prescription prescription, @RequestParam Long medicineId, @RequestParam Long recordId) {
         try {
-            prescriptionService.update( prescription);
+            prescriptionService.update( prescription, recordId, medicineId);
             return new ResponseEntity<>("ok", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -46,9 +46,9 @@ public class PrescriptionController {
     }
 
     @PostMapping(path = "/add")
-    public ResponseEntity<?> add(@RequestBody Prescription prescription){
+    public ResponseEntity<?> add(@RequestBody Prescription prescription, @RequestParam Long medicineId, @RequestParam Long recordId){
         try {
-            prescriptionService.add(prescription);
+            prescriptionService.add(prescription, recordId, medicineId);
             return new ResponseEntity<>("ok", HttpStatus.OK);
         } catch ( Exception e){
             return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);

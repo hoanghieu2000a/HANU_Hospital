@@ -82,13 +82,10 @@ public class AuthenService{
         user.setUsername(signUpRequest.getUsername());
         user.setPhoneNumber(signUpRequest.getPhoneNumber());
         user.setAddress(signUpRequest.getAddress());
+        user.setRole(signUpRequest.getRole());
         user.setStatus("ACTIVATED");
 
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
-
-        Role userRole = roleRepository.findByName(RoleName.ROLE_NURSE);
-
-        user.setRoles(Collections.singleton(userRole));
 
         User result = userRepository.save(user);
 

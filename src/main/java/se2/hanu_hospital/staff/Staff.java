@@ -1,9 +1,12 @@
 package se2.hanu_hospital.staff;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import se2.hanu_hospital.account.model.User;
 import se2.hanu_hospital.department.Department;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -14,37 +17,52 @@ public class Staff {
     private Long id;
     private String phone;
     private String email;
-    private Integer age;
+    private LocalDate dob;
+    private Double salary;
     @ManyToOne
     @JoinColumn(name = "department")
     @JsonIgnore
     private Department department;
 
+    @Column(nullable = false, updatable = false, insertable = false,
+            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
+
+    @Column(nullable = false, updatable = false, insertable = false,
+            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime updatedAt;
+
+    @OneToOne()
+    private User user;
+
     public Staff() {
     }
 
-    public Staff(String name, Long id, String phone, String email, Integer age, Department department) {
+    public Staff(String name, Long id, String phone, String email, LocalDate dob, Double salary, Department department) {
         this.name = name;
         this.id = id;
         this.phone = phone;
         this.email = email;
-        this.age = age;
+        this.dob = dob;
+        this.salary = salary;
         this.department = department;
     }
 
-    public Staff(String name, Long id, String phone, String email, Integer age) {
+    public Staff(String name, Long id, String phone, String email, LocalDate dob, Double salary) {
         this.name = name;
         this.id = id;
         this.phone = phone;
         this.email = email;
-        this.age = age;
+        this.dob = dob;
+        this.salary = salary;
     }
 
-    public Staff(String name, String phone, String email, Integer age) {
+    public Staff(String name, String phone, String email, LocalDate dob, Double salary) {
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.age = age;
+        this.dob = dob;
+        this.salary = salary;
     }
 
     public String getName() {
@@ -79,12 +97,12 @@ public class Staff {
         this.email = email;
     }
 
-    public Integer getAge() {
-        return age;
+    public LocalDate getDob() {
+        return dob;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
     }
 
     public Department getDepartment() {
@@ -95,6 +113,14 @@ public class Staff {
         this.department = department;
     }
 
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
+    }
+
     @Override
     public String toString() {
         return "Staff{" +
@@ -102,7 +128,7 @@ public class Staff {
                 ", id=" + id +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", age=" + age +
+                ", dob=" + dob +
                 '}';
     }
 }
