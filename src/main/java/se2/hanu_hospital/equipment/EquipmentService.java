@@ -34,6 +34,9 @@ public class EquipmentService {
             equipmentInDB.setName(equipmentPayload.getName());
         if(Valid.unsignedLongValid(equipmentPayload.getPrice()))
             equipmentInDB.setPrice(equipmentPayload.getPrice());
+        if(equipmentPayload.getQuantity() > 0){
+            equipmentInDB.setQuantity(equipmentPayload.getQuantity());
+        }
 
         return equipmentRepository.save(equipmentInDB);
     }
