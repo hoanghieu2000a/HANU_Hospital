@@ -4,8 +4,7 @@ package se2.hanu_hospital.consumable;
 public class ConsumablePayload {
     private String name;
     private int quantity;
-    private int priceBought;
-    private int priceSell;
+    private int price;
 
     public String getName() {
         return name;
@@ -15,11 +14,7 @@ public class ConsumablePayload {
         return quantity;
     }
 
-    public int getPriceBought() {
-        return priceBought;
-    }
-
-    public int getPriceSell() {
-        return priceSell;
+    public int getPrice() {
+        return price;
     }
 }

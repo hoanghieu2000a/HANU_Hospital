@@ -40,7 +40,7 @@ public class Record {
     @OneToMany(mappedBy = "record")
     private Set<Prescription> prescriptionMedicine = new HashSet<>();
 
-    @OneToOne(mappedBy = "medical_procedure")
+    @OneToOne(mappedBy = "record")
     private MedicalProcedure medicalProcedure;
 
     @Column(nullable = false, updatable = false, insertable = false,

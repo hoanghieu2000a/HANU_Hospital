@@ -24,6 +24,10 @@ public class ConsumableService{
 
     public Consumable updateById(Long id, ConsumablePayload consumablePayload) {
         Consumable consumable = consumableRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        consumable.setName(consumablePayload.getName());
+        consumable.setQuantity(consumablePayload.getQuantity());
+        consumable.setPrice(consumablePayload.getPrice());
+
         return consumableRepository.save(consumable);
     }
 

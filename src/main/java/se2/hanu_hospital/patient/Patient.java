@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import se2.hanu_hospital.record.Record;
-import se2.hanu_hospital.room.Room;
 import se2.hanu_hospital.util.Gender;
 
 
@@ -42,11 +41,6 @@ public class Patient{
 
     @NotNull
     private String address;
-
-    @ManyToOne
-    @JoinColumn(name = "room_id")
-    @JsonIgnore
-    private Room room;
 
     @OneToMany(mappedBy = "patient")
     private Set<Record> records = new HashSet<>();
@@ -101,14 +95,6 @@ public class Patient{
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
     }
 
     public Set<Record> getRecords() {

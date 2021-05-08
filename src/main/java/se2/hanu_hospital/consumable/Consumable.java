@@ -21,9 +21,7 @@ public class Consumable {
     @NotNull
     private int quantity;
     @NotNull
-    private int priceBought;
-    @NotNull
-    private int priceSell;
+    private int price;
 
     @ManyToOne
     @JoinColumn(name = "medical_procedure_id")
@@ -38,12 +36,11 @@ public class Consumable {
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
-    public Consumable(Long id, String name, int quantity, int priceBought, int priceSell) {
+    public Consumable(Long id, String name, int quantity, int price) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
-        this.priceBought = priceBought;
-        this.priceSell = priceSell;
+        this.price = price;
     }
 
     public Consumable() {
@@ -73,20 +70,12 @@ public class Consumable {
         this.quantity = quantity;
     }
 
-    public int getPriceBought() {
-        return priceBought;
+    public int getPrice() {
+        return price;
     }
 
-    public void setPriceBought(int priceBought) {
-        this.priceBought = priceBought;
-    }
-
-    public int getPriceSell() {
-        return priceSell;
-    }
-
-    public void setPriceSell(int priceSell) {
-        this.priceSell = priceSell;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public MedicalProcedure getMedicalProcedure() {

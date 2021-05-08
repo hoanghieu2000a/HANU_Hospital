@@ -1,6 +1,7 @@
 package se2.hanu_hospital.billline;
 
-import se2.hanu_hospital.medical_procedure.entity.MedicalProcedure;
+
+import se2.hanu_hospital.medical_procedure.MedicalProcedure;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
