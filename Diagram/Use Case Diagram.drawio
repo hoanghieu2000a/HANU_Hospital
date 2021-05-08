@@ -1,10 +1,10 @@
-<mxfile host="app.diagrams.net" modified="2021-05-07T14:17:58.893Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" etag="rY3EE2dpLNfPUt9iLUBa" version="14.6.10" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2021-05-08T16:41:35.801Z" agent="5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/94.0.202 Chrome/88.0.4324.202 Safari/537.36" etag="WG7M0pvrAHpLjrOz-gOc" version="14.6.11" type="github" pages="2">
   <diagram id="A-tYAIB530SBXRurAQad" name="Page-1">
-    <mxGraphModel dx="2272" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1664" dy="447" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="DKHRgslhhYwz81WHioPj-5" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="kUZNZiTdFEKLK9RPC_KO-12">
+        <mxCell id="DKHRgslhhYwz81WHioPj-5" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="kUZNZiTdFEKLK9RPC_KO-12" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="160" y="270" as="sourcePoint" />
           </mxGeometry>
@@ -15,13 +15,10 @@
         <mxCell id="kUZNZiTdFEKLK9RPC_KO-3" value="Manage patient" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-320" y="260" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="kUZNZiTdFEKLK9RPC_KO-4" value="Manage room" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="260" y="70" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="KgNvIq5Pg9CNxeaMh0EU-4" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="kUZNZiTdFEKLK9RPC_KO-10" target="KgNvIq5Pg9CNxeaMh0EU-1">
+        <mxCell id="KgNvIq5Pg9CNxeaMh0EU-4" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="kUZNZiTdFEKLK9RPC_KO-10" target="KgNvIq5Pg9CNxeaMh0EU-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="KgNvIq5Pg9CNxeaMh0EU-5" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="kUZNZiTdFEKLK9RPC_KO-10" target="KgNvIq5Pg9CNxeaMh0EU-2">
+        <mxCell id="KgNvIq5Pg9CNxeaMh0EU-5" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="kUZNZiTdFEKLK9RPC_KO-10" target="KgNvIq5Pg9CNxeaMh0EU-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="kUZNZiTdFEKLK9RPC_KO-10" value="Manage service group" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -39,16 +36,13 @@
         <mxCell id="kUZNZiTdFEKLK9RPC_KO-15" value="Manage staff" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="440" y="550" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="kUZNZiTdFEKLK9RPC_KO-17" value="Manage recruiting record " style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="440" y="640" width="120" height="60" as="geometry" />
-        </mxCell>
         <mxCell id="kUZNZiTdFEKLK9RPC_KO-18" value="Manage accounting" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="260" y="780" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="kUZNZiTdFEKLK9RPC_KO-20" value="Manage expense and profit" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="440" y="780" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DKHRgslhhYwz81WHioPj-4" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0.1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="kUZNZiTdFEKLK9RPC_KO-23" target="kUZNZiTdFEKLK9RPC_KO-24">
+        <mxCell id="DKHRgslhhYwz81WHioPj-4" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0.1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="kUZNZiTdFEKLK9RPC_KO-23" target="kUZNZiTdFEKLK9RPC_KO-24" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="kUZNZiTdFEKLK9RPC_KO-23" value="Register, update and remove patient" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -64,12 +58,6 @@
           <mxGeometry x="-210" y="350" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="kUZNZiTdFEKLK9RPC_KO-32" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="kUZNZiTdFEKLK9RPC_KO-3" target="kUZNZiTdFEKLK9RPC_KO-1" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="150" y="570" as="sourcePoint" />
-            <mxPoint x="200" y="520" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="kUZNZiTdFEKLK9RPC_KO-33" value="" style="endArrow=none;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="kUZNZiTdFEKLK9RPC_KO-1" target="kUZNZiTdFEKLK9RPC_KO-4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="150" y="570" as="sourcePoint" />
             <mxPoint x="200" y="520" as="targetPoint" />
@@ -123,22 +111,16 @@
             <mxPoint x="450" y="500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kUZNZiTdFEKLK9RPC_KO-51" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="kUZNZiTdFEKLK9RPC_KO-13" target="kUZNZiTdFEKLK9RPC_KO-17" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="590" as="sourcePoint" />
-            <mxPoint x="450" y="590" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="kUZNZiTdFEKLK9RPC_KO-53" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="kUZNZiTdFEKLK9RPC_KO-18" target="kUZNZiTdFEKLK9RPC_KO-20" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="390" y="820" as="sourcePoint" />
             <mxPoint x="450" y="780" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KgNvIq5Pg9CNxeaMh0EU-1" value="Manage consumable" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="KgNvIq5Pg9CNxeaMh0EU-1" value="Manage consumable" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="480" y="170" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="KgNvIq5Pg9CNxeaMh0EU-2" value="Manage equipment" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="KgNvIq5Pg9CNxeaMh0EU-2" value="Manage equipment" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="480" y="270" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
