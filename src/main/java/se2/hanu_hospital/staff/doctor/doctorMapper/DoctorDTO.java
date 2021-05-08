@@ -8,6 +8,36 @@ public class DoctorDTO {
     private Integer age;
     private Double salary;
     private String speciality;
-    private String department;
     private boolean available;
+
+    public String getName() {
+        return name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public String getSpeciality() {
+        return speciality;
+    }
+    public boolean isAvailable() {
+        return available;
+    }
 }

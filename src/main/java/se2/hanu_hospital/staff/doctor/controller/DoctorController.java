@@ -32,8 +32,7 @@ public class DoctorController {
     @GetMapping(path = "/get/{id}")
     public ResponseEntity<?> getById(@PathVariable Long id) {
         try {
-            doctorService.getById(id);
-            return new ResponseEntity<>(null, HttpStatus.OK);
+            return new ResponseEntity<>(doctorService.getById(id), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -102,8 +101,7 @@ public class DoctorController {
     @GetMapping(path = "/available")
     public ResponseEntity<?> viewAvailableDoctor() {
         try {
-            doctorService.getAvailableDoctors();
-            return new ResponseEntity<>(null, HttpStatus.OK);
+            return new ResponseEntity<>(doctorService.getAvailableDoctors(), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

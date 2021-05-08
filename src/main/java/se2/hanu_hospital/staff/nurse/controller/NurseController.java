@@ -80,8 +80,7 @@ public class NurseController {
     @GetMapping(path = "/checkAvailable")
     public ResponseEntity<?> checkAvailableDoctor() {
         try {
-            nurseService.checkAvailableDoctor();
-            return new ResponseEntity<>(null, HttpStatus.OK);
+            return new ResponseEntity<>(nurseService.checkAvailableDoctor(), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

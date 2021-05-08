@@ -17,10 +17,10 @@ public class DoctorService {
     private final PrescriptionService prescriptionService;
     private DoctorMapper mapper;
 
-    public DoctorService(DoctorRepository doctorRepository, PrescriptionService prescriptionService) {
+    public DoctorService(DoctorRepository doctorRepository, PrescriptionService prescriptionService, DoctorMapper mapper) {
         this.doctorRepository = doctorRepository;
-
         this.prescriptionService = prescriptionService;
+        this.mapper = mapper;
     }
 
     public List<Doctor> getAllDoctors() {

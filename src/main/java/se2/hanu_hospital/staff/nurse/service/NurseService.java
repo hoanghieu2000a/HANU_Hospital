@@ -15,11 +15,12 @@ import java.util.List;
 public class NurseService {
     private final NurseRepository nurseRepository;
     private final DoctorRepository doctorRepository;
-    private NurseMapper mapper;
+    private final NurseMapper mapper;
 
-    public NurseService(NurseRepository nurseRepository, DoctorRepository doctorRepository) {
+    public NurseService(NurseRepository nurseRepository, DoctorRepository doctorRepository, NurseMapper nurseMapper) {
         this.nurseRepository = nurseRepository;
         this.doctorRepository = doctorRepository;
+        this.mapper = nurseMapper;
     }
 
     public List<Nurse> getAllNurse() {
@@ -45,7 +46,8 @@ public class NurseService {
     }
 
     public Nurse getById(Long id) {
-        return nurseRepository.getNurseById(id);
+        Nurse nurse = nurseRepository.getNurseById(id);
+        return nurse;
     }
 
     public void assignDoctor(Long id) {
