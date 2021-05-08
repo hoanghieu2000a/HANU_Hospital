@@ -35,7 +35,7 @@ public class AccountController {
         try {
             return new ResponseEntity<>(accountService.getAllAccount(id, username, phoneNumber, name, address, page, size, sort ), HttpStatus.OK);
         } catch (Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -47,7 +47,7 @@ public class AccountController {
     @GetMapping(path="/delete")
     public ResponseEntity<?> deleteAccount (@RequestParam Long id){
         accountService.deleteUser(id);
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(e, HttpStatus.OK);
     }
 
 

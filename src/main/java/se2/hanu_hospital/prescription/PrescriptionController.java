@@ -21,7 +21,7 @@ public class PrescriptionController {
         try {
             return new ResponseEntity<>(prescriptionService.getAll(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -31,7 +31,7 @@ public class PrescriptionController {
             prescriptionService.delete(id);
             return new ResponseEntity<>("ok", HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -41,7 +41,7 @@ public class PrescriptionController {
             prescriptionService.update( prescription, recordId, medicineId);
             return new ResponseEntity<>("ok", HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -51,7 +51,7 @@ public class PrescriptionController {
             prescriptionService.add(prescription, recordId, medicineId);
             return new ResponseEntity<>("ok", HttpStatus.OK);
         } catch ( Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -60,7 +60,7 @@ public class PrescriptionController {
         try {
             return new ResponseEntity<>(prescriptionService.getAllByRecordId(recordId), HttpStatus.OK);
         } catch (Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

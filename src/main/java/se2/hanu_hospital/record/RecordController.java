@@ -23,7 +23,7 @@ public class RecordController {
             return new ResponseEntity<>(recordService.getAllRecord(), HttpStatus.OK);
 
         } catch(Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -33,7 +33,7 @@ public class RecordController {
             recordService.addRecord(recordPayload);
             return new ResponseEntity<>("ok", HttpStatus.OK);
         } catch(Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -43,7 +43,7 @@ public class RecordController {
             recordService.deleteRecord(id);
             return new ResponseEntity<>("ok", HttpStatus.OK);
         }catch(Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -53,7 +53,7 @@ public class RecordController {
         try{
             return new ResponseEntity<>(recordService.getRecordById(id), HttpStatus.OK);
         }catch(Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -63,7 +63,7 @@ public class RecordController {
             recordService.updateRecord(recordPayload);
             return new ResponseEntity<>("ok", HttpStatus.OK);
         } catch(Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -73,7 +73,7 @@ public class RecordController {
             recordService.addPrescriptionToRecord(id, prescriptionId);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch(Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -83,7 +83,7 @@ public class RecordController {
             recordService.addMedicalProcedureToRecord(id, medicalProcedureId);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch(Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -92,7 +92,7 @@ public class RecordController {
         try{
             return new ResponseEntity<>(recordService.getRecordByPatientId(id), HttpStatus.OK);
         }catch(Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -101,7 +101,7 @@ public class RecordController {
         try{
             return new ResponseEntity<>(recordService.getRecordByDoctorId(id), HttpStatus.OK);
         }catch(Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -110,7 +110,7 @@ public class RecordController {
         try{
             return new ResponseEntity<>(recordService.getRecordNotDischarged(), HttpStatus.OK);
         }catch(Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -120,7 +120,7 @@ public class RecordController {
             recordService.dischargePatient(id);
             return new ResponseEntity<>(null, HttpStatus.OK);
         }catch(Exception e){
-            return new ResponseEntity<>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

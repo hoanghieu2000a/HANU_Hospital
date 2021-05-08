@@ -23,7 +23,7 @@ public class DepartmentController {
             return new ResponseEntity<>(departmentService.getDepartment(), HttpStatus.OK);
 
         } catch(Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -32,7 +32,7 @@ public class DepartmentController {
         try{
             return new ResponseEntity<>(departmentService.getDepartmentById(id), HttpStatus.OK);
         }catch(Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -41,7 +41,7 @@ public class DepartmentController {
         try{
             return new ResponseEntity<>(departmentService.getDepartmentByName(name), HttpStatus.OK);
         }catch(Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -51,7 +51,7 @@ public class DepartmentController {
             departmentService.addDepartment(department);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch(Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -61,7 +61,7 @@ public class DepartmentController {
             departmentService.updateDepartment(id, departmentPayload);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch(Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -71,7 +71,7 @@ public class DepartmentController {
             departmentService.addStaffToDepartment(id, staffId);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch(Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -81,7 +81,7 @@ public class DepartmentController {
             departmentService.removeStaffFromDepartment(staffId);
             return new ResponseEntity<>(null, HttpStatus.OK);
         } catch(Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -91,7 +91,7 @@ public class DepartmentController {
             departmentService.deleteDepartment(id);
             return new ResponseEntity<>(null, HttpStatus.OK);
         }catch(Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
