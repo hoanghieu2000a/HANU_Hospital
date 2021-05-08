@@ -1,6 +1,6 @@
 # HANU_Hospital ver 0.5.0
 Open Swagger UI with link when run backend: http://localhost:8085/swagger-ui.html
-Sequence Diagram: https://drive.google.com/drive/folders/1dacxwD2aGwpx1DCJSQ64Wwoqo6i4AR3M?usp=sharing
+
 
 A project of Software Engineering 2 course: 
 * A healthcare management system that:
@@ -28,3 +28,5 @@ during their treatment.
 * Documents:
   - Report paper: https://docs.google.com/document/d/1REMaovzF3r8MNPB3rVOwMmgAKM0qUq6jFNrPJanGMHQ/edit?usp=sharing
   - SCICT Document: https://docs.google.com/document/d/1ypacJ13xsyxvjJ-V5xUjdcDgfcQvBRsWWXcs1Uzg-s4/edit?usp=sharing
+  - Written UC: https://docs.google.com/document/d/17Nm1ud7BIRSeqK4FKsIITv7aVjm8JZf9FB0Od7dV8dY/edit?usp=sharing
+  - Sequence Diagram: https://drive.google.com/drive/folders/1dacxwD2aGwpx1DCJSQ64Wwoqo6i4AR3M?usp=sharing
