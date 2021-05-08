@@ -27,4 +27,31 @@ public class BillController {
     public ResponseEntity<Bill> getBill(@PathVariable long id) {
         return ResponseEntity.ok(billService.getBill(id));
     }
+
+    @GetMapping(value = "/income")
+    public ResponseEntity<?> getIncome() {
+        try{
+            return new ResponseEntity<>(billService.getIncome(), HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping(value = "/expend")
+    public ResponseEntity<?> getExpend() {
+        try{
+            return new ResponseEntity<>(billService.getExpend(), HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping(value = "/profit")
+    public ResponseEntity<?> getProfit() {
+        try{
+            return new ResponseEntity<>(billService.getProfit(), HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

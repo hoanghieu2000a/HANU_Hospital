@@ -3,30 +3,29 @@ package se2.hanu_hospital.bill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Transient;
 import org.springframework.stereotype.Service;
-import se2.hanu_hospital.billline.BillLine;
 import se2.hanu_hospital.billline.BillLineService;
 import se2.hanu_hospital.billline.MedicalBillLine;
 import se2.hanu_hospital.billline.ServiceBillLine;
 import se2.hanu_hospital.equipment.Equipment;
 import se2.hanu_hospital.medical_procedure.MedicalProcedure;
+import se2.hanu_hospital.medicine.Medicine;
+import se2.hanu_hospital.medicine.MedicineService;
 import se2.hanu_hospital.prescription.Prescription;
 import se2.hanu_hospital.record.Record;
-import se2.hanu_hospital.record.RecordService;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class BillService {
-    @Autowired
     private final BillRepository billRepository;
-    @Autowired
     private final BillLineService billLineService;
+    private final MedicineService medicineService;
 
-    public BillService(BillRepository billRepository, BillLineService billLineService) {
+    @Autowired
+    public BillService(BillRepository billRepository, BillLineService billLineService, MedicineService medicineService) {
         this.billRepository = billRepository;
         this.billLineService = billLineService;
+        this.medicineService = medicineService;
     }
 
     public Bill getBill(long id) {
@@ -69,5 +68,28 @@ public class BillService {
 
     public List<Bill> getAllBill() {
         return billRepository.findAll();
+    }
+
+    public Double getIncome() {
+        double totalIncome = 0.0;
+        for (Bill bill: billRepository.findAll()){
+            totalIncome += bill.getTotalPrice();
+        }
+
+        return totalIncome;
+    }
+
+    public Double getExpend(){
+        double totalExpend = 0.0;
+
+        for(Medicine medicine: medicineService.getMedicine()){
+            totalExpend += medicine.getQuantity() * medicine.getImportPrice();
+        }
+
+        return totalExpend;
+    }
+
+    public Double getProfit(){
+        return getIncome() - getExpend();
     }
 }

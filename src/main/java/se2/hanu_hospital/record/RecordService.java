@@ -53,7 +53,6 @@ public class RecordService {
         Patient patient = patientService.getById(recordPayLoad.getPatientId());
         patient.getRecords().add(record);
         record.setPatient(patient);
-
         doctorService.updateById(doctor.getId(), DoctorDTOAdapter.convertToDoctorDTO(doctor));
         recordRepository.save(record);
     }
