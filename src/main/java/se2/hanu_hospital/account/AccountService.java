@@ -6,14 +6,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Order;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import se2.hanu_hospital.account.model.Role;
-import se2.hanu_hospital.account.model.RoleName;
 import se2.hanu_hospital.account.model.User;
 import se2.hanu_hospital.account.payload.UserPayload;
-import se2.hanu_hospital.account.repository.RoleRepository;
-import se2.hanu_hospital.account.repository.UserRepository;
 
 import java.util.*;
 

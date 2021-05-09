@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import se2.hanu_hospital.account.model.Role;
 import se2.hanu_hospital.account.model.RoleName;
-import se2.hanu_hospital.account.repository.RoleRepository;
+import se2.hanu_hospital.account.RoleRepository;
 
 import java.util.ArrayList;
 import java.util.List;

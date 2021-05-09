@@ -1,4 +1,4 @@
-package se2.hanu_hospital.account.repository;
+package se2.hanu_hospital.account;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

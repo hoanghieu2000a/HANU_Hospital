@@ -9,14 +9,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import se2.hanu_hospital.account.model.Role;
-import se2.hanu_hospital.account.model.RoleName;
 import se2.hanu_hospital.account.model.User;
-import se2.hanu_hospital.account.repository.RoleRepository;
-import se2.hanu_hospital.account.repository.UserRepository;
+import se2.hanu_hospital.account.RoleRepository;
+import se2.hanu_hospital.account.UserRepository;
 import se2.hanu_hospital.authentication.payload.ApiResponse;
 import se2.hanu_hospital.authentication.payload.JwtAuthenticationResponse;
 import se2.hanu_hospital.authentication.payload.LoginRequest;
@@ -26,8 +23,6 @@ import se2.hanu_hospital.authentication.security.JwtTokenProvider;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.Collections;
-import java.util.Date;
 import java.util.Optional;
 
 @Service

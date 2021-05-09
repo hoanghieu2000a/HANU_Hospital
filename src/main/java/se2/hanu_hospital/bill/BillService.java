@@ -12,9 +12,10 @@ import se2.hanu_hospital.medicine.Medicine;
 import se2.hanu_hospital.medicine.MedicineService;
 import se2.hanu_hospital.prescription.Prescription;
 import se2.hanu_hospital.record.Record;
+import se2.hanu_hospital.staff.doctor.model.Doctor;
+import se2.hanu_hospital.staff.doctor.service.DoctorService;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class BillService {
     private final BillRepository billRepository;
     private final BillLineService billLineService;
     private final MedicineService medicineService;
+    private final DoctorService doctorService;
 
     private Calendar cal1 = Calendar.getInstance();
     private Calendar cal2 = Calendar.getInstance();
@@ -30,10 +32,11 @@ public class BillService {
 
 
     @Autowired
-    public BillService(BillRepository billRepository, BillLineService billLineService, MedicineService medicineService) {
+    public BillService(BillRepository billRepository, BillLineService billLineService, MedicineService medicineService, DoctorService doctorService) {
         this.billRepository = billRepository;
         this.billLineService = billLineService;
         this.medicineService = medicineService;
+        this.doctorService = doctorService;
     }
 
     public Bill getBill(long id) {
@@ -108,6 +111,10 @@ public class BillService {
                     totalExpend += medicine.getQuantity() * medicine.getImportPrice();
                 }
             }
+        }
+
+        for (Doctor doctor: doctorService.getAllDoctors()){
+            totalExpend += doctor.getSalary();
         }
 
         return totalExpend;
