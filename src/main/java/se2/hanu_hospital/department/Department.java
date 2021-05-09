@@ -24,7 +24,6 @@ public class Department {
     @OneToMany(mappedBy = "department")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @JsonIgnore
     private Set<Staff> staff = new HashSet<>();
 
     public Department(Long id, String name) {
