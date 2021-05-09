@@ -30,3 +30,4 @@ during their treatment.
   - SCICT Document: https://docs.google.com/document/d/1ypacJ13xsyxvjJ-V5xUjdcDgfcQvBRsWWXcs1Uzg-s4/edit?usp=sharing
   - Written UC: https://docs.google.com/document/d/17Nm1ud7BIRSeqK4FKsIITv7aVjm8JZf9FB0Od7dV8dY/edit?usp=sharing
   - Sequence Diagram: https://drive.google.com/drive/folders/1dacxwD2aGwpx1DCJSQ64Wwoqo6i4AR3M?usp=sharing
+  - Test report folder: https://drive.google.com/drive/folders/1j7A4YqdQLCfWUXde-uBQMMhqzQwOuYvg?usp=sharing
