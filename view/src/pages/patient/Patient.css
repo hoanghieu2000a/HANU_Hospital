@@ -1,0 +1,13 @@
+.edit-button {
+  color: green;
+}
+
+.user-link {
+  color: rgb(0, 85, 0);
+  text-decoration: underline;
+}
+
+.normal-checkbox input{
+  width: 50px !important;
+  height: 25px !important;
+} 

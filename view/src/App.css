@@ -1,0 +1,174 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: #f4f7f6;
+  border-bottom: 0;
+  position: relative;
+}
+
+#top,
+#bottom,
+#left,
+#right {
+  background: #6edd86;
+  position: fixed;
+  z-index: 51;
+}
+#left,
+#right {
+  top: 0;
+  bottom: 0;
+  width: 5px;
+}
+#left {
+  left: 0;
+}
+#right {
+  right: 0;
+}
+
+#top,
+#bottom {
+  left: 0;
+  right: 0;
+  height: 5px;
+}
+#top {
+  top: 0;
+}
+#bottom {
+  bottom: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+#main-section {
+  padding: 65px 0 0 0;
+  display: flex;
+  flex-direction: row;
+}
+
+#main-section .full {
+  padding: 20px 10px;
+  width: 100%;
+  margin-left: 250px;
+}
+
+.MuiDivider-root {
+  margin: 0 25px !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+p {
+  color: rgb(53, 53, 53);
+}
+
+.MuiDialog-paperWidthSm {
+  width: 1200px;
+}
+
+.MuiDialogTitle-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MuiDialogContent-root {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.MuiDialogContent-root > div {
+  padding: 10px 10px;
+  width: 50%;
+}
+
+.MuiDialogContent-root > div input,
+.MuiDialogContent-root > div select {
+  width: 100%;
+  height: 35px;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+}
+
+.MuiDialogContent-root .full-size,
+.MuiDialogContent-root textarea {
+  width: 100%;
+  min-height: 100px;
+  font-size: 16px;
+}
+
+.MuiDialogContent-root textarea {
+  resize: vertical;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.MuiDialogActions-root {
+  padding: 0px !important;
+  justify-content: flex-start !important;
+}
+
+.action-btn .MuiButton-label {
+  color: white;
+}
+
+#save-btn {
+  background-color: #3faa56;
+  color: white;
+  text-shadow: 0 0 1px black;
+  border: 2px solid #288b3d;
+}
+
+#delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: 2px solid #92000f;
+}
+
+.MuiDialogActions-root {
+  margin: 20px 0;
+}
+
+.remove-button {
+  color: purple;
+}
+
+.MuiSelect-root {
+  margin: 0px !important;
+}
+
+.equip-btn {
+  width: 20px;
+  width: 20px;
+  margin: 0 5px;
+}
+
+.big-text {
+  font-size: 30 px;
+}
+
+.register select {
+  height: 50px;
+  font-size: 15px;
+  padding-left: 8px;
+  border: 1px solid green;
+}

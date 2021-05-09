@@ -1,0 +1,77 @@
+.login {
+  padding: 20px 20px;
+  width: 100%;
+  height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-timing-function: ease-in-out;
+  animation: fading 10s infinite ;
+}
+
+.form {
+  background: white;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 15px 30px 15px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px green;
+}
+
+.form div {
+  margin-bottom: 15px;
+}
+
+.form h4 {
+  text-align: center;
+  color: rgb(43, 189, 50);
+  margin-bottom: 20px;
+}
+
+.form .MuiButtonBase-root {
+  font-weight: bold;
+  color: rgb(0, 22, 4) !important;
+  margin: 10px 0 0 0 !important;
+  background-color: rgb(103, 226, 109);
+}
+
+.form .MuiButtonBase-root:hover {
+  background: white;
+  border: 3px solid rgb(103, 226, 109);
+  box-shadow: none;
+}
+
+.form .MuiButton-label {
+  color: rgb(19, 80, 20) !important;
+}
+
+.form .Mui-focused {
+  color: green !important;
+}
+
+.form .MuiOutlinedInput-notchedOutline {
+  border-color: rgb(0, 141, 0) !important;
+}
+
+.signup-link a {
+  color: green;
+}
+
+@keyframes fading {
+  0% {
+    background: #f4f7f6;
+  }
+  25% {
+    background: #ccf3d5;
+  }
+  50% {
+    background: #6edd86;
+  }
+  75% {
+    background: #ccf3d5;
+  }
+  100% {
+    background: #f4f7f6;
+  }
+}

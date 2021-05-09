@@ -1,0 +1,60 @@
+.side-bar {
+  padding: 20px 0px;
+  width: 250px;
+  position: fixed;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+}
+
+.side-nav {
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: rgb(43, 43, 43);
+}
+
+.side-nav span {
+  font-size: 15px;
+}
+
+.side-nav svg {
+  color: rgb(25, 155, 46);
+}
+
+.side-nav .MuiListItemIcon-root {
+  min-width: 40px;
+}
+
+.side-bar .MuiListItem-gutters {
+  padding-left: 25px;
+  margin-bottom: 5px;
+}
+
+.doctor-anchor {
+  font-size: 18px;
+  color: green;
+}
+
+.user-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.user-account > * {
+  margin-right: 10px;
+}
+
+.user-account img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  border: 2px solid #dfdede;
+}
+
+.user-account p {
+  margin-bottom: 5px;
+  font-size: 18px;
+}

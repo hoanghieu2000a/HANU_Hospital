@@ -1,0 +1,91 @@
+.MuiTimelineItem-missingOppositeContent:before {
+  flex: 0 !important;
+  padding: 0 !important;
+}
+
+.timeline {
+  border: 1px solid #a7a7a7;
+  padding: 15px 15px;
+  border-radius: 10px;
+  background: rgb(255, 251, 241);
+}
+
+.timeline-content {
+  margin-bottom: 18px;
+}
+
+.timeline .date {
+  color: #f50057;
+}
+
+.timeline .faculty {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.timeline .doctor-name {
+  color: #007bff;
+  font-style: italic;
+}
+
+.MuiTimelineContent-root {
+  padding: 30px 16px !important;
+}
+
+.pres-table {
+  margin-top: 10px;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.pres-table th,
+.pres-table td {
+  border: 1px solid #bebebe;
+  text-align: left;
+  padding: 8px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+#add-btn {
+  color: green;
+}
+
+.discharged {
+  color: rgb(255, 55, 55);
+  background-color: rgb(255, 224, 224);
+}
+
+.not-discharge {
+  color: green;
+  background-color: rgb(239, 255, 241);
+}
+
+.timeline .MuiButton-label {
+  color: red;
+}
+
+.green-color {
+  color: rgb(47, 47, 255);
+  font-size: 15px;
+}
+
+.red-color {
+  color: rgb(255, 36, 36);
+  font-size: 15px;
+}
+
+.underline {
+  color: rgb(133, 0, 0);
+  font-size: 20px;
+  text-decoration: underline;
+}

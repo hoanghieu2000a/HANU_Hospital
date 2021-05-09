@@ -1,0 +1,40 @@
+.main-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px 10px 20px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  position: fixed;
+  top: 5px;
+  z-index: 50;
+  width: 100%;
+}
+
+.main-nav .logo a {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.main-nav .logo a > * {
+  margin-right: 10px;
+}
+
+.main-nav .logo a span {
+  font-size: 20px;
+  color: rgb(21, 102, 39);
+}
+
+.fa-hospital-symbol {
+  font-size: 40px;
+  color: rgb(23, 192, 51);
+}
+
+.fa-sign-out-alt {
+  font-size: 25px;
+  color: rgb(0, 59, 10);
+}

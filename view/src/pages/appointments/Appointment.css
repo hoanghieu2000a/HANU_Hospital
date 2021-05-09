@@ -1,0 +1,50 @@
+.main-section {
+  padding: 10px 10px 10px 0px;
+}
+
+
+.search-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px 20px 10px;
+}
+
+.search-area .seach-bar {
+  width: 80%;
+}
+
+.search-area .MuiInputBase-input {
+  padding: 5px 10px !important;
+  border: 2px solid #b9b9b9;
+  border-radius: 5px;
+}
+
+.search-area .MuiInputBase-input:focus {
+  border: 2px solid rgb(35, 153, 35);
+}
+
+.search-area .search-button {
+  padding: 10px;
+  height: 31px;
+  border-radius: 0;
+  width: 45px;
+}
+
+.MuiButton-root {
+  min-width: 0px !important;
+  margin-right: 10px !important;
+}
+
+.MuiTableCell-head {
+  color: rgb(0, 85, 0) !important;
+  font-weight: bold !important;
+}
+
+.add-area {
+  display: flex;
+  justify-content: flex-end;
+  margin: 15px 0;
+  padding: 0 10px;
+}

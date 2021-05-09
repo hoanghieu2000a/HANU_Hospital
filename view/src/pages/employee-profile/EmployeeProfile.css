@@ -1,0 +1,85 @@
+.employee-profie {
+  width: calc(100% - 250px) !important;
+}
+
+#employee-profile-section {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 20px 0 0;
+}
+
+#employee-profile-section aside {
+  width: 350px;
+  padding: 0 20px 0 0;
+}
+
+#employee-profile-section aside #employee-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 20px 0;
+  border: 1px solid rgb(235, 235, 235);
+  box-shadow: 0 1px 1px rgb(148, 148, 148);
+  margin-bottom: 30px;
+}
+
+#employee-profile-section aside img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  border: 3px solid rgb(131, 131, 131);
+  margin-bottom: 10px;
+}
+
+#employee-profile-section aside div .MuiListItem-root {
+  padding-bottom: 15px;
+}
+
+#employee-profile-section aside div nav {
+  width: 100%;
+}
+
+#employee-profile-section aside div h5 {
+  font-size: 24px !important;
+}
+
+#employee-profile-section aside div h6 {
+  font-weight: bold;
+  font-size: 16px !important;
+  margin-bottom: 5px !important;
+}
+
+#employee-profile-section main {
+  width: 100%;
+  background-color: #fff;
+  padding: 20px 20px;
+  border: 1px solid rgb(235, 235, 235);
+  box-shadow: 0 1px 1px rgb(148, 148, 148);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#employee-profile-section main > * {
+  margin-bottom: 20px;
+}
+
+#employee-profile-section main input {
+}
+
+#employee-profile-section main h6 {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+#employee-profile-section aside div .MuiListItem-root {
+  justify-content: center;
+  flex-direction: column;
+}
+
+#employee-profile-section .MuiFormGroup-root {
+  flex-direction: row;
+}
