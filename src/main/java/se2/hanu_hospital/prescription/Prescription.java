@@ -40,6 +40,7 @@ public class Prescription {
     private Record record;
 
     @OneToOne(mappedBy = "prescription")
+    @JsonIgnore
     private MedicalBillLine billLine;
 
     public Prescription(Long id, Record record, Medicine medicine, LocalDate startDate, LocalDate endDate, int dosage) {

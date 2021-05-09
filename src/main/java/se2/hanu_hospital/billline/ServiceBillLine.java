@@ -13,7 +13,6 @@ public class ServiceBillLine extends BillLine {
 
     @OneToOne()
     @JoinColumn(name = "medicalProcedure")
-    @JsonIgnore
     private MedicalProcedure medicalProcedure;
 
     public MedicalProcedure getMedicalProcedure() {

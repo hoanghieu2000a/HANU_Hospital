@@ -51,7 +51,6 @@ public class Record {
     @OneToOne(mappedBy = "record")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @JsonIgnore
     private Bill bill;
 
     public Record(Long id, String description, String diagnosis, Patient patient, Doctor doctor, Set<Prescription> prescriptionMedicine) {

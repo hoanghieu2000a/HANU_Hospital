@@ -1,5 +1,6 @@
 package se2.hanu_hospital.billline;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import se2.hanu_hospital.prescription.Prescription;
 
 import javax.persistence.Entity;

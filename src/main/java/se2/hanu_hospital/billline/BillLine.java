@@ -1,5 +1,6 @@
 package se2.hanu_hospital.billline;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import se2.hanu_hospital.bill.Bill;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ public class BillLine {
 
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "bill")
+    @JsonIgnore
     private Bill bill;
 
     public BillLine(Long id, double price) {

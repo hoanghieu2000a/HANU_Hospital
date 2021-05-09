@@ -28,7 +28,6 @@ public class Bill {
     private Record record;
 
     @OneToMany(mappedBy = "bill", cascade=CascadeType.ALL)
-    @JsonIgnore
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Set<BillLine> billLines = new HashSet<>();
