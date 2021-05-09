@@ -47,7 +47,7 @@ public class AccountController {
     @GetMapping(path="/delete")
     public ResponseEntity<?> deleteAccount (@RequestParam Long id){
         accountService.deleteUser(id);
-        return new ResponseEntity<>(e, HttpStatus.OK);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
 

@@ -30,6 +30,18 @@ public class SignUpRequest {
     @NotNull
     private Role role;
 
+    public SignUpRequest(String name, String username, String phoneNumber, String address, String password, Role role) {
+        this.name = name;
+        this.username = username;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.password = password;
+        this.role = role;
+    }
+
+    public SignUpRequest() {
+    }
+
     public String getName() {
         return name;
     }
