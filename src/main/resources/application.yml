@@ -5,8 +5,8 @@ spring:
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/hanu_hospital?createDatabaseIfNotExist=true&autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=Asia/Ho_Chi_Minh
     #url: jdbc:mysql://localhost:3306/hanu_hospital
-    username: root
-    password:
+    username: admin
+    password: admin
 
     initialization-mode: always
 

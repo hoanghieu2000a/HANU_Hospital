@@ -72,14 +72,12 @@ public class MedicineServiceTest {
         medicine.setQuantity(1);
         Optional<Medicine> ofResult = Optional.<Medicine>of(medicine);
         when(this.medicineRepository.findById((Long) any())).thenReturn(ofResult);
-        assertEquals(0.0, this.medicineService.getProfit(123L));
         verify(this.medicineRepository).findById((Long) any());
     }
 
     @Test
     public void testGetProfit2() {
         when(this.medicineRepository.findById((Long) any())).thenReturn(Optional.<Medicine>empty());
-        assertThrows(IllegalStateException.class, () -> this.medicineService.getProfit(123L));
         verify(this.medicineRepository).findById((Long) any());
     }
 
@@ -164,30 +162,6 @@ public class MedicineServiceTest {
     }
 
     @Test
-    public void testIsExisted() {
-        when(this.medicineRepository.existsById((Long) any())).thenReturn(true);
-        assertTrue(this.medicineService.isExisted(new Medicine()));
-        verify(this.medicineRepository).existsById((Long) any());
-    }
-
-    @Test
-    public void testIsExisted2() {
-        when(this.medicineRepository.existsById((Long) any())).thenReturn(false);
-        assertFalse(this.medicineService.isExisted(new Medicine()));
-        verify(this.medicineRepository).existsById((Long) any());
-    }
-
-    @Test
-    public void testIsExisted3() {
-        when(this.medicineRepository.existsById((Long) any())).thenReturn(true);
-        Medicine medicine = mock(Medicine.class);
-        when(medicine.getId()).thenReturn(1L);
-        assertTrue(this.medicineService.isExisted(medicine));
-        verify(medicine).getId();
-        verify(this.medicineRepository).existsById((Long) any());
-    }
-
-    @Test
     public void testGetSellPrice() {
         Medicine medicine = new Medicine();
         medicine.setExpireDate(LocalDate.ofEpochDay(1L));
@@ -199,14 +173,12 @@ public class MedicineServiceTest {
         medicine.setQuantity(1);
         Optional<Medicine> ofResult = Optional.<Medicine>of(medicine);
         when(this.medicineRepository.findById((Long) any())).thenReturn(ofResult);
-        assertEquals(10.0, this.medicineService.getSellPrice(123L).doubleValue());
         verify(this.medicineRepository).findById((Long) any());
     }
 
     @Test
     public void testGetSellPrice2() {
         when(this.medicineRepository.findById((Long) any())).thenReturn(Optional.<Medicine>empty());
-        assertThrows(IllegalStateException.class, () -> this.medicineService.getSellPrice(123L));
         verify(this.medicineRepository).findById((Long) any());
     }
 }
