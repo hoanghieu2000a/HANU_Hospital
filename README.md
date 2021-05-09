@@ -1,4 +1,4 @@
-# HANU_Hospital ver 0.6.0
+# HANU_Hospital ver 1.0.0
 Open Swagger UI with link while run backend: http://localhost:8085/swagger-ui.html
 
 
