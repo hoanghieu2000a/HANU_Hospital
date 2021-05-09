@@ -26,6 +26,7 @@ public class Prescription {
 //    private String name;
     @ManyToOne
     @JoinColumn(name = "medicine_id")
+    @JsonIgnore
     private Medicine medicine;
 
     private LocalDate startDate;

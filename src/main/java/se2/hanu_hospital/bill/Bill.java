@@ -1,5 +1,6 @@
 package se2.hanu_hospital.bill;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,9 +24,11 @@ public class Bill {
 
     @OneToOne
     @JoinColumn(name = "record")
+    @JsonIgnore
     private Record record;
 
     @OneToMany(mappedBy = "bill", cascade=CascadeType.ALL)
+    @JsonIgnore
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Set<BillLine> billLines = new HashSet<>();

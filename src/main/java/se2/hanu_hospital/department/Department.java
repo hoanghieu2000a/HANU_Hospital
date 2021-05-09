@@ -1,5 +1,6 @@
 package se2.hanu_hospital.department;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import se2.hanu_hospital.staff.Staff;
@@ -23,6 +24,7 @@ public class Department {
     @OneToMany(mappedBy = "department")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @JsonIgnore
     private Set<Staff> staff = new HashSet<>();
 
     public Department(Long id, String name) {

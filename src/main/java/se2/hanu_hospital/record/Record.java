@@ -41,16 +41,19 @@ public class Record {
     private Doctor doctor;
 
     @OneToMany(mappedBy = "record")
+    @JsonIgnore
     private Set<Prescription> prescriptionMedicine = new HashSet<>();
 
     @OneToMany(mappedBy = "record")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @JsonIgnore
     private Set<MedicalProcedure> medicalProcedure = new HashSet<>();
 
     @OneToOne(mappedBy = "record")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @JsonIgnore
     private Bill bill;
 
     public Record(Long id, String description, String diagnosis, Patient patient, Doctor doctor, Set<Prescription> prescriptionMedicine) {

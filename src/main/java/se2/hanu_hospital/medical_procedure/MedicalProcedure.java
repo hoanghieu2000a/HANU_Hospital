@@ -26,6 +26,7 @@ public class MedicalProcedure {
     @ManyToMany(mappedBy = "medicalProcedure", cascade = CascadeType.ALL)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @JsonIgnore
     private List<Equipment> equipments;
 
     @ManyToOne(cascade=CascadeType.ALL)
@@ -34,6 +35,7 @@ public class MedicalProcedure {
     private Record record;
 
     @OneToOne(mappedBy = "medicalProcedure", cascade=CascadeType.ALL)
+    @JsonIgnore
     private ServiceBillLine billLine;
 
     public MedicalProcedure(Long id, String name, List<Equipment> equipments) {

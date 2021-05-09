@@ -44,6 +44,7 @@ public class Patient{
     private String address;
 
     @OneToMany(mappedBy = "patient")
+    @JsonIgnore
     private Set<Record> records = new HashSet<>();
 
     public String getName() {
