@@ -18,7 +18,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import se2.hanu_hospital.billline.BillLine;
 import se2.hanu_hospital.billline.BillLineService;
+import se2.hanu_hospital.billline.MedicalBillLine;
+import se2.hanu_hospital.billline.ServiceBillLine;
 import se2.hanu_hospital.department.Department;
+import se2.hanu_hospital.equipment.Equipment;
 import se2.hanu_hospital.medical_procedure.MedicalProcedure;
 import se2.hanu_hospital.medicine.Medicine;
 import se2.hanu_hospital.medicine.MedicineService;
@@ -47,6 +50,49 @@ public class BillServiceTest {
 
     @MockBean
     private DoctorService doctorService;
+
+    @Test
+    void addBill() {
+        Record record = new Record();
+        record.setDiagnosis("Diagnosis");
+        record.setMedicalProcedure(new HashSet<MedicalProcedure>());
+        record.setId(123L);
+        record.setPrescriptionMedicine(new HashSet<Prescription>());
+        record.setBill(new Bill());
+        record.setDoctor(new Doctor());
+        record.setDescription("The characteristics of someone or something");
+        record.setPatient(new Patient());
+        record.setDischargePatient(true);
+
+        Bill bill = new Bill();
+        double totalPrice = 0.0;
+
+        bill.setRecord(record);
+        for (Prescription prescription : record.getPrescriptionMedicine()) {
+            MedicalBillLine billLine = new MedicalBillLine();
+            billLine.setPrescription(prescription);
+            totalPrice += billLine.setPrice(prescription.getMedicine().getSellPrice() * prescription.getDosage());
+            billLine.setBill(bill);
+
+            billLineService.addBillLine(billLine);
+        }
+
+        for (MedicalProcedure medicalProcedure: record.getMedicalProcedure()){
+            ServiceBillLine billLine = new ServiceBillLine();
+            billLine.setMedicalProcedure(medicalProcedure);
+
+            double totalMedicalProcedurePrice = 0.0;
+            for (Equipment equipment: medicalProcedure.getEquipments()){
+                totalMedicalProcedurePrice += equipment.getPrice();
+            }
+
+            totalPrice += billLine.setPrice(totalMedicalProcedurePrice);
+            billLine.setBill(bill);
+            billLineService.addBillLine(billLine);
+        }
+
+        this.billRepository.save(bill);
+    }
 
     @Test
     public void testGetBill() {
@@ -103,7 +149,7 @@ public class BillServiceTest {
         record1.setDischargePatient(true);
 
         Bill bill1 = new Bill();
-        bill1.setCreatedAt(LocalDate.ofEpochDay(1L));
+        bill1.setCreatedAt(LocalDate.now());
         bill1.setTotalPrice(10.0);
         bill1.setBillLines(new HashSet<BillLine>());
         bill1.setRecord(record1);
@@ -115,11 +161,22 @@ public class BillServiceTest {
 
     @Test
     public void testGetAllBill() {
+        Bill bill = new Bill();
+        bill.setCreatedAt(LocalDate.now());
+        bill.setTotalPrice(10.0);
+        bill.setBillLines(new HashSet<BillLine>());
+
+        Bill bill1 = new Bill();
+        bill1.setCreatedAt(LocalDate.now());
+        bill1.setTotalPrice(10.0);
+        bill1.setBillLines(new HashSet<BillLine>());
         ArrayList<Bill> billList = new ArrayList<Bill>();
+        billList.add(bill);
+        billList.add(bill1);
+
         when(this.billRepository.findAll()).thenReturn(billList);
         List<Bill> actualAllBill = this.billService.getAllBill();
         assertSame(billList, actualAllBill);
-        assertTrue(actualAllBill.isEmpty());
         verify(this.billRepository).findAll();
     }
 
@@ -169,5 +226,7 @@ public class BillServiceTest {
 
         assertEquals(20.0, this.billService.getExpend());
     }
+
+
 }
 
