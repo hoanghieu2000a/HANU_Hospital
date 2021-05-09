@@ -32,12 +32,6 @@ public class MedicineService {
         medicineRepository.deleteById(id);
     }
 
-    public double getProfit(Long id){
-        Medicine medicine = medicineRepository.findById(id)
-                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
-        return (medicine.getQuantity()*(medicine.getSellPrice()- medicine.getImportPrice()));
-    }
-
     public boolean isExpired(Long id) {
         Medicine medicine = medicineRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
@@ -89,17 +83,5 @@ public class MedicineService {
         } else {
             throw new IllegalStateException("Invalid medicine");
         }
-    }
-
-    public boolean isExisted(Medicine  medicine){
-        if(medicineRepository.existsById(medicine.getId())){
-        return true;
-        } return false;
-    }
-
-    public Double getSellPrice(Long id){
-        Medicine medicine = medicineRepository.findById(id)
-                .orElseThrow(() -> new IllegalStateException("Medicine does not exist!"));
-        return medicine.getSellPrice();
     }
 }

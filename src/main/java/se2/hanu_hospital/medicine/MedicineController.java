@@ -46,15 +46,6 @@ public class MedicineController {
         }
     }
 
-    @GetMapping(path = "/getProfit/{id}")
-    public ResponseEntity<?> getProfit(@PathVariable("id") Long id){
-        try {
-            return new ResponseEntity<>(medicineService.getProfit(id), HttpStatus.OK);
-        }catch(Exception e){
-            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @GetMapping(path = "/isExprired/{id}")
     public ResponseEntity<?> isExpired(@PathVariable("id") Long id){
         try{

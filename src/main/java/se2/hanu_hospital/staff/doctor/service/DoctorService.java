@@ -14,12 +14,10 @@ import java.util.List;
 @Service
 public class DoctorService {
     private final DoctorRepository doctorRepository;
-    private final PrescriptionService prescriptionService;
     private DoctorMapper mapper;
 
-    public DoctorService(DoctorRepository doctorRepository, PrescriptionService prescriptionService, DoctorMapper mapper) {
+    public DoctorService(DoctorRepository doctorRepository, DoctorMapper mapper) {
         this.doctorRepository = doctorRepository;
-        this.prescriptionService = prescriptionService;
         this.mapper = mapper;
     }
 
@@ -49,28 +47,8 @@ public class DoctorService {
         return doctorRepository.getDoctorById(id);
     }
 
-//    public void prescribeMedicine(Prescription prescription) throws Exception {
-//        prescriptionService.add(prescription);
-//    }
-//
-//    public void updatePrescription(Prescription prescription) throws IOException {
-//        prescriptionService.update(prescription);
-//    }
-//
-//    public void deletePrescription(Long id) throws IOException {
-//        prescriptionService.delete(id);
-//    }
-
     public List<Doctor> getAvailableDoctors() {
         return doctorRepository.getDoctorByAvailableIsTrue();
-    }
-
-    public void viewRecord() {
-
-    }
-
-    public void editRecord() {
-
     }
 
 }
