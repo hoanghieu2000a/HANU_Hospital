@@ -1,6 +1,8 @@
 # HANU_Hospital ver 1.0.0
 Open Swagger UI with link while run backend: http://localhost:8085/swagger-ui.html
 
+Video demo: https://youtu.be/bi72C9UyzEk
+
 
 A project of Software Engineering 2 course: 
 * A healthcare management system that:
