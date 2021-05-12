@@ -21,9 +21,8 @@ overall profit.
 used for the specific treatment. It keeps records of every patient’ drugs used
 during their treatment.
 * Using technology:
-  - Language : JDK 1.8, Java EE, framework Spring Boot (backend) and React (frontend)
+  - Language : JDK 1.8, Java EE, framework Spring Boot (backend) and ReactJS (frontend)
   - Database: MySQL 5
-  - Server: Apache Tomcat 9
   - IDE: IntellJ Ultimate
 * Documents:
   - Report paper: https://docs.google.com/document/d/1REMaovzF3r8MNPB3rVOwMmgAKM0qUq6jFNrPJanGMHQ/edit?usp=sharing
